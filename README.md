@@ -32,7 +32,7 @@ lib/
 
 
 # Apps
-## offline_todo
+## 1. offline_todo
 ### Requirement
 Evaluation:  state management, architecture, local storage SQLite, and async handling.
 **Tasks:**
@@ -67,6 +67,7 @@ Since todo is a very basic app with just one faeture i.e. to CRUD Todos, so it f
 - build_runner: ^2.5.4
 
 ### Folder Structure
+```
 lib/
 │
 ├── apps/
@@ -118,5 +119,62 @@ lib/
 │   └── app_theme.dart
 │
 └── main.dart
+```
 
 
+
+## 4. method_channel
+### Requirement
+1.​ Use MethodChannel:
+From native code, return a JSON map containing:​
+​```json
+{
+"batteryLevel": 88,// int
+"deviceModel": "Pixel 6",// string
+"isCharging": true,// bool
+"systemTime": "2025-06-09T12:30:00Z" // string (ISO format)
+}
+```
+2.​ On the Flutter side:​
+- Parse the JSON response and convert systemTime to a Dart DateTime​
+- Display all values in a clean UI​
+- Provide a button that, when clicked, fetches and displays the JSON data
+3.​ Use PlatformView to show a native button. When this button is pressed then batter
+percentage should be refreshed.
+
+
+### My Thought Process
+This app seems to be simplest of all. The only real challange is to implement `MethodChannel` for _Battery level_, _Device model_, _Charging status_, _System time_ and _Rendering a functional native button_ , so 
+
+**Steps**
+1. Implement MethodChannel call
+2. Parse JSON
+3. Build UI
+
+**Folder Structure**
+So I wanna use MVVM for this (not exactlt but alike)
+```
+method_channel/
+    bloc/
+        device_info_bloc.dart
+        device_info_event.dart
+        device_info_state.dart
+    models/
+        device_info.dart
+    services/
+        device_info_service.dart
+    pages/
+        method_channel_page.dart
+    widgets/
+        device_info_card.dart
+        error_card.dart
+        info_row.dart
+        loading_card.dart
+        native_button_view.dart
+```
+
+**Enhnacement Done**
+- Better code structure
+- Freezed for model generation
+- Bloc for state management
+- Check on IoS
