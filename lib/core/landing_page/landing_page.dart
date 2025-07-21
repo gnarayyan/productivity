@@ -4,7 +4,7 @@ import 'package:lucide_icons/lucide_icons.dart';
 import 'package:varosa_tech/core/landing_page/app_card.dart';
 import 'package:varosa_tech/core/landing_page/show_coming_soon_dialog.dart';
 import '../../../themes/app_theme.dart';
-import '../app_router.gr.dart';
+import '../router/app_router.gr.dart';
 
 @RoutePage()
 class LandingPage extends StatelessWidget {
