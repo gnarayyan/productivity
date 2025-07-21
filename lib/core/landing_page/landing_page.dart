@@ -79,10 +79,8 @@ class LandingPage extends StatelessWidget {
                       subtitle: 'Native Integration',
                       icon: LucideIcons.smartphone,
                       color: AppColors.warning,
-                      isActive: false,
-                      onTap: () {
-                        showComingSoonDialog(context, 'Method Channel');
-                      },
+                      isActive: true,
+                      onTap: () => context.pushRoute(const MethodChannelRoute()),
                     ),
                     AppCard(
                       title: 'Nested Bottom Nav',
