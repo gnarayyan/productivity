@@ -13,6 +13,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: TodoRoute.page),
     AutoRoute(page: AddTodoRoute.page),
     AutoRoute(page: EditTodoRoute.page),
+    AutoRoute(page: MethodChannelRoute.page),
   ];
 
   @override
