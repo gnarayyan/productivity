@@ -1,10 +1,14 @@
 import 'package:get_it/get_it.dart';
 
+import '../apps/method_channel/bloc/device_info_bloc.dart';
+import '../apps/method_channel/services/device_info_service.dart';
 import '../apps/offline_todo/data/datasources/local_datasource.dart';
 import '../apps/offline_todo/data/repositories/todo_repository_impl.dart';
 import '../apps/offline_todo/domain/repositories/todo_repository.dart';
 import '../apps/offline_todo/domain/usecases/todo_usecases.dart';
 import '../apps/offline_todo/presentation/bloc/todo_bloc.dart';
+
+// Method Channel imports
 
 final sl = GetIt.instance;
 
@@ -12,6 +16,7 @@ Future<void> initDependencies() async {
   // Core
   sl.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper.instance);
 
+  // Todo App Dependencies
   // Repository - Register the interface, not the implementation
   sl.registerLazySingleton<TodoRepository>(() => TodoRepositoryImpl(sl()));
 
@@ -24,7 +29,7 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<SearchTodos>(() => SearchTodos(sl()));
   sl.registerLazySingleton<GetTodosByStatus>(() => GetTodosByStatus(sl()));
 
-  // Bloc
+  // Todo Bloc
   sl.registerFactory(
     () => TodoBloc(
       getAllTodos: sl(),
@@ -36,4 +41,11 @@ Future<void> initDependencies() async {
       getTodosByStatus: sl(),
     ),
   );
+
+  // Method Channel App Dependencies
+  // Services
+  sl.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
+
+  // Bloc
+  sl.registerFactory(() => DeviceInfoBloc(sl()));
 }
