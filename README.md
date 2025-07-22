@@ -398,4 +398,153 @@ lib/
 └── main.dart
 ```
 
+
+
+
+
+## 4. `mini_ecommerce`
+
+### 📋 Requirements
+
+* **Evaluation Focus:**
+
+  * Clean architecture
+  * lazy loading
+  * modular design
+  * image handling.
+
+### ✅ Tasks
+
+- Fetch and display products from a mock API.​
+- Show infinite scrolling.​
+-​ Add a “favorites” feature with local persistence.​ (Lets use sqflite for that)
+- Optional: Add a filter/search bar.​
+
+
+### 🧠 Thought Process
+- I'll use: [fakestoreapi](https://fakestoreapi.com/products) it
+- I'll strictly follow clean architecture for it (data, domain, and presentation layers + SOLID Principle).
+- For Lazy Loading, i'll use ListView.builder with a scroll controller.
+- For infinite scroll, scroll controller will Detect when reaching the bottom and fetch more items.
+- For Modular Design, I'll follow feature-first structure, own navigation & DI per feature
+- For Image Handling, i'll used cached_network_image package for network image caching and Handle errors and loading placeholders(shimmer).
+- Bloc & get_it for state management and dependency injection
+- Auto Route for routing
+
+**Verdict**
+- ✅ **Clean Architecture**: Strict separation of data, domain, and presentation layers
+- ✅ **Modular DI**: Self-contained dependency injection with `FeatureDI` interface
+- ✅ **Infinite Scroll**: Lazy loading with scroll controller and pagination
+- ✅ **Debounced Search**: 500ms debounce to minimize API calls during typing
+- ✅ **Image Optimization**: `cached_network_image` with shimmer loading and error handling
+- ✅ **SQLite Favorites**: Local persistence for favorite products
+- ✅ **BLoC Pattern**: Separate blocs for products and favorites with proper state management
+- ✅ **Responsive UI**: Material 3 design with proper aspect ratios and overflow handling
+
+### 📦 dependencies Added
+- dio: ^5.7.0                    # HTTP client for API calls
+- cached_network_image: ^3.4.1   # Network image caching
+- sqflite: ^2.4.2               # SQLite for favorites persistence
+
+### 🏗️ Architecture Highlights
+
+#### **Clean Architecture Layers:**
+1. **Domain Layer**: Pure business logic with entities, repositories, and use cases
+2. **Data Layer**: API integration, local storage, and repository implementations  
+3. **Presentation Layer**: BLoC state management and UI widgets
+
+#### **Key Features:**
+- **Lazy Loading**: Products load in batches of 20 with infinite scroll
+- **Search & Filter**: Real-time search with category filtering
+- **Favorites System**: Add/remove favorites with SQLite persistence
+- **Error Handling**: Comprehensive error states and retry mechanisms
+- **Performance**: Debounced search, image caching, and optimized rendering
+
+#### **Modular DI System:**
+- `EcommerceDI`: Self-contained dependency injection module
+- `FeatureDI`: Base interface for all feature modules
+- `DIHelpers`: Safe registration/unregistration utilities
+- Clean separation from main service locator
+
+
+
+
+
+---
+
+### 📂 Folder Structure
+
+```bash
+lib/
+├── apps/
+│   └── mini_ecommerce/
+│       ├── di/
+│       │   └── ecommerce_di.dart          # Self-contained DI module
+│       ├── features/
+│       │   └── products/
+│       │       ├── data/
+│       │       │   ├── datasources/
+│       │       │   │   ├── product_remote_data_source.dart
+│       │       │   │   └── favorite_local_data_source.dart
+│       │       │   └── repositories/
+│       │       │       ├── product_repository_impl.dart
+│       │       │       └── favorite_repository_impl.dart
+│       │       ├── domain/
+│       │       │   ├── entities/
+│       │       │   │   ├── product.dart
+│       │       │   │   ├── rating.dart
+│       │       │   │   └── favorite_product.dart
+│       │       │   ├── repositories/
+│       │       │   │   ├── product_repository.dart
+│       │       │   │   └── favorite_repository.dart
+│       │       │   └── usecases/
+│       │       │       ├── get_products.dart
+│       │       │       ├── search_products.dart
+│       │       │       ├── get_categories.dart
+│       │       │       ├── get_products_by_category.dart
+│       │       │       ├── get_favorites.dart
+│       │       │       ├── add_to_favorites.dart
+│       │       │       ├── remove_from_favorites.dart
+│       │       │       └── is_favorite.dart
+│       │       └── presentation/
+│       │           ├── bloc/
+│       │           │   ├── product/
+│       │           │   │   ├── product_bloc.dart
+│       │           │   │   ├── product_event.dart
+│       │           │   │   └── product_state.dart
+│       │           │   └── favorite/
+│       │           │       ├── favorite_bloc.dart
+│       │           │       ├── favorite_event.dart
+│       │           │       └── favorite_state.dart
+│       │           ├── pages/
+│       │           │   └── ecommerce_page.dart
+│       │           └── widgets/
+│       │               ├── product_grid.dart
+│       │               ├── product_card.dart
+│       │               ├── search_bar.dart          # Debounced search
+│       │               ├── category_filter.dart
+│       │               ├── favorites_tab.dart
+│       │               ├── favorite_card.dart
+│       │               └── loading_shimmer.dart
+├── core/
+│   ├── di/
+│   │   ├── feature_di.dart              # Base DI interfaces & helpers
+│   │   └── README.md                    # DI architecture documentation
+│   ├── landing_page/
+│   │   ├── app_card.dart
+│   │   ├── landing_page.dart
+│   │   └── show_coming_soon_dialog.dart
+│   ├── router/
+│   │   ├── app_router.dart
+│   │   └── app_router.gr.dart
+│   └── service_locator.dart             # Main DI orchestrator
+├── themes/
+│   └── app_theme.dart
+└── main.dart
+```
+
+
+
+
+
 ---
