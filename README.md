@@ -242,3 +242,157 @@ method_channel/
 * `freezed` for model generation
 * BLoC for state management
 * iOS compatibility checked
+
+---
+
+## 3. `dynamic_form`
+
+### 📋 Requirements
+
+* **Evaluation Focus:**
+
+  * JSON parsing
+  * Dynamic widget building
+  * State handling
+
+### ✅ Tasks
+
+* JSON Like data below is given:
+
+```json
+Given a JSON like:
+{
+"form": {
+"title": "Car Insurance Application",
+"steps": [
+{
+"title": "Personal Information",
+"description": "Enter your basic personal details.",
+"inputs": [{
+"key": "fullName",
+"type": "text",
+"label": "Full Name",
+"required": true
+},
+{
+"key": "age",
+"type": "text",
+"label": "Age",
+"required": true,
+"default": 18,
+"validation": {
+"numberOnly": true
+}
+},
+{
+"key": "gender",
+"type": "dropdown",
+"label": "Gender",
+"options": ["Male", "Female", "Other"],
+"required": true
+}
+]
+},
+{
+"title": "Vehicle Details",
+"description": "Provide information about your vehicle.",
+"inputs": [
+{
+"key": "vehicleType",
+"type": "dropdown",
+"label": "Vehicle Type",​
+"default": "Motorbike",
+"options": ["Car", "Motorbike", "Truck"],
+"required": true
+},
+{
+"key": "vehicleYear",
+"type": "text",
+"label": "Vehicle Manufacture Year",
+"required": true,
+"validation": {
+"numberOnly": true
+}
+},
+{
+"key": "hasExistingInsurance",
+"type": "toggle","label": "Do you currently have insurance?",
+"default": false,
+"required": false
+}
+]
+},
+{
+"title": "Coverage Preferences",
+"description": "Select the type of coverage you prefer.",
+"inputs": [
+{
+"key": "coverageType",
+"type": "dropdown",
+"label": "Coverage Type",
+"options": ["Third-Party", "Comprehensive", "Own Damage Only"],
+"required": true
+},
+{
+"key": "roadsideAssistance",
+"type": "toggle",
+"label": "Include Roadside Assistance?",
+"required": false
+}
+]
+},
+{
+"title": "Review & Submit",
+"description": "Review your inputs before submitting the form.",
+"inputs": []
+}
+]
+}
+}
+```
+I need to : 
+- Render a dynamic multi step form based on this json.​
+- Validate and show collected form values on submit.
+
+### 🧠 Thought Process
+
+- I'll use MVVM pattern for it.
+- Complex form data so will use freezed and isolate for better performance
+- Then I'll implement clean and efficient way to validate form
+- After that, I'll show another form preview page
+- Bloc & get_it for state management and dependency injection
+- Auto Route for routing
+
+**Verdict**
+- Freezeed wasn't used, parsing is done manually
+- Used isolates but it was very small JSON so using isolates performance dropped from 15ms to avg 350 ms so isolate isn't used
+
+### 📦 No extra dependencies Added
+
+
+
+
+
+---
+
+### 📂 Folder Structure
+
+```bash
+lib/
+├── apps/
+│   └── dynamic_form/
+
+├── core/
+│   ├── landing_page/
+│   │   ├── app_card.dart
+│   │   ├── landing_page.dart
+│   │   └── show_coming_soon_dialog.dart
+│   └── router/
+│       ├── app_router.dart
+│       └── app_router.gr.dart
+├── themes/
+│   └── app_theme.dart
+└── main.dart
+```
+
+---
