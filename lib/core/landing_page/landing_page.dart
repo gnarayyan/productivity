@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:varosa_tech/core/landing_page/app_card.dart';
-import 'package:varosa_tech/core/landing_page/show_coming_soon_dialog.dart';
 import '../../../themes/app_theme.dart';
 import '../router/app_router.gr.dart';
 
@@ -84,10 +83,9 @@ class LandingPage extends StatelessWidget {
                       subtitle: 'Complex Navigation',
                       icon: LucideIcons.navigation,
                       color: AppColors.info,
-                      isActive: false,
-                      onTap: () {
-                        showComingSoonDialog(context, 'Nested Bottom Nav');
-                      },
+                      isActive: true,
+                      onTap: () =>
+                          context.pushRoute(const NestedBottomNavRoute()),
                     ),
                   ],
                 ),
