@@ -381,6 +381,9 @@ I need to :
 lib/
 ├── apps/
 │   └── dynamic_form/
+          - bloc
+          - models
+          - presentation
 
 ├── core/
 │   ├── landing_page/
