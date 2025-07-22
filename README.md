@@ -4,6 +4,8 @@ A new Flutter project for the evaluation exam at Varosa Technology.
 
 ---
 
+**You can try out android application at:** /release/app-release.apk
+
 ## 🧠 Initial Thought
 
 * Instead of building 5 separate apps, I'll develop a single app with a home screen to navigate to each of the 5 apps.
