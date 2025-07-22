@@ -59,10 +59,8 @@ class LandingPage extends StatelessWidget {
                       subtitle: 'Form Builder • Validation',
                       icon: LucideIcons.fileText,
                       color: AppColors.secondary,
-                      isActive: false,
-                      onTap: () {
-                        showComingSoonDialog(context, 'Dynamic Form');
-                      },
+                      isActive: true,
+                      onTap: () => context.pushRoute(const DynamicFormRoute()),
                     ),
                     AppCard(
                       title: 'Mini Ecommerce',
@@ -80,7 +78,8 @@ class LandingPage extends StatelessWidget {
                       icon: LucideIcons.smartphone,
                       color: AppColors.warning,
                       isActive: true,
-                      onTap: () => context.pushRoute(const MethodChannelRoute()),
+                      onTap: () =>
+                          context.pushRoute(const MethodChannelRoute()),
                     ),
                     AppCard(
                       title: 'Nested Bottom Nav',
