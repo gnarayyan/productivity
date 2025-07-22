@@ -16,6 +16,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: MethodChannelRoute.page),
     AutoRoute(page: DynamicFormRoute.page),
     AutoRoute(page: EcommerceRoute.page),
+    AutoRoute(page: NestedBottomNavRoute.page),
   ];
 
   @override
