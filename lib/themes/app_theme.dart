@@ -181,13 +181,19 @@ class AppColors {
   static const Color warning = Color(0xFFFF9800);
   static const Color info = Color(0xFF2196F3);
 
+  // On colors
+  static const Color onPrimary = Color(0xFFFFFFFF);
+  static const Color onSecondary = Color(0xFF000000);
+  static const Color onBackground = Color(0xFF121212);
+  static const Color onSurface = Color(0xFF121212);
+  static const Color onError = Color(0xFFFFFFFF);
+
   // Text colors
   static const Color textPrimary = Color(0xFF121212);
   static const Color textSecondary = Color(0xFF757575);
   static const Color textHint = Color(0xFFBDBDBD);
 
   // Additional colors for method_channel app
-  static const Color onSurface = Color(0xFF121212);
   static const Color onSurfaceVariant = Color(0xFF757575);
   static const Color outline = Color(0xFFE0E0E0);
   static const Color shadow = Color(0xFF000000);
@@ -199,6 +205,24 @@ class AppColors {
 }
 
 class AppTextStyles {
+  static const TextStyle h1 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: AppColors.textPrimary,
+  );
+
+  static const TextStyle h2 = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
+    color: AppColors.textPrimary,
+  );
+
+  static const TextStyle h3 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+  );
+
   static const TextStyle headlineLarge = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.bold,
