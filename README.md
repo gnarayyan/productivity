@@ -658,3 +658,205 @@ lib/
 │   └── app_theme.dart
 └── main.dart
 ```
+
+---
+
+# `refresh_token_auth`
+
+### 📋 Requirements
+
+* **Evaluation Focus:**
+
+  * Authentication flow
+  * Token management
+  * State persistence
+  * Error handling
+
+### ✅ Tasks
+
+* Implement comprehensive refresh token authentication system
+* Handle automatic token refresh on API failures
+* Manage authentication state with BLoC
+* Store tokens securely using SharedPreferences
+* Provide login/logout functionality with beautiful UI
+
+### 🧠 Thought Process
+
+
+* **Proactive Refresh**: Automatically refresh tokens before they expire
+* **Reactive Refresh**: Handle 401 responses and retry failed requests
+* **Concurrency Control**: Prevent multiple refresh attempts simultaneously
+* **State Management**: Track authentication status across the app
+* **Error Handling**: Graceful fallbacks when refresh fails
+
+### 📦 Dependencies Added
+
+```yaml
+# HTTP & Storage
+dio:                   # HTTP client with interceptors
+shared_preferences:    # Secure token storage
+
+# State Management (already included)
+flutter_bloc:          # Authentication state management
+equatable:             # Value equality for states
+```
+
+### 🏗️ Architecture Highlights
+
+#### **Clean Architecture Pattern:**
+1. **Domain Layer**: Authentication entities and repository contracts
+2. **Data Layer**: Local storage, API integration, and repository implementations
+3. **Presentation Layer**: BLoC state management and authentication UI
+
+#### **Token Refresh Strategy:**
+- **Proactive**: Refresh tokens 5 minutes before expiration
+- **Reactive**: Automatic retry with fresh tokens on 401 responses
+- **Transparent**: Users never see authentication errors during auto-refresh
+
+#### **Key Features:**
+- **Dio Interceptor**: Automatically adds auth headers and handles 401s
+- **Concurrency Safe**: Prevents multiple simultaneous refresh operations
+- **State Persistence**: Remember login state across app restarts
+- **Beautiful UI**: Material 3 login form with validation and loading states
+- **Token Management**: Display token status, expiry, and manual refresh options
+
+### �� Folder Structure
+
+```bash
+lib/
+├── core/
+│   └── auth/
+│       ├── models/
+│       │   ├── auth_tokens.dart          # Token model with validation
+│       │   └── user.dart                 # User profile model
+│       ├── data/
+│       │   ├── datasources/
+│       │   │   ├── auth_local_data_source.dart    # SharedPreferences storage
+│       │   │   └── auth_remote_data_source.dart   # Mock API calls
+│       │   └── repositories/
+│       │       └── auth_repository_impl.dart      # Repository implementation
+│       ├── domain/
+│       │   └── repositories/
+│       │       └── auth_repository.dart           # Repository contract
+│       ├── services/
+│       │   └── token_refresh_service.dart         # Automatic token refresh
+│       ├── bloc/
+│       │   ├── auth_bloc.dart            # Authentication state management
+│       │   ├── auth_event.dart           # Authentication events
+│       │   └── auth_state.dart           # Authentication states
+│       ├── widgets/
+│       │   ├── login_form.dart           # Beautiful login form
+│       │   └── authenticated_dashboard.dart       # Token status dashboard
+│       └── pages/
+│           └── auth_demo_page.dart       # Main auth demonstration page
+```
+
+### 🔧 How It Works
+
+#### **Login Flow:**
+1. User enters credentials → Form validation
+2. API call with loading state → Mock authentication
+3. Store tokens securely → Update authentication state
+4. Start proactive refresh timer → Navigate to dashboard
+
+#### **Automatic Token Refresh:**
+1. **Proactive**: Timer triggers refresh 5 minutes before expiration
+2. **Reactive**: Any API call gets 401 → Automatically refresh → Retry original request
+3. **Concurrency**: Multiple requests wait for single refresh operation
+4. **Failure**: If refresh fails → Logout user gracefully
+
+#### **Dashboard Features:**
+- **User Profile**: Display authenticated user information
+- **Token Status**: Show access token, refresh token, and expiry times
+- **Manual Actions**: Force token refresh or logout
+- **Copy Tokens**: Tap to copy tokens to clipboard for inspection
+
+#### **State Management:**
+```dart
+// Authentication states
+AuthInitial()           // App starting up
+AuthLoading()          // Processing login/refresh
+AuthAuthenticated()    // User logged in with valid tokens
+AuthUnauthenticated()  // User logged out or tokens expired
+AuthError()           // Authentication failed
+```
+
+This system provides a **complete authentication foundation** that can be easily integrated into any Flutter app requiring secure API access with automatic token management! 🔐
+
+---
+
+# 🚀 How It All Works Together
+
+## 📱 **The App Experience**
+
+When you run this app, you'll see a **beautiful landing page** with cards for each of the 6 demonstration apps. Each app showcases different Flutter concepts and architectures:
+
+### 🏠 **Landing Page**
+- **Modern UI**: Material 3 design with gradient cards and smooth animations
+- **Easy Navigation**: Tap any card to explore a specific app
+- **Coming Soon**: Some advanced features show elegant "coming soon" dialogs
+
+### 🔄 **Navigation Flow**
+```
+Landing Page
+    ├── 📝 Offline Todo (BLoC + SQLite)
+    ├── 📱 Method Channel (Native Integration)
+    ├── 📋 Dynamic Form (JSON Parsing)
+    ├── 🛒 Mini Ecommerce (Clean Architecture)
+    ├── 🧭 Nested Navigation (Complex Navigation)
+    └── 🔐 Refresh Token Auth (Authentication)
+```
+
+## 🏗️ **Architecture Philosophy**
+
+### **Different Patterns for Different Needs**
+Each app intentionally uses **different architectural patterns** to demonstrate various approaches:
+
+- **Todo App**: Traditional layered architecture with BLoC
+- **Method Channel**: Simple MVVM pattern for native integration
+- **Dynamic Form**: State-driven architecture for complex forms
+- **Ecommerce**: Clean architecture with strict separation of concerns
+- **Navigation**: Nested navigator pattern for complex UI flows
+- **Authentication**: Repository pattern with interceptors and services
+
+### **Shared Foundation**
+While each app has its own pattern, they all share:
+- **Dependency Injection**: GetIt service locator
+- **Routing**: Auto Route for navigation
+- **Theming**: Consistent Material 3 design system
+- **State Management**: BLoC pattern throughout
+
+## 🎯 **Key Demonstrations**
+
+### **1. State Management Mastery**
+- **BLoC Pattern**: Used across all apps for predictable state management
+- **Event-Driven**: Clear separation between UI events and business logic
+- **Reactive Programming**: Stream-based architecture for real-time updates
+
+### **2. Data Persistence**
+- **SQLite**: Local database for todos and favorites
+- **SharedPreferences**: Simple key-value storage for settings and tokens
+- **In-Memory**: Temporary state for forms and navigation
+
+### **3. Network Integration**
+- **REST APIs**: Fetch products from real APIs
+- **Error Handling**: Comprehensive error states and retry mechanisms
+- **Caching**: Smart image caching and data persistence
+
+### **4. Native Platform Features**
+- **MethodChannel**: Bridge between Flutter and native code
+- **Platform Views**: Embed native UI components
+- **Device APIs**: Access battery, device info, and system features
+
+### **5. Complex UI Patterns**
+- **Nested Navigation**: Independent navigation stacks per tab
+- **Dynamic Forms**: Build UI from JSON configuration
+- **Infinite Scroll**: Lazy loading with pagination
+- **Authentication Flows**: Login, token refresh, and logout
+
+
+
+
+
+
+
