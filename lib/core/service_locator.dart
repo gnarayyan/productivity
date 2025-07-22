@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../apps/method_channel/bloc/device_info_bloc.dart';
 import '../apps/method_channel/services/device_info_service.dart';
@@ -17,6 +19,14 @@ import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
 
 // Mini Ecommerce DI
 import '../apps/mini_ecommerce/di/ecommerce_di.dart';
+
+// Auth imports
+import 'auth/data/datasources/auth_local_data_source.dart';
+import 'auth/data/datasources/auth_remote_data_source.dart';
+import 'auth/data/repositories/auth_repository_impl.dart';
+import 'auth/domain/repositories/auth_repository.dart';
+import 'auth/services/token_refresh_service.dart';
+import 'auth/bloc/auth_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -69,4 +79,49 @@ Future<void> initDependencies() async {
 
   // Mini Ecommerce App Dependencies
   EcommerceDI.register(sl);
+
+  // Auth App Dependencies
+  await _setupAuthDependencies();
+}
+
+Future<void> _setupAuthDependencies() async {
+  // External dependencies
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerSingleton<SharedPreferences>(sharedPreferences);
+
+  // final dio = Dio();
+  // sl.registerSingleton<Dio>(dio);
+
+  // Data sources
+  sl.registerLazySingleton<AuthLocalDataSource>(
+    () => AuthLocalDataSourceImpl(),
+  );
+
+  sl.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDataSourceImpl(dio: sl<Dio>()),
+  );
+
+  // Repository
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(
+      localDataSource: sl<AuthLocalDataSource>(),
+      remoteDataSource: sl<AuthRemoteDataSource>(),
+    ),
+  );
+
+  // Services
+  sl.registerLazySingleton<TokenRefreshService>(
+    () => TokenRefreshService(
+      authRepository: sl<AuthRepository>(),
+      dio: sl<Dio>(),
+    ),
+  );
+
+  // BLoC
+  sl.registerFactory<AuthBloc>(
+    () => AuthBloc(
+      authRepository: sl<AuthRepository>(),
+      tokenRefreshService: sl<TokenRefreshService>(),
+    ),
+  );
 }
