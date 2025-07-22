@@ -67,10 +67,8 @@ class LandingPage extends StatelessWidget {
                       subtitle: 'Cart • Products • Payment',
                       icon: LucideIcons.shoppingCart,
                       color: AppColors.success,
-                      isActive: false,
-                      onTap: () {
-                        showComingSoonDialog(context, 'Mini Ecommerce');
-                      },
+                      isActive: true,
+                      onTap: () => context.pushRoute(const EcommerceRoute()),
                     ),
                     AppCard(
                       title: 'Method Channel',
