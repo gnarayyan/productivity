@@ -28,7 +28,7 @@ class AppCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: Colors.black.withAlpha((0.08 * 255).toInt()),
               blurRadius: 15,
               offset: const Offset(0, 4),
             ),
@@ -43,7 +43,10 @@ class AppCard extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [color.withOpacity(0.1), color.withOpacity(0.05)],
+                  colors: [
+                    color.withAlpha((0.1 * 255).toInt()),
+                    color.withAlpha((0.05 * 255).toInt()),
+                  ],
                 ),
               ),
             ),
@@ -59,7 +62,7 @@ class AppCard extends StatelessWidget {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.15),
+                      color: color.withAlpha((0.15 * 255).toInt()),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(icon, color: color, size: 24),
@@ -101,7 +104,7 @@ class AppCard extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.textHint.withOpacity(0.1),
+                    color: AppColors.textHint.withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(

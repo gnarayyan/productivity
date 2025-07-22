@@ -88,7 +88,7 @@ class AppTheme {
         bodySmall: GoogleFonts.poppins(
           fontSize: 12,
           fontWeight: FontWeight.normal,
-          color: _onBackgroundColor.withOpacity(0.7),
+          color: _onBackgroundColor.withAlpha((0.7 * 255).toInt()),
         ),
         labelLarge: GoogleFonts.poppins(
           fontSize: 14,
@@ -103,7 +103,7 @@ class AppTheme {
         labelSmall: GoogleFonts.poppins(
           fontSize: 10,
           fontWeight: FontWeight.w500,
-          color: _onBackgroundColor.withOpacity(0.7),
+          color: _onBackgroundColor.withAlpha((0.7 * 255).toInt()),
         ),
       ),
       appBarTheme: AppBarTheme(
@@ -135,7 +135,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: _surfaceColor,
         elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       inputDecorationTheme: InputDecorationTheme(
