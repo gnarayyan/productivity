@@ -8,7 +8,9 @@ import '../apps/offline_todo/domain/repositories/todo_repository.dart';
 import '../apps/offline_todo/domain/usecases/todo_usecases.dart';
 import '../apps/offline_todo/presentation/bloc/todo_bloc.dart';
 
-// Method Channel imports
+// Dynamic Form imports
+import '../apps/dynamic_form/models/form_data_source.dart';
+import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -48,4 +50,11 @@ Future<void> initDependencies() async {
 
   // Bloc
   sl.registerFactory(() => DeviceInfoBloc(sl()));
+
+  // Dynamic Form App Dependencies
+  // Data sources
+  sl.registerLazySingleton<FormDataSource>(() => FormDataSource());
+
+  // Bloc
+  sl.registerFactory(() => DynamicFormBloc(sl()));
 }

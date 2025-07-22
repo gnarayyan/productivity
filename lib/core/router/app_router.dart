@@ -14,6 +14,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: AddTodoRoute.page),
     AutoRoute(page: EditTodoRoute.page),
     AutoRoute(page: MethodChannelRoute.page),
+    AutoRoute(page: DynamicFormRoute.page),
   ];
 
   @override
