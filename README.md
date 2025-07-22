@@ -241,7 +241,6 @@ method_channel/
 * Better code structure
 * `freezed` for model generation
 * BLoC for state management
-* iOS compatibility checked
 
 ---
 
@@ -548,3 +547,114 @@ lib/
 
 
 ---
+
+
+## 5. `nested_bottom_nav`
+
+### 📋 Requirements
+
+- To build Flutter application that uses a bottom navigation bar with 3 items:
+Item 1, Item 2, and Item 3.
+- Each item displays a screen with a button for navigation. When the button is pressed, a new
+screen is pushed (navigated to). However:
+1. The bottom navigation bar must remain visible on the new screen.​
+2. The user must still be able to switch between Item 1, Item 2, and Item 3 even after
+navigating.​
+3. The navigation must be nested, such that pressing the button does not navigate away
+from the home layout but pushes a screen within the respective tab.
+🔹 Implement this using nested navigation, ensuring each tab maintains its own navigation
+stack independently.
+
+Sample Screens:
+Screen1:
+      Item1 Screen
+       Button(clickable)
+       -> Pushes item1 detail screen
+
+    BtnNav1  BtnNav2  BtnNav3   
+
+Screen2:
+      Item1 Deatail Screen
+
+    BtnNav1  BtnNav2  BtnNav3   
+
+---
+
+### 🧠 Thought Process
+
+**Example analogy to understand**
+1. User taps Item1 → sees "Item1 Screen" with a button.
+2. Presses button → "Item1 Detail Screen" is pushed.
+3. Bottom bar is still visible.
+4. Switch to Item2 → shows "Item2 Screen".
+5. Return to Item1 → still on "Item1 Detail Screen".
+
+**Technical analysis**
+- Each tab has its own `Navigator` widget with independent navigation stack
+- `IndexedStack` preserves state when switching between tabs
+- Bottom navigation bar remains persistent across all navigation levels
+- Custom tab navigator handles route management within each tab
+- BLoC manages the selected tab state globally
+
+**Verdict**
+-  Bottom bar remains visible on all screens
+-  Each tab maintains its own navigation history
+-  Proper nesting within tab navigators, not global navigation
+-  Tab states are preserved when switching between tabs
+-  Material 3 design with consistent theming and smooth transitions
+-  Support for multiple levels of navigation within each tab
+- Clean state management for tab selection
+- Implment 3 level deep detail screen, also we can scroll a view inside 1st page to ensure its not freshly build
+
+### 📦 No extra dependencies Added
+- Uses built-in Navigator widgets for nested navigation
+- BLoC for state management (already included)
+- Material 3 design system
+
+### 🏗️ Architecture Highlights
+
+#### **Navigation Architecture:**
+1. **Main Scaffold**: Contains IndexedStack and persistent bottom navigation
+2. **Tab Navigators**: Each tab has its own Navigator widget with independent routing
+3. **State Management**: BLoC manages selected tab index globally
+4. **Route Management**: Custom route generation within each tab's Navigator
+
+#### **Key Features:**
+- **Persistent Bottom Bar**: Remains visible throughout all navigation levels
+- **Independent Stacks**: Each tab maintains its own navigation history
+- **State Preservation**: Tab content is preserved when switching between tabs
+- **Deep Navigation**: Support for multiple nested screens within each tab
+- **Smooth Transitions**: Beautiful Material 3 transitions and animations
+
+### 📂 Folder Structure
+
+```bash
+lib/
+├── apps/
+│   └── nested_bottom_nav/
+│       ├── bloc/
+│       │   ├── navigation_bloc.dart      # Tab selection state management
+│       │   ├── navigation_event.dart     # Tab change events
+│       │   └── navigation_state.dart     # Navigation state definition
+│       ├── pages/
+│       │   └── nested_bottom_nav_page.dart  # Main page with bottom navigation
+│       └── widgets/
+│           ├── tab_navigator.dart        # Individual tab navigator
+│           ├── tab_home_screen.dart      # Home screen for each tab
+│           └── tab_detail_screen.dart    # Detail screen with deep navigation
+├── core/
+│   ├── di/
+│   │   ├── feature_di.dart              # Base DI interfaces & helpers
+│   │   └── README.md                    # DI architecture documentation
+│   ├── landing_page/
+│   │   ├── app_card.dart
+│   │   ├── landing_page.dart
+│   │   └── show_coming_soon_dialog.dart
+│   ├── router/
+│   │   ├── app_router.dart
+│   │   └── app_router.gr.dart
+│   └── service_locator.dart             # Main DI orchestrator
+├── themes/
+│   └── app_theme.dart
+└── main.dart
+```
