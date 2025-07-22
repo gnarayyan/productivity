@@ -12,6 +12,9 @@ import '../apps/offline_todo/presentation/bloc/todo_bloc.dart';
 import '../apps/dynamic_form/models/form_data_source.dart';
 import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
 
+// Nested Bottom Nav imports
+import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
+
 // Mini Ecommerce DI
 import '../apps/mini_ecommerce/di/ecommerce_di.dart';
 
@@ -60,6 +63,9 @@ Future<void> initDependencies() async {
 
   // Bloc
   sl.registerFactory(() => DynamicFormBloc(sl()));
+
+  // Nested Bottom Nav App Dependencies
+  sl.registerFactory(() => NavigationBloc());
 
   // Mini Ecommerce App Dependencies
   EcommerceDI.register(sl);
