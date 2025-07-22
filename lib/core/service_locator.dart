@@ -12,6 +12,9 @@ import '../apps/offline_todo/presentation/bloc/todo_bloc.dart';
 import '../apps/dynamic_form/models/form_data_source.dart';
 import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
 
+// Mini Ecommerce DI
+import '../apps/mini_ecommerce/di/ecommerce_di.dart';
+
 final sl = GetIt.instance;
 
 Future<void> initDependencies() async {
@@ -57,4 +60,7 @@ Future<void> initDependencies() async {
 
   // Bloc
   sl.registerFactory(() => DynamicFormBloc(sl()));
+
+  // Mini Ecommerce App Dependencies
+  EcommerceDI.register(sl);
 }
