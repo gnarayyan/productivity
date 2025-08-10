@@ -1,864 +1,524 @@
-# varosa\_tech
+# Flutter Productivity App
 
-A new Flutter project for the evaluation exam at Varosa Technology.
+## Overview
+A comprehensive productivity application designed to enhance personal productivity by helping users manage daily activities and finances. The app features two core modules—Personal Management and Financial Management—with an offline-first approach, biometric authentication, multi-language support (English and Hindi), and a consistent UI with light and dark themes. Data syncs with a Node.js backend when online, based on user-configurable sync settings.
 
----
+## Documentation Structure
 
-**You can try out android application at:** /release/app-release.apk
+This project is split into two main components:
 
-## 🧠 Initial Thought
+### 📱 Frontend (Flutter App)
+For detailed information about the Flutter mobile application, see:
+**[Frontend README](./frontend-readme.md)**
 
-* Instead of building 5 separate apps, I'll develop a single app with a home screen to navigate to each of the 5 apps.
-  This will:
+Includes:
+- Flutter architecture and tech stack
+- UI/UX design and components
+- Local data storage with Sqflite
+- Biometric authentication
+- Offline-first functionality
+- State management with Bloc
+- Development setup and testing
 
-  * Save time (no need to create multiple projects or install dependencies repeatedly).
-  * Help the evaluator inspect a **single codebase** and **app structure**.
+### 🔧 Backend (Node.js API)
+For detailed information about the backend API service, see:
+**[Backend README](./backend-readme.md)**
 
-* First, I'll make the app compatible with Android, then test and adapt it for iOS.
+Includes:
+- REST API endpoints documentation
+- Database schema and design
+- Authentication and security
+- Data synchronization
+- Deployment and scaling
+- Performance optimization
 
-* If time permits, I'll work on extras like themes, polish, etc.
+## Core Features
 
-### 📁 Folder Structure
+- **Manage Daily Activities**: Set goals, track tasks, and monitor progress
+- **Manage Finances**: Track income, expenses, budgets, and investments
+- **Habit Tracking**: Track daily habits and build streaks
+- **Data Analytics**: Insights and reports on productivity and financial patterns
+- **Backup & Restore**: Cloud backup of data with restore functionality
+- **Export Features**: Export data to PDF/Excel for external analysis
+- **Extensibility**: Placeholder for additional features to be added later
 
+## Quick Start
+
+### Frontend Development
 ```bash
-lib/
-  apps/
-    offline_todo/
-    dynamic_form/
-    mini_ecommerce/
-    method_channel/
-    nested_bottom_nav/
-  themes/
-  core/
-  common/
+# Install Flutter dependencies
+flutter pub get
+
+# Run the app
+flutter run
 ```
 
-Each app will have its **own architecture and pattern** (to meet evaluation requirements).
-Common logic (themes, components, helpers) will be shared via the `core`, `themes`, or `common` directories.
-
-⚠️ Note: This reusability might seem like an anti-pattern, but I'm intentionally taking this liberty for efficiency.
-
----
-
-## 🧪 Development Environment
-
-* **Flutter:** 3.32.7
-* **Dart:** 3.8.1
-* **OS:** Ubuntu 24.04.2 LTS
-* **IDE:** VS Code
-* **Later:** Use macOS for iOS compatibility
-
----
-
-# 🧩 Apps Overview
-
----
-
-## 1. `offline_todo`
-
-### 📋 Requirements
-
-* **Evaluation Focus:**
-
-  * State management
-  * Architecture
-  * Local storage using SQLite
-  * Async handling
-
-### ✅ Tasks
-
-* Add, update, and delete to-dos
-* Persist to-dos using SQLite
-* Use BLoC for UI state management
-* *(Optional)* Firebase sync
-
-### 🧠 Thought Process
-
-To-do is a simple CRUD app, so instead of using feature-first structure, I’ll follow a **"layer-first"** approach.
-
-### 📦 Dependencies (to be adjusted)
-
-**State Management**
-
-```yaml
-flutter_bloc: ^9.1.1
-equatable: ^2.0.7
-```
-
-**Local Storage**
-
-```yaml
-sqflite: ^2.4.2
-path: ^1.9.1
-```
-
-**UI & Utilities**
-
-```yaml
-cupertino_icons: ^1.0.8
-google_fonts: ^6.2.1
-lucide_icons: ^0.257.0
-get_it: ^8.0.3
-auto_route: ^10.1.0+1
-```
-
-**Dev Dependencies**
-
-```yaml
-flutter_lints: ^5.0.0
-auto_route_generator: ^10.2.3
-build_runner: ^2.5.4
-```
-
----
-
-### 📂 Folder Structure
-
+### Backend Development
 ```bash
-lib/
-├── apps/
-│   └── offline_todo/
-│       ├── data/
-│       │   ├── datasources/
-│       │   │   └── local_datasource.dart
-│       │   ├── models/
-│       │   │   └── todo_model.dart
-│       │   └── repositories/
-│       │       └── todo_repository_impl.dart
-│       ├── domain/
-│       │   ├── entities/
-│       │   │   └── todo.dart
-│       │   ├── repositories/
-│       │   │   └── todo_repository.dart
-│       │   └── usecases/
-│       │       ├── add_todo.dart
-│       │       ├── update_todo.dart
-│       │       ├── delete_todo.dart
-│       │       └── get_todos.dart
-│       └── presentation/
-│           ├── bloc/
-│           │   ├── todo_bloc.dart
-│           │   ├── todo_event.dart
-│           │   └── todo_state.dart
-│           ├── pages/
-│           │   ├── todo_list_page.dart
-│           │   └── add_edit_todo_page.dart
-│           └── widgets/
-│               ├── todo_item.dart
-│               └── todo_form.dart
-├── core/
-│   ├── landing_page/
-│   │   ├── app_card.dart
-│   │   ├── landing_page.dart
-│   │   └── show_coming_soon_dialog.dart
-│   └── router/
-│       ├── app_router.dart
-│       └── app_router.gr.dart
-├── themes/
-│   └── app_theme.dart
-└── main.dart
+# Install Node.js dependencies
+npm install
+
+# Setup environment variables
+cp .env.example .env
+
+# Start development server
+npm run dev
 ```
 
----
+## Project Structure
 
-## 4. `method_channel`
-
-### 📋 Requirements
-
-**1. Use MethodChannel to return a JSON:**
-
-```json
-{
-  "batteryLevel": 88,
-  "deviceModel": "Pixel 6",
-  "isCharging": true,
-  "systemTime": "2025-06-09T12:30:00Z"
-}
+```
+├── lib/                    # Flutter app source code
+├── android/               # Android platform files
+├── ios/                   # iOS platform files
+├── backend/               # Node.js backend (to be created)
+├── frontend-readme.md     # Frontend documentation
+├── backend-readme.md      # Backend documentation
+└── README.md             # This file
 ```
 
-**2. On Flutter side:**
+## Tech Stack
 
-* Parse the JSON response
-* Convert `systemTime` to `DateTime`
-* Display all values on UI
-* Include a button to fetch & display data
-
-**3. PlatformView:**
-
-* Show a native button
-* On press: refresh battery percentage
-
----
-
-### 🧠 Thought Process
-
-This seems like the simplest app. The real challenge is:
-
-* Implementing `MethodChannel` for:
-
-  * Battery level
-  * Device model
-  * Charging status
-  * System time
-  * Native button using PlatformView
-
----
-
-### ✅ Steps
-
-1. Implement native MethodChannel call
-2. Parse response JSON
-3. Build and render UI
-
----
-
-### 📂 Folder Structure
-
-Using an MVVM-inspired structure:
-
-```bash
-method_channel/
-├── bloc/
-│   ├── device_info_bloc.dart
-│   ├── device_info_event.dart
-│   └── device_info_state.dart
-├── models/
-│   └── device_info.dart
-├── services/
-│   └── device_info_service.dart
-├── pages/
-│   └── method_channel_page.dart
-└── widgets/
-    ├── device_info_card.dart
-    ├── error_card.dart
-    ├── info_row.dart
-    ├── loading_card.dart
-    └── native_button_view.dart
-```
-
----
-
-### 🔧 Enhancements
-
-* Better code structure
-* `freezed` for model generation
-* BLoC for state management
-
----
-
-## 3. `dynamic_form`
-
-### 📋 Requirements
-
-* **Evaluation Focus:**
-
-  * JSON parsing
-  * Dynamic widget building
-  * State handling
-
-### ✅ Tasks
-
-* JSON Like data below is given:
-
-```json
-Given a JSON like:
-{
-"form": {
-"title": "Car Insurance Application",
-"steps": [
-{
-"title": "Personal Information",
-"description": "Enter your basic personal details.",
-"inputs": [{
-"key": "fullName",
-"type": "text",
-"label": "Full Name",
-"required": true
-},
-{
-"key": "age",
-"type": "text",
-"label": "Age",
-"required": true,
-"default": 18,
-"validation": {
-"numberOnly": true
-}
-},
-{
-"key": "gender",
-"type": "dropdown",
-"label": "Gender",
-"options": ["Male", "Female", "Other"],
-"required": true
-}
-]
-},
-{
-"title": "Vehicle Details",
-"description": "Provide information about your vehicle.",
-"inputs": [
-{
-"key": "vehicleType",
-"type": "dropdown",
-"label": "Vehicle Type",​
-"default": "Motorbike",
-"options": ["Car", "Motorbike", "Truck"],
-"required": true
-},
-{
-"key": "vehicleYear",
-"type": "text",
-"label": "Vehicle Manufacture Year",
-"required": true,
-"validation": {
-"numberOnly": true
-}
-},
-{
-"key": "hasExistingInsurance",
-"type": "toggle","label": "Do you currently have insurance?",
-"default": false,
-"required": false
-}
-]
-},
-{
-"title": "Coverage Preferences",
-"description": "Select the type of coverage you prefer.",
-"inputs": [
-{
-"key": "coverageType",
-"type": "dropdown",
-"label": "Coverage Type",
-"options": ["Third-Party", "Comprehensive", "Own Damage Only"],
-"required": true
-},
-{
-"key": "roadsideAssistance",
-"type": "toggle",
-"label": "Include Roadside Assistance?",
-"required": false
-}
-]
-},
-{
-"title": "Review & Submit",
-"description": "Review your inputs before submitting the form.",
-"inputs": []
-}
-]
-}
-}
-```
-I need to : 
-- Render a dynamic multi step form based on this json.​
-- Validate and show collected form values on submit.
-
-### 🧠 Thought Process
-
-- I'll use MVVM pattern for it.
-- Complex form data so will use freezed and isolate for better performance
-- Then I'll implement clean and efficient way to validate form
-- After that, I'll show another form preview page
-- Bloc & get_it for state management and dependency injection
-- Auto Route for routing
-
-**Verdict**
-- Freezeed wasn't used, parsing is done manually
-- Used isolates but it was very small JSON so using isolates performance dropped from 15ms to avg 350 ms so isolate isn't used
-
-### 📦 No extra dependencies Added
-
-
-
-
-
----
-
-### 📂 Folder Structure
-
-```bash
-lib/
-├── apps/
-│   └── dynamic_form/
-          - bloc
-          - models
-          - presentation
-
-├── core/
-│   ├── landing_page/
-│   │   ├── app_card.dart
-│   │   ├── landing_page.dart
-│   │   └── show_coming_soon_dialog.dart
-│   └── router/
-│       ├── app_router.dart
-│       └── app_router.gr.dart
-├── themes/
-│   └── app_theme.dart
-└── main.dart
-```
-
-
-
-
-
-## 4. `mini_ecommerce`
-
-### 📋 Requirements
-
-* **Evaluation Focus:**
-
-  * Clean architecture
-  * lazy loading
-  * modular design
-  * image handling.
-
-### ✅ Tasks
-
-- Fetch and display products from a mock API.​
-- Show infinite scrolling.​
--​ Add a “favorites” feature with local persistence.​ (Lets use sqflite for that)
-- Optional: Add a filter/search bar.​
-
-
-### 🧠 Thought Process
-- I'll use: [fakestoreapi](https://fakestoreapi.com/products) it
-- I'll strictly follow clean architecture for it (data, domain, and presentation layers + SOLID Principle).
-- For Lazy Loading, i'll use ListView.builder with a scroll controller.
-- For infinite scroll, scroll controller will Detect when reaching the bottom and fetch more items.
-- For Modular Design, I'll follow feature-first structure, own navigation & DI per feature
-- For Image Handling, i'll used cached_network_image package for network image caching and Handle errors and loading placeholders(shimmer).
-- Bloc & get_it for state management and dependency injection
-- Auto Route for routing
-
-**Verdict**
-- ✅ **Clean Architecture**: Strict separation of data, domain, and presentation layers
-- ✅ **Modular DI**: Self-contained dependency injection with `FeatureDI` interface
-- ✅ **Infinite Scroll**: Lazy loading with scroll controller and pagination
-- ✅ **Debounced Search**: 500ms debounce to minimize API calls during typing
-- ✅ **Image Optimization**: `cached_network_image` with shimmer loading and error handling
-- ✅ **SQLite Favorites**: Local persistence for favorite products
-- ✅ **BLoC Pattern**: Separate blocs for products and favorites with proper state management
-- ✅ **Responsive UI**: Material 3 design with proper aspect ratios and overflow handling
-
-### 📦 dependencies Added
-- dio: ^5.7.0                    # HTTP client for API calls
-- cached_network_image: ^3.4.1   # Network image caching
-- sqflite: ^2.4.2               # SQLite for favorites persistence
-
-### 🏗️ Architecture Highlights
-
-#### **Clean Architecture Layers:**
-1. **Domain Layer**: Pure business logic with entities, repositories, and use cases
-2. **Data Layer**: API integration, local storage, and repository implementations  
-3. **Presentation Layer**: BLoC state management and UI widgets
-
-#### **Key Features:**
-- **Lazy Loading**: Products load in batches of 20 with infinite scroll
-- **Search & Filter**: Real-time search with category filtering
-- **Favorites System**: Add/remove favorites with SQLite persistence
-- **Error Handling**: Comprehensive error states and retry mechanisms
-- **Performance**: Debounced search, image caching, and optimized rendering
-
-#### **Modular DI System:**
-- `EcommerceDI`: Self-contained dependency injection module
-- `FeatureDI`: Base interface for all feature modules
-- `DIHelpers`: Safe registration/unregistration utilities
-- Clean separation from main service locator
-
-
-
-
-
----
-
-### 📂 Folder Structure
-
-```bash
-lib/
-├── apps/
-│   └── mini_ecommerce/
-│       ├── di/
-│       │   └── ecommerce_di.dart          # Self-contained DI module
-│       ├── features/
-│       │   └── products/
-│       │       ├── data/
-│       │       │   ├── datasources/
-│       │       │   │   ├── product_remote_data_source.dart
-│       │       │   │   └── favorite_local_data_source.dart
-│       │       │   └── repositories/
-│       │       │       ├── product_repository_impl.dart
-│       │       │       └── favorite_repository_impl.dart
-│       │       ├── domain/
-│       │       │   ├── entities/
-│       │       │   │   ├── product.dart
-│       │       │   │   ├── rating.dart
-│       │       │   │   └── favorite_product.dart
-│       │       │   ├── repositories/
-│       │       │   │   ├── product_repository.dart
-│       │       │   │   └── favorite_repository.dart
-│       │       │   └── usecases/
-│       │       │       ├── get_products.dart
-│       │       │       ├── search_products.dart
-│       │       │       ├── get_categories.dart
-│       │       │       ├── get_products_by_category.dart
-│       │       │       ├── get_favorites.dart
-│       │       │       ├── add_to_favorites.dart
-│       │       │       ├── remove_from_favorites.dart
-│       │       │       └── is_favorite.dart
-│       │       └── presentation/
-│       │           ├── bloc/
-│       │           │   ├── product/
-│       │           │   │   ├── product_bloc.dart
-│       │           │   │   ├── product_event.dart
-│       │           │   │   └── product_state.dart
-│       │           │   └── favorite/
-│       │           │       ├── favorite_bloc.dart
-│       │           │       ├── favorite_event.dart
-│       │           │       └── favorite_state.dart
-│       │           ├── pages/
-│       │           │   └── ecommerce_page.dart
-│       │           └── widgets/
-│       │               ├── product_grid.dart
-│       │               ├── product_card.dart
-│       │               ├── search_bar.dart          # Debounced search
-│       │               ├── category_filter.dart
-│       │               ├── favorites_tab.dart
-│       │               ├── favorite_card.dart
-│       │               └── loading_shimmer.dart
-├── core/
-│   ├── di/
-│   │   ├── feature_di.dart              # Base DI interfaces & helpers
-│   │   └── README.md                    # DI architecture documentation
-│   ├── landing_page/
-│   │   ├── app_card.dart
-│   │   ├── landing_page.dart
-│   │   └── show_coming_soon_dialog.dart
-│   ├── router/
-│   │   ├── app_router.dart
-│   │   └── app_router.gr.dart
-│   └── service_locator.dart             # Main DI orchestrator
-├── themes/
-│   └── app_theme.dart
-└── main.dart
-```
-
-
-
-
-
----
-
-
-## 5. `nested_bottom_nav`
-
-### 📋 Requirements
-
-- To build Flutter application that uses a bottom navigation bar with 3 items:
-Item 1, Item 2, and Item 3.
-- Each item displays a screen with a button for navigation. When the button is pressed, a new
-screen is pushed (navigated to). However:
-1. The bottom navigation bar must remain visible on the new screen.​
-2. The user must still be able to switch between Item 1, Item 2, and Item 3 even after
-navigating.​
-3. The navigation must be nested, such that pressing the button does not navigate away
-from the home layout but pushes a screen within the respective tab.
-🔹 Implement this using nested navigation, ensuring each tab maintains its own navigation
-stack independently.
-
-Sample Screens:
-Screen1:
-      Item1 Screen
-       Button(clickable)
-       -> Pushes item1 detail screen
-
-    BtnNav1  BtnNav2  BtnNav3   
-
-Screen2:
-      Item1 Deatail Screen
-
-    BtnNav1  BtnNav2  BtnNav3   
-
----
-
-### 🧠 Thought Process
-
-**Example analogy to understand**
-1. User taps Item1 → sees "Item1 Screen" with a button.
-2. Presses button → "Item1 Detail Screen" is pushed.
-3. Bottom bar is still visible.
-4. Switch to Item2 → shows "Item2 Screen".
-5. Return to Item1 → still on "Item1 Detail Screen".
-
-**Technical analysis**
-- Each tab has its own `Navigator` widget with independent navigation stack
-- `IndexedStack` preserves state when switching between tabs
-- Bottom navigation bar remains persistent across all navigation levels
-- Custom tab navigator handles route management within each tab
-- BLoC manages the selected tab state globally
-
-**Verdict**
--  Bottom bar remains visible on all screens
--  Each tab maintains its own navigation history
--  Proper nesting within tab navigators, not global navigation
--  Tab states are preserved when switching between tabs
--  Material 3 design with consistent theming and smooth transitions
--  Support for multiple levels of navigation within each tab
-- Clean state management for tab selection
-- Implment 3 level deep detail screen, also we can scroll a view inside 1st page to ensure its not freshly build
-
-### 📦 No extra dependencies Added
-- Uses built-in Navigator widgets for nested navigation
-- BLoC for state management (already included)
-- Material 3 design system
-
-### 🏗️ Architecture Highlights
-
-#### **Navigation Architecture:**
-1. **Main Scaffold**: Contains IndexedStack and persistent bottom navigation
-2. **Tab Navigators**: Each tab has its own Navigator widget with independent routing
-3. **State Management**: BLoC manages selected tab index globally
-4. **Route Management**: Custom route generation within each tab's Navigator
-
-#### **Key Features:**
-- **Persistent Bottom Bar**: Remains visible throughout all navigation levels
-- **Independent Stacks**: Each tab maintains its own navigation history
-- **State Preservation**: Tab content is preserved when switching between tabs
-- **Deep Navigation**: Support for multiple nested screens within each tab
-- **Smooth Transitions**: Beautiful Material 3 transitions and animations
-
-### 📂 Folder Structure
-
-```bash
-lib/
-├── apps/
-│   └── nested_bottom_nav/
-│       ├── bloc/
-│       │   ├── navigation_bloc.dart      # Tab selection state management
-│       │   ├── navigation_event.dart     # Tab change events
-│       │   └── navigation_state.dart     # Navigation state definition
-│       ├── pages/
-│       │   └── nested_bottom_nav_page.dart  # Main page with bottom navigation
-│       └── widgets/
-│           ├── tab_navigator.dart        # Individual tab navigator
-│           ├── tab_home_screen.dart      # Home screen for each tab
-│           └── tab_detail_screen.dart    # Detail screen with deep navigation
-├── core/
-│   ├── di/
-│   │   ├── feature_di.dart              # Base DI interfaces & helpers
-│   │   └── README.md                    # DI architecture documentation
-│   ├── landing_page/
-│   │   ├── app_card.dart
-│   │   ├── landing_page.dart
-│   │   └── show_coming_soon_dialog.dart
-│   ├── router/
-│   │   ├── app_router.dart
-│   │   └── app_router.gr.dart
-│   └── service_locator.dart             # Main DI orchestrator
-├── themes/
-│   └── app_theme.dart
-└── main.dart
-```
-
----
-
-# `refresh_token_auth`
-
-### 📋 Requirements
-
-* **Evaluation Focus:**
-
-  * Authentication flow
-  * Token management
-  * State persistence
-  * Error handling
-
-### ✅ Tasks
-
-* Implement comprehensive refresh token authentication system
-* Handle automatic token refresh on API failures
-* Manage authentication state with BLoC
-* Store tokens securely using SharedPreferences
-* Provide login/logout functionality with beautiful UI
-
-### 🧠 Thought Process
-
-
-* **Proactive Refresh**: Automatically refresh tokens before they expire
-* **Reactive Refresh**: Handle 401 responses and retry failed requests
-* **Concurrency Control**: Prevent multiple refresh attempts simultaneously
-* **State Management**: Track authentication status across the app
-* **Error Handling**: Graceful fallbacks when refresh fails
-
-### 📦 Dependencies Added
-
-```yaml
-# HTTP & Storage
-dio:                   # HTTP client with interceptors
-shared_preferences:    # Secure token storage
-
-# State Management (already included)
-flutter_bloc:          # Authentication state management
-equatable:             # Value equality for states
-```
-
-### 🏗️ Architecture Highlights
-
-#### **Clean Architecture Pattern:**
-1. **Domain Layer**: Authentication entities and repository contracts
-2. **Data Layer**: Local storage, API integration, and repository implementations
-3. **Presentation Layer**: BLoC state management and authentication UI
-
-#### **Token Refresh Strategy:**
-- **Proactive**: Refresh tokens 5 minutes before expiration
-- **Reactive**: Automatic retry with fresh tokens on 401 responses
-- **Transparent**: Users never see authentication errors during auto-refresh
-
-#### **Key Features:**
-- **Dio Interceptor**: Automatically adds auth headers and handles 401s
-- **Concurrency Safe**: Prevents multiple simultaneous refresh operations
-- **State Persistence**: Remember login state across app restarts
-- **Beautiful UI**: Material 3 login form with validation and loading states
-- **Token Management**: Display token status, expiry, and manual refresh options
-
-### �� Folder Structure
-
-```bash
-lib/
-├── core/
-│   └── auth/
-│       ├── models/
-│       │   ├── auth_tokens.dart          # Token model with validation
-│       │   └── user.dart                 # User profile model
-│       ├── data/
-│       │   ├── datasources/
-│       │   │   ├── auth_local_data_source.dart    # SharedPreferences storage
-│       │   │   └── auth_remote_data_source.dart   # Mock API calls
-│       │   └── repositories/
-│       │       └── auth_repository_impl.dart      # Repository implementation
-│       ├── domain/
-│       │   └── repositories/
-│       │       └── auth_repository.dart           # Repository contract
-│       ├── services/
-│       │   └── token_refresh_service.dart         # Automatic token refresh
-│       ├── bloc/
-│       │   ├── auth_bloc.dart            # Authentication state management
-│       │   ├── auth_event.dart           # Authentication events
-│       │   └── auth_state.dart           # Authentication states
-│       ├── widgets/
-│       │   ├── login_form.dart           # Beautiful login form
-│       │   └── authenticated_dashboard.dart       # Token status dashboard
-│       └── pages/
-│           └── auth_demo_page.dart       # Main auth demonstration page
-```
-
-### 🔧 How It Works
-
-#### **Login Flow:**
-1. User enters credentials → Form validation
-2. API call with loading state → Mock authentication
-3. Store tokens securely → Update authentication state
-4. Start proactive refresh timer → Navigate to dashboard
-
-#### **Automatic Token Refresh:**
-1. **Proactive**: Timer triggers refresh 5 minutes before expiration
-2. **Reactive**: Any API call gets 401 → Automatically refresh → Retry original request
-3. **Concurrency**: Multiple requests wait for single refresh operation
-4. **Failure**: If refresh fails → Logout user gracefully
-
-#### **Dashboard Features:**
-- **User Profile**: Display authenticated user information
-- **Token Status**: Show access token, refresh token, and expiry times
-- **Manual Actions**: Force token refresh or logout
-- **Copy Tokens**: Tap to copy tokens to clipboard for inspection
-
-#### **State Management:**
-```dart
-// Authentication states
-AuthInitial()           // App starting up
-AuthLoading()          // Processing login/refresh
-AuthAuthenticated()    // User logged in with valid tokens
-AuthUnauthenticated()  // User logged out or tokens expired
-AuthError()           // Authentication failed
-```
-
-This system provides a **complete authentication foundation** that can be easily integrated into any Flutter app requiring secure API access with automatic token management! 🔐
-
----
-
-# 🚀 How It All Works Together
-
-## 📱 **The App Experience**
-
-When you run this app, you'll see a **beautiful landing page** with cards for each of the 6 demonstration apps. Each app showcases different Flutter concepts and architectures:
-
-### 🏠 **Landing Page**
-- **Modern UI**: Material 3 design with gradient cards and smooth animations
-- **Easy Navigation**: Tap any card to explore a specific app
-- **Coming Soon**: Some advanced features show elegant "coming soon" dialogs
-
-### 🔄 **Navigation Flow**
-```
-Landing Page
-    ├── 📝 Offline Todo (BLoC + SQLite)
-    ├── 📱 Method Channel (Native Integration)
-    ├── 📋 Dynamic Form (JSON Parsing)
-    ├── 🛒 Mini Ecommerce (Clean Architecture)
-    ├── 🧭 Nested Navigation (Complex Navigation)
-    └── 🔐 Refresh Token Auth (Authentication)
-```
-
-## 🏗️ **Architecture Philosophy**
-
-### **Different Patterns for Different Needs**
-Each app intentionally uses **different architectural patterns** to demonstrate various approaches:
-
-- **Todo App**: Traditional layered architecture with BLoC
-- **Method Channel**: Simple MVVM pattern for native integration
-- **Dynamic Form**: State-driven architecture for complex forms
-- **Ecommerce**: Clean architecture with strict separation of concerns
-- **Navigation**: Nested navigator pattern for complex UI flows
-- **Authentication**: Repository pattern with interceptors and services
-
-### **Shared Foundation**
-While each app has its own pattern, they all share:
-- **Dependency Injection**: GetIt service locator
-- **Routing**: Auto Route for navigation
-- **Theming**: Consistent Material 3 design system
-- **State Management**: BLoC pattern throughout
-
-## 🎯 **Key Demonstrations**
-
-### **1. State Management Mastery**
-- **BLoC Pattern**: Used across all apps for predictable state management
-- **Event-Driven**: Clear separation between UI events and business logic
-- **Reactive Programming**: Stream-based architecture for real-time updates
-
-### **2. Data Persistence**
-- **SQLite**: Local database for todos and favorites
-- **SharedPreferences**: Simple key-value storage for settings and tokens
-- **In-Memory**: Temporary state for forms and navigation
-
-### **3. Network Integration**
-- **REST APIs**: Fetch products from real APIs
-- **Error Handling**: Comprehensive error states and retry mechanisms
-- **Caching**: Smart image caching and data persistence
-
-### **4. Native Platform Features**
-- **MethodChannel**: Bridge between Flutter and native code
-- **Platform Views**: Embed native UI components
-- **Device APIs**: Access battery, device info, and system features
-
-### **5. Complex UI Patterns**
-- **Nested Navigation**: Independent navigation stacks per tab
-- **Dynamic Forms**: Build UI from JSON configuration
-- **Infinite Scroll**: Lazy loading with pagination
-- **Authentication Flows**: Login, token refresh, and logout
+### Frontend
+- **Flutter**: Cross-platform mobile framework
+- **Dart**: Programming language
+- **Bloc**: State management
+- **Sqflite**: Local database
+- **Dio**: HTTP client
 
+### Backend
+- **Node.js**: Runtime environment
+- **Express**: Web framework
+- **MongoDB/PostgreSQL**: Database
+- **JWT**: Authentication
 
+## Contributing
 
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
+## License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Support
 
+For support and questions:
+- Create an issue in the repository
+- Contact the development team
+- Check the documentation in frontend-readme.md and backend-readme.md
+
+
+
+4. App Architecture
+
+Modular Design: Separate modules for Personal Management, Financial Management, Authentication, and Settings.
+Offline-First: All data is stored locally using Sqflite and synced with the backend when online.
+State Management: Bloc pattern for managing app state.
+Routing: auto_route for navigation between screens.
+Dependency Injection: get_it for managing dependencies.
+API Communication: Dio for HTTP requests to the backend.
+Data Models: Immutable classes using freezed for type safety and serialization.
+
+5. Modules and Features
+5.1 Authentication Module
+
+Features:
+User login and registration via email/password.
+Biometric authentication (fingerprint/face recognition) for secure access.
+
+
+Screens:
+Login Screen: Email/password input and biometric option.
+Register Screen: Form for account creation.
+Biometric Setup Screen: Enable biometric login.
+
+
+Backend APIs:
+POST /auth/login: Authenticate user and return JWT token.
+POST /auth/register: Create a new user account.
+
+
+
+5.2 Personal Management Module
+Features
+
+Goal Categories: Users can create categories (e.g., Health, Work, Hobby, Learning).
+Goal Creation: 
+Short-term goals (e.g., "Walk 30 minutes every day").
+Long-term goals (e.g., "Be fit within 3 months by burning 14 kg") with milestones.
+Goal types: One-time or recurring.
+
+
+Milestones: Checkpoints for long-term goals with tasks and performance evaluation at deadlines. Options to extend or add new short-term goals if unmet.
+Tasks: 
+Properties: Name, association (short-term goal or untracked), deadline (date/time), reminderAt, repeat (e.g., daily, weekly).
+
+
+Goal Properties: Deadline, start date, rewards, motivation (for reference).
+Reminders: Local notifications before task start (customizable or default time).
+Dashboard: View progress of goals, sub-goals, and tasks; add/modify them.
+Calendar: View tasks and goals (English and Nepali calendars supported).
+Settings: Manage authentication, themes, and language.
+
+Screens
+
+Personal Dashboard: Overview of goals, tasks, and progress.
+Goal List: List of goals with add/edit options.
+Goal Detail: Details of a goal, including milestones and tasks.
+Add/Edit Goal: Form to create or modify goals.
+Milestone List: List of milestones for a goal.
+Task List: List of tasks for a milestone or goal.
+Add/Edit Task: Form to create or modify tasks.
+Personal Calendar: Calendar view of tasks and goals.
+
+Database Tables
+
+goal_categories: (id, name, user_id, created_at, updated_at)
+goals: (id, category_id, user_id, name, description, type, priority, deadline, start_date, rewards, motivation, status, progress, created_at, updated_at)
+milestones: (id, goal_id, name, description, deadline, status, progress, created_at, updated_at)
+tasks: (id, milestone_id, goal_id, name, description, deadline, reminder_at, repeat_type, repeat_interval, status, completed_at, created_at, updated_at)
+task_completions: (id, task_id, completed_at, notes)
+
+5.3 Financial Management Module
+Features
+
+Income Sources: Add and manage sources (e.g., salary, freelance).
+Accounts: Add accounts (e.g., bank, e-wallet, cash) with balances.
+Financial Categories & Items: 
+Categories (e.g., Vegetable).
+Items (e.g., cauliflower, tomato, paneer).
+
+
+Income & Expenses: Record income per source and expenses per source, category, item, with descriptions.
+Dashboard: View financial data (daily, weekly, monthly, quarterly, yearly).
+Transfers: Move money between accounts.
+Lending: Track money lent to friends with return expectation.
+Investments: Track stocks, SIPs, insurance, etc.
+Calendar: View financial activities (English and Nepali calendars).
+Recurring Expenses: Add recurring costs (e.g., rent) with adjustable payment dates.
+Financial Planning: Set budgets and estimate expenses for future months.
+
+Screens
+
+Financial Dashboard: Summary of income, expenses, and balances.
+Account List: List of accounts with add/edit options.
+Add/Edit Account: Form to create or modify accounts.
+Transaction List: List of transactions with add/edit options.
+Add/Edit Transaction: Form for income, expenses, etc.
+Transfer: Form to move money between accounts.
+Lend: Form to record lending.
+Investment: Form to track investments.
+Category List: List of categories with add/edit options.
+Add/Edit Category: Form to create or modify categories.
+Item List: List of items per category.
+Add/Edit Item: Form to create or modify items.
+Financial Calendar: Calendar view of financial activities.
+Budget Setup: Set budgets per category.
+Expense Estimation: Estimate future expenses based on budgets and history.
+
+Database Tables
+
+income_sources: (id, user_id, name, description, is_active, created_at, updated_at)
+accounts: (id, user_id, name, type, balance, currency, is_active, created_at, updated_at)
+financial_categories: (id, user_id, name, type, budget_limit, created_at, updated_at)
+financial_items: (id, category_id, name, description, created_at, updated_at)
+transactions: (id, user_id, type, source_id, account_id, category_id, item_id, amount, currency, date, description, is_recurring, created_at, updated_at)
+recurring_expenses: (id, user_id, name, amount, currency, frequency, next_payment_date, account_id, category_id, is_active, created_at, updated_at)
+investments: (id, user_id, name, type, amount, purchase_date, current_value, account_id, notes, created_at, updated_at)
+lendings: (id, user_id, borrower_name, amount, currency, lend_date, expected_return_date, actual_return_date, status, notes, created_at, updated_at)
+budgets: (id, user_id, category_id, amount, currency, period_type, start_date, end_date, created_at, updated_at)
+
+5.4 Settings Module
+
+Features:
+Theme selection (light/dark).
+Language selection (English/Hindi).
+Sync settings (auto, periodic, enable/disable).
+Authentication management (e.g., biometric toggle).
+
+
+Screen: 
+Settings Screen: Options for all settings.
+
+
+
+6. Essentials
+
+Biometric Login: Implemented using the local_auth package.
+Offline-First: All features functional offline; data stored in Sqflite and synced when online.
+Sync Mechanism: Configurable sync (auto, periodic, manual); server as source of truth for conflicts.
+Themes: Light and dark modes using Flutter’s ThemeData.
+Localization: English and Hindi support via Flutter’s localization.
+Calendar Support: English (default) and Nepali (via nepali_date_picker package).
+UI Design: Consistent, beautiful theme with lucide_icons for icons.
+
+7. Backend APIs
+
+Authentication:
+POST /auth/login: Returns JWT token and user profile.
+POST /auth/register: Creates user account.
+POST /auth/refresh: Refresh JWT token.
+POST /auth/logout: Invalidate token.
+GET /auth/profile: Get user profile.
+PUT /auth/profile: Update user profile.
+
+
+Personal Management:
+GET /api/goal-categories: Get user's goal categories.
+POST /api/goal-categories: Create new goal category.
+PUT /api/goal-categories/:id: Update goal category.
+DELETE /api/goal-categories/:id: Delete goal category.
+
+GET /api/goals: Get user's goals with filters.
+POST /api/goals: Create new goal.
+PUT /api/goals/:id: Update goal.
+DELETE /api/goals/:id: Delete goal.
+GET /api/goals/:id/progress: Get goal progress.
+
+GET /api/milestones: Get milestones for a goal.
+POST /api/milestones: Create new milestone.
+PUT /api/milestones/:id: Update milestone.
+DELETE /api/milestones/:id: Delete milestone.
+
+GET /api/tasks: Get tasks with filters.
+POST /api/tasks: Create new task.
+PUT /api/tasks/:id: Update task.
+DELETE /api/tasks/:id: Delete task.
+POST /api/tasks/:id/complete: Mark task as completed.
+
+
+Financial Management:
+GET /api/income-sources: Get user's income sources.
+POST /api/income-sources: Create income source.
+PUT /api/income-sources/:id: Update income source.
+DELETE /api/income-sources/:id: Delete income source.
+
+GET /api/accounts: Get user's accounts.
+POST /api/accounts: Create account.
+PUT /api/accounts/:id: Update account.
+DELETE /api/accounts/:id: Delete account.
+GET /api/accounts/:id/balance: Get account balance.
+
+GET /api/financial-categories: Get financial categories.
+POST /api/financial-categories: Create category.
+PUT /api/financial-categories/:id: Update category.
+DELETE /api/financial-categories/:id: Delete category.
+
+GET /api/financial-items: Get items by category.
+POST /api/financial-items: Create item.
+PUT /api/financial-items/:id: Update item.
+DELETE /api/financial-items/:id: Delete item.
+
+GET /api/transactions: Get transactions with filters.
+POST /api/transactions: Create transaction.
+PUT /api/transactions/:id: Update transaction.
+DELETE /api/transactions/:id: Delete transaction.
+GET /api/transactions/summary: Get financial summary.
+
+GET /api/investments: Get user's investments.
+POST /api/investments: Create investment.
+PUT /api/investments/:id: Update investment.
+DELETE /api/investments/:id: Delete investment.
+
+GET /api/lendings: Get lending records.
+POST /api/lendings: Create lending record.
+PUT /api/lendings/:id: Update lending record.
+DELETE /api/lendings/:id: Delete lending record.
+
+
+Sync & Analytics:
+POST /api/sync: Bidirectional data sync.
+GET /api/analytics/personal: Get personal productivity analytics.
+GET /api/analytics/financial: Get financial analytics.
+POST /api/backup: Create data backup.
+GET /api/backup: Get backup data.
+POST /api/restore: Restore from backup.
+
+
+
+8. Development Roadmap
+
+Phase 1: Project Foundation (Week 1-2)
+- Initialize Flutter project with proper folder structure
+- Setup development environment and CI/CD pipeline
+- Add all required dependencies to pubspec.yaml
+- Configure auto_route for navigation
+- Setup get_it for dependency injection
+- Create base theme and color schemes (light/dark)
+- Setup localization for English and Hindi
+
+Phase 2: Data Layer (Week 3-4)
+- Define all data models using freezed
+- Implement Sqflite database schema and migrations
+- Create repository pattern for data access
+- Implement local storage services
+- Setup secure storage for authentication tokens
+- Create sync mechanism foundation
+
+Phase 3: Authentication & Core Setup (Week 5-6)
+- Implement JWT-based authentication
+- Add biometric authentication using local_auth
+- Create authentication Bloc and states
+- Implement login, register, and biometric setup screens
+- Add splash screen and onboarding flow
+- Setup navigation guards for authenticated routes
+
+Phase 4: Personal Management Module (Week 7-10)
+- Create personal management data models
+- Implement goal categories CRUD operations
+- Build goal creation and management functionality
+- Add milestone and task management
+- Implement reminder system with local notifications
+- Create personal dashboard with progress visualization
+- Build calendar view for personal activities
+- Add goal progress tracking and analytics
+
+Phase 5: Financial Management Module (Week 11-14)
+- Create financial data models
+- Implement account and income source management
+- Build transaction recording and categorization
+- Add financial dashboard with charts using fl_chart
+- Implement transfer and lending functionality
+- Create investment tracking features
+- Build financial calendar view
+- Add budget management and expense planning
+
+Phase 6: Advanced Features (Week 15-16)
+- Implement data export functionality (PDF/Excel)
+- Add analytics and insights screens
+- Create backup and restore functionality
+- Implement advanced filtering and search
+- Add data visualization improvements
+- Performance optimization
+
+Phase 7: Backend Development (Week 17-20)
+- Setup Node.js backend with Express
+- Implement all REST APIs
+- Add JWT authentication middleware
+- Setup database (MongoDB/PostgreSQL)
+- Implement sync endpoints
+- Add data validation and error handling
+- Setup backend testing
+
+Phase 8: Integration & Sync (Week 21-22)
+- Integrate frontend with backend APIs
+- Implement bidirectional sync functionality
+- Add conflict resolution logic
+- Test offline-first functionality
+- Implement retry mechanisms for failed requests
+
+Phase 9: Testing & Quality Assurance (Week 23-24)
+- Write comprehensive unit tests for Blocs
+- Add widget tests for UI components
+- Implement integration tests
+- Perform manual testing on multiple devices
+- Test biometric authentication on real devices
+- Load testing for backend APIs
+
+Phase 10: Deployment & Launch (Week 25-26)
+- Prepare app store assets (icons, screenshots, descriptions)
+- Setup app signing and deployment pipeline
+- Deploy backend to production environment
+- Setup monitoring and analytics
+- Submit to Google Play Store and Apple App Store
+- Create user documentation and support materials
+
+Testing Strategy:
+- Unit Tests: All Blocs, repositories, and services
+- Widget Tests: All custom widgets and screens
+- Integration Tests: Complete user flows
+- Manual Testing: Real device testing for biometrics and notifications
+- Backend Testing: API testing with automated test suites
+
+Deployment Strategy:
+- Frontend: Build APK/IPA for app stores
+- Backend: Deploy to cloud services (AWS/Google Cloud/Digital Ocean)
+- Database: Managed database service for production
+- CI/CD: Automated testing and deployment pipelines
+
+9. Security Considerations
+
+Authentication Security:
+- JWT tokens with proper expiration and refresh mechanism
+- Secure token storage using flutter_secure_storage
+- Biometric authentication as an additional security layer
+- Password strength validation and hashing (bcrypt)
+
+Data Security:
+- Encrypt sensitive data in local SQLite database
+- Use HTTPS for all API communications
+- Implement API rate limiting to prevent abuse
+- Input validation and sanitization on both frontend and backend
+
+Privacy:
+- Local-first approach minimizes data exposure
+- Optional cloud sync with user consent
+- Clear privacy policy regarding data collection and usage
+- GDPR compliance for European users
+
+10. Performance Optimization
+
+Frontend Optimization:
+- Lazy loading for large lists using ListView.builder
+- Image caching with cached_network_image
+- Efficient state management with Bloc pattern
+- Code splitting and tree shaking for smaller app size
+- Database indexing for faster queries
+
+Backend Optimization:
+- Database query optimization with proper indexing
+- Caching frequently accessed data
+- Pagination for large datasets
+- Compression for API responses
+- Connection pooling for database connections
+
+11. Accessibility & Usability
+
+Accessibility Features:
+- Screen reader support with proper semantic labels
+- High contrast mode support
+- Adjustable font sizes
+- Touch target size compliance (minimum 44dp)
+- Voice control compatibility
+
+Usability Features:
+- Intuitive navigation with bottom navigation bar
+- Swipe gestures for common actions
+- Undo/redo functionality for accidental deletions
+- Search functionality across all modules
+- Keyboard shortcuts for power users
+
+12. Error Handling & Logging
+
+Error Handling:
+- Graceful error handling with user-friendly messages
+- Retry mechanisms for network failures
+- Offline fallback with sync when online
+- Form validation with clear error indicators
+- Crash reporting and analytics
+
+Logging Strategy:
+- Debug logs for development
+- Error logs for production issues
+- User action analytics for app improvement
+- Performance monitoring and alerts
+
+13. Maintenance & Updates
+
+Update Strategy:
+- Regular security updates
+- Feature updates based on user feedback
+- Database migration handling for schema changes
+- Backward compatibility considerations
+- A/B testing for new features
+
+Monitoring:
+- App crash monitoring
+- Performance metrics tracking
+- User engagement analytics
+- API response time monitoring
+- Database performance monitoring
