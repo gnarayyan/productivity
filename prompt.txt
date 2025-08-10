@@ -1,0 +1,81 @@
+First implement Personal Management Module,
+
+It have 3 button nav bars (Dashboard, Tasks, Goals, Calender)
+
+
+Goals Page 
+Categories Filter Chips Horizontally Scrollable(All, Persoanl, Work, ) TopRight(TripleDot Menu, onclick shows menu with options:[Manage Categories, Search, Sort by, Show Details:Switch] )
+    {
+        Manage Categories: Opens full screen page 
+                <- Manage Categories
+                Left(categoryName)        Right(totalGoalsCount   MenuIcon(:)) 
+                eg:
+                Personal                    10   : (on clicking shows 3 options  show/hide, delete, edit)
+                Work                         3   :
+
+                FAB(Opens Rectangualr Dialogue, Centered vericallly Label: Create New Category, i/p field: text..50chars max    visibility: switch show/hide,   actions: cancel,save) 
+
+                label: "Long press and drag to reorder"   
+        Search: On click replace "Categories Filter Chips Horizontally Scrollable" with SearchBar(<-  SearchField)
+        
+        Sort by: Dialogue with radio options (Due date, Alphabetical A-z, Z-A, creation time)
+        
+        Show Details:if Switch on show Goals with ( Mini Goals Count [Total, Pending, Completed], Tasks Count [Total, Pending, Completed] )
+    }
+
+
+
+Goal List
+
+Pending Section
+Goal_Name1
+progress_bar1(%)
+Badge(overdue)
+Goal_Name2
+progress_bar2(%)
+Badge(x days left)
+
+Upcoming 
+Goal_Name3
+progress_bar3(%)
+Badge(next month)
+
+Completed
+Goal_Name4
+progress_bar(100%)
+Badge(6 month ago)
+
+
+Floating Action Button: Layout[Centered at btn nav bar Plus Icon, on scroll below vh show Labelled Plus Icon (+ Add Goal)], Onclick Opens New Full Page (<-   Create Goal    Save)
+
+
+
+**Features:**
+- **Goal Categories**: Users can create categories (e.g., Health, Work, Hobby, Learning)
+- **Goal Creation**: 
+  - Short-term goals (e.g., "Walk 30 minutes every day")
+  - Long-term goals (e.g., "Be fit within 3 months by burning 14 kg"). It can include multiple short-term goals
+  - Goal types: One-time or recurring
+- **Milestones**: Checkpoints for long-term goals with tasks and performance evaluation at deadlines
+- **Tasks**: Properties include name, association, deadline, reminderAt, repeat settings
+- **Goal Properties**: Deadline, start date, rewards, motivation
+- **Reminders**: Local notifications before task start
+- **Dashboard**: View progress of goals, sub-goals, and tasks
+- **Calendar**: View tasks and goals (English and Nepali calendars supported)
+
+**Screens:**
+- Personal Dashboard: Overview of goals, tasks, and progress
+- Goal List: List of goals with add/edit options
+- Goal Detail: Details of a goal, including milestones and tasks
+- Add/Edit Goal: Form to create or modify goals
+- Milestone List: List of milestones for a goal
+- Task List: List of tasks for a milestone or goal
+- Add/Edit Task: Form to create or modify tasks
+- Personal Calendar: Calendar view of tasks and goals
+
+**Database Tables:**
+- `goal_categories`: (id, name, user_id, created_at, updated_at)
+- `goals`: (id, category_id, user_id, name, description, type, priority, deadline, start_date, rewards, motivation, status, progress, created_at, updated_at)
+- `milestones`: (id, goal_id, name, description, deadline, status, progress, created_at, updated_at)
+- `tasks`: (id, milestone_id, goal_id, name, description, deadline, reminder_at, repeat_type, repeat_interval, status, completed_at, created_at, updated_at)
+- `task_completions`: (id, task_id, completed_at, notes)
