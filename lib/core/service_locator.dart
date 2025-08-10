@@ -17,6 +17,9 @@ import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
 // Nested Bottom Nav imports
 import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
 
+// Productivity app imports
+import '../apps/productivity/presentation/bloc/productivity_navigation_bloc.dart';
+
 // Mini Ecommerce DI
 import '../apps/mini_ecommerce/di/ecommerce_di.dart';
 
@@ -76,6 +79,9 @@ Future<void> initDependencies() async {
 
   // Nested Bottom Nav App Dependencies
   sl.registerFactory(() => NavigationBloc());
+
+  // Productivity App Dependencies
+  sl.registerFactory(() => ProductivityNavigationBloc());
 
   // Mini Ecommerce App Dependencies
   EcommerceDI.register(sl);
