@@ -1,17 +1,8 @@
 part of 'productivity_navigation_bloc.dart';
 
-enum ProductivityModule {
-  personalManagement,
-  financialManagement,
-  settings,
-}
+enum ProductivityModule { personalManagement, financialManagement, settings }
 
-enum PersonalTab {
-  dashboard,
-  tasks,
-  goals,
-  calendar,
-}
+enum PersonalTab { dashboard, tasks, goals, calendar }
 
 class ProductivityNavigationState extends Equatable {
   final ProductivityModule selectedModule;

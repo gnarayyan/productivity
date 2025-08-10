@@ -18,7 +18,13 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
   String _selectedFilter = 'All';
   final TextEditingController _searchController = TextEditingController();
 
-  final List<String> _categories = ['All', 'Personal', 'Work', 'Health', 'Learning'];
+  final List<String> _categories = [
+    'All',
+    'Personal',
+    'Work',
+    'Health',
+    'Learning',
+  ];
 
   @override
   void dispose() {
@@ -45,7 +51,9 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
           PopupMenuButton<String>(
             icon: const Icon(LucideIcons.moreVertical),
             color: AppColors.surface,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             onSelected: (value) {
               switch (value) {
                 case 'manage_categories':
@@ -77,10 +85,7 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
                   children: [
                     const Icon(LucideIcons.folder, size: 16),
                     const SizedBox(width: 12),
-                    Text(
-                      'Manage Categories',
-                      style: AppTextStyles.bodyMedium,
-                    ),
+                    Text('Manage Categories', style: AppTextStyles.bodyMedium),
                   ],
                 ),
               ),
@@ -90,10 +95,7 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
                   children: [
                     const Icon(LucideIcons.search, size: 16),
                     const SizedBox(width: 12),
-                    Text(
-                      'Search',
-                      style: AppTextStyles.bodyMedium,
-                    ),
+                    Text('Search', style: AppTextStyles.bodyMedium),
                   ],
                 ),
               ),
@@ -103,10 +105,7 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
                   children: [
                     const Icon(LucideIcons.arrowUpDown, size: 16),
                     const SizedBox(width: 12),
-                    Text(
-                      'Sort by',
-                      style: AppTextStyles.bodyMedium,
-                    ),
+                    Text('Sort by', style: AppTextStyles.bodyMedium),
                   ],
                 ),
               ),
@@ -119,10 +118,7 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
                       size: 16,
                     ),
                     const SizedBox(width: 12),
-                    Text(
-                      'Show Details',
-                      style: AppTextStyles.bodyMedium,
-                    ),
+                    Text('Show Details', style: AppTextStyles.bodyMedium),
                     const Spacer(),
                     Switch(
                       value: _showDetails,
@@ -210,84 +206,72 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
               padding: const EdgeInsets.all(16),
               children: [
                 // Pending Section
-                _buildSection(
-                  'Pending',
-                  AppColors.warning,
-                  [
-                    GoalListItem(
-                      title: 'Learn Flutter Development',
-                      progress: 0.65,
-                      badge: 'overdue',
-                      badgeColor: AppColors.error,
-                      showDetails: _showDetails,
-                      milestonesTotal: 5,
-                      milestonesPending: 2,
-                      milestonesCompleted: 3,
-                      tasksTotal: 15,
-                      tasksPending: 8,
-                      tasksCompleted: 7,
-                    ),
-                    GoalListItem(
-                      title: 'Complete Project Portfolio',
-                      progress: 0.45,
-                      badge: '7 days left',
-                      badgeColor: AppColors.primary,
-                      showDetails: _showDetails,
-                      milestonesTotal: 3,
-                      milestonesPending: 2,
-                      milestonesCompleted: 1,
-                      tasksTotal: 12,
-                      tasksPending: 7,
-                      tasksCompleted: 5,
-                    ),
-                  ],
-                ),
-                
+                _buildSection('Pending', AppColors.warning, [
+                  GoalListItem(
+                    title: 'Learn Flutter Development',
+                    progress: 0.65,
+                    badge: 'overdue',
+                    badgeColor: AppColors.error,
+                    showDetails: _showDetails,
+                    milestonesTotal: 5,
+                    milestonesPending: 2,
+                    milestonesCompleted: 3,
+                    tasksTotal: 15,
+                    tasksPending: 8,
+                    tasksCompleted: 7,
+                  ),
+                  GoalListItem(
+                    title: 'Complete Project Portfolio',
+                    progress: 0.45,
+                    badge: '7 days left',
+                    badgeColor: AppColors.primary,
+                    showDetails: _showDetails,
+                    milestonesTotal: 3,
+                    milestonesPending: 2,
+                    milestonesCompleted: 1,
+                    tasksTotal: 12,
+                    tasksPending: 7,
+                    tasksCompleted: 5,
+                  ),
+                ]),
+
                 const SizedBox(height: 24),
-                
+
                 // Upcoming Section
-                _buildSection(
-                  'Upcoming',
-                  AppColors.info,
-                  [
-                    GoalListItem(
-                      title: 'Master Data Structures',
-                      progress: 0.0,
-                      badge: 'next month',
-                      badgeColor: AppColors.secondary,
-                      showDetails: _showDetails,
-                      milestonesTotal: 4,
-                      milestonesPending: 4,
-                      milestonesCompleted: 0,
-                      tasksTotal: 20,
-                      tasksPending: 20,
-                      tasksCompleted: 0,
-                    ),
-                  ],
-                ),
-                
+                _buildSection('Upcoming', AppColors.info, [
+                  GoalListItem(
+                    title: 'Master Data Structures',
+                    progress: 0.0,
+                    badge: 'next month',
+                    badgeColor: AppColors.secondary,
+                    showDetails: _showDetails,
+                    milestonesTotal: 4,
+                    milestonesPending: 4,
+                    milestonesCompleted: 0,
+                    tasksTotal: 20,
+                    tasksPending: 20,
+                    tasksCompleted: 0,
+                  ),
+                ]),
+
                 const SizedBox(height: 24),
-                
+
                 // Completed Section
-                _buildSection(
-                  'Completed',
-                  AppColors.success,
-                  [
-                    GoalListItem(
-                      title: 'Learn Basic Programming',
-                      progress: 1.0,
-                      badge: '6 months ago',
-                      badgeColor: AppColors.success,
-                      showDetails: _showDetails,
-                      milestonesTotal: 3,
-                      milestonesPending: 0,
-                      milestonesCompleted: 3,
-                      tasksTotal: 10,
-                      tasksPending: 0,
-                      tasksCompleted: 10,
-                    ),
-                  ],
-                ),
+                _buildSection('Completed', AppColors.success, [
+                  GoalListItem(
+                    title: 'Learn Basic Programming',
+                    progress: 1.0,
+                    badge: '6 months ago',
+                    badgeColor: AppColors.success,
+                    showDetails: _showDetails,
+                    milestonesTotal: 3,
+                    milestonesPending: 0,
+                    milestonesCompleted: 3,
+                    tasksTotal: 10,
+                    tasksPending: 0,
+                    tasksCompleted: 10,
+                  ),
+                ]),
               ],
             ),
           ),
@@ -337,10 +321,10 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
           ],
         ),
         const SizedBox(height: 16),
-        ...children.map((child) => Padding(
-          padding: const EdgeInsets.only(bottom: 12),
-          child: child,
-        )),
+        ...children.map(
+          (child) =>
+              Padding(padding: const EdgeInsets.only(bottom: 12), child: child),
+        ),
       ],
     );
   }
@@ -378,9 +362,7 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           'Sort by',
-          style: AppTextStyles.titleLarge.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.w600),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -455,10 +437,7 @@ class ManageCategoriesPage extends StatelessWidget {
         child: Text(
           'Manage Categories Page\nComing Soon!',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 18,
-            color: AppColors.textSecondary,
-          ),
+          style: TextStyle(fontSize: 18, color: AppColors.textSecondary),
         ),
       ),
     );
@@ -497,10 +476,7 @@ class CreateGoalPage extends StatelessWidget {
         child: Text(
           'Create Goal Page\nComing Soon!',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 18,
-            color: AppColors.textSecondary,
-          ),
+          style: TextStyle(fontSize: 18, color: AppColors.textSecondary),
         ),
       ),
     );

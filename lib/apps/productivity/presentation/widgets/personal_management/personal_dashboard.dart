@@ -61,9 +61,9 @@ class PersonalDashboard extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Stats Grid
             GridView.count(
               shrinkWrap: true,
@@ -99,9 +99,9 @@ class PersonalDashboard extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Recent Activity
             Text(
               'Recent Activity',
@@ -111,7 +111,7 @@ class PersonalDashboard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            
+
             _buildActivityItem(
               'Completed task: "Setup Flutter environment"',
               '2 hours ago',
@@ -136,7 +136,12 @@ class PersonalDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard(String title, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+    String title,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -159,11 +164,7 @@ class PersonalDashboard extends StatelessWidget {
               color: color.withAlpha((0.1 * 255).toInt()),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              icon,
-              color: color,
-              size: 24,
-            ),
+            child: Icon(icon, color: color, size: 24),
           ),
           const Spacer(),
           Text(
@@ -185,7 +186,12 @@ class PersonalDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildActivityItem(String title, String time, IconData icon, Color color) {
+  Widget _buildActivityItem(
+    String title,
+    String time,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
@@ -204,11 +210,7 @@ class PersonalDashboard extends StatelessWidget {
               color: color.withAlpha((0.1 * 255).toInt()),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(
-              icon,
-              color: color,
-              size: 16,
-            ),
+            child: Icon(icon, color: color, size: 16),
           ),
           const SizedBox(width: 12),
           Expanded(

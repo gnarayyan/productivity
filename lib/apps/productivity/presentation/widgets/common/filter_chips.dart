@@ -28,7 +28,9 @@ class FilterChips extends StatelessWidget {
                 label: Text(
                   category,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    color: isSelected ? AppColors.onPrimary : AppColors.onPrimary.withAlpha((0.8 * 255).toInt()),
+                    color: isSelected
+                        ? AppColors.onPrimary
+                        : AppColors.onPrimary.withAlpha((0.8 * 255).toInt()),
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                   ),
                 ),
@@ -42,7 +44,7 @@ class FilterChips extends StatelessWidget {
                 selectedColor: Colors.white.withAlpha((0.2 * 255).toInt()),
                 checkmarkColor: AppColors.onPrimary,
                 side: BorderSide(
-                  color: isSelected 
+                  color: isSelected
                       ? Colors.white.withAlpha((0.3 * 255).toInt())
                       : Colors.white.withAlpha((0.2 * 255).toInt()),
                 ),

@@ -94,13 +94,14 @@ class LandingPage extends StatelessWidget {
                       color: Color(0xFF9C27B0), // Purple color
                       isActive: true,
                       onTap: () {
+                        context.pushRoute(const ProductivityMainRoute());
                         // Will be enabled after build_runner generates routes
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Please run: flutter packages pub run build_runner build'),
-                            backgroundColor: AppColors.warning,
-                          ),
-                        );
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   const SnackBar(
+                        //     content: Text('Please run: flutter packages pub run build_runner build'),
+                        //     backgroundColor: AppColors.warning,
+                        //   ),
+                        // );
                       },
                     ),
                   ],

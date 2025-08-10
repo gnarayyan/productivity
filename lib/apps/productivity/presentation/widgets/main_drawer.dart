@@ -67,7 +67,7 @@ class MainDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               // Menu Items
               Expanded(
                 child: ListView(
@@ -100,13 +100,15 @@ class MainDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               // Footer
               Container(
                 padding: const EdgeInsets.all(24),
                 child: Column(
                   children: [
-                    Divider(color: AppColors.outline.withAlpha((0.3 * 255).toInt())),
+                    Divider(
+                      color: AppColors.outline.withAlpha((0.3 * 255).toInt()),
+                    ),
                     const SizedBox(height: 16),
                     Row(
                       children: [
@@ -143,11 +145,11 @@ class MainDrawer extends StatelessWidget {
     ProductivityModule module,
   ) {
     final isSelected = state.selectedModule == module;
-    
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       decoration: BoxDecoration(
-        color: isSelected 
+        color: isSelected
             ? AppColors.primary.withAlpha((0.1 * 255).toInt())
             : Colors.transparent,
         borderRadius: BorderRadius.circular(12),
@@ -160,7 +162,7 @@ class MainDrawer extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: isSelected 
+            color: isSelected
                 ? AppColors.primary.withAlpha((0.2 * 255).toInt())
                 : AppColors.background,
             borderRadius: BorderRadius.circular(8),
@@ -184,20 +186,14 @@ class MainDrawer extends StatelessWidget {
             color: AppColors.textSecondary,
           ),
         ),
-        trailing: isSelected 
-            ? Icon(
-                LucideIcons.check,
-                color: AppColors.primary,
-                size: 16,
-              )
+        trailing: isSelected
+            ? Icon(LucideIcons.check, color: AppColors.primary, size: 16)
             : Icon(
                 LucideIcons.chevronRight,
                 color: AppColors.textHint,
                 size: 16,
               ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }

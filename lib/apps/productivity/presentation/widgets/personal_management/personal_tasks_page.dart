@@ -25,11 +25,7 @@ class PersonalTasksPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              LucideIcons.checkSquare,
-              size: 64,
-              color: AppColors.textHint,
-            ),
+            Icon(LucideIcons.checkSquare, size: 64, color: AppColors.textHint),
             SizedBox(height: 16),
             Text(
               'Tasks Page',
@@ -42,10 +38,7 @@ class PersonalTasksPage extends StatelessWidget {
             SizedBox(height: 8),
             Text(
               'Coming Soon!',
-              style: TextStyle(
-                fontSize: 16,
-                color: AppColors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 16, color: AppColors.textSecondary),
             ),
           ],
         ),

@@ -85,7 +85,10 @@ class ProductivityMainView extends StatelessWidget {
     }
   }
 
-  Widget? _buildBottomNavigationBar(BuildContext context, ProductivityNavigationState state) {
+  Widget? _buildBottomNavigationBar(
+    BuildContext context,
+    ProductivityNavigationState state,
+  ) {
     if (state.selectedModule != ProductivityModule.personalManagement) {
       return null;
     }
@@ -122,19 +125,35 @@ class ProductivityMainView extends StatelessWidget {
         ),
         items: [
           BottomNavigationBarItem(
-            icon: _buildNavIcon(LucideIcons.home, 0, state.selectedPersonalTab.index),
+            icon: _buildNavIcon(
+              LucideIcons.home,
+              0,
+              state.selectedPersonalTab.index,
+            ),
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: _buildNavIcon(LucideIcons.checkSquare, 1, state.selectedPersonalTab.index),
+            icon: _buildNavIcon(
+              LucideIcons.checkSquare,
+              1,
+              state.selectedPersonalTab.index,
+            ),
             label: 'Tasks',
           ),
           BottomNavigationBarItem(
-            icon: _buildNavIcon(LucideIcons.target, 2, state.selectedPersonalTab.index),
+            icon: _buildNavIcon(
+              LucideIcons.target,
+              2,
+              state.selectedPersonalTab.index,
+            ),
             label: 'Goals',
           ),
           BottomNavigationBarItem(
-            icon: _buildNavIcon(LucideIcons.calendar, 3, state.selectedPersonalTab.index),
+            icon: _buildNavIcon(
+              LucideIcons.calendar,
+              3,
+              state.selectedPersonalTab.index,
+            ),
             label: 'Calendar',
           ),
         ],

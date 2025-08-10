@@ -62,7 +62,10 @@ class GoalListItem extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: badgeColor.withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(12),
@@ -77,9 +80,9 @@ class GoalListItem extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 12),
-            
+
             // Progress Bar
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +110,9 @@ class GoalListItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                   child: LinearProgressIndicator(
                     value: progress,
-                    backgroundColor: AppColors.outline.withAlpha((0.3 * 255).toInt()),
+                    backgroundColor: AppColors.outline.withAlpha(
+                      (0.3 * 255).toInt(),
+                    ),
                     valueColor: AlwaysStoppedAnimation<Color>(
                       progress == 1.0 ? AppColors.success : AppColors.primary,
                     ),
@@ -116,7 +121,7 @@ class GoalListItem extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             // Details Section (conditional)
             if (showDetails) ...[
               const SizedBox(height: 16),
@@ -145,16 +150,28 @@ class GoalListItem extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        _buildStatChip('Total', milestonesTotal, AppColors.info),
+                        _buildStatChip(
+                          'Total',
+                          milestonesTotal,
+                          AppColors.info,
+                        ),
                         const SizedBox(width: 4),
-                        _buildStatChip('Pending', milestonesPending, AppColors.warning),
+                        _buildStatChip(
+                          'Pending',
+                          milestonesPending,
+                          AppColors.warning,
+                        ),
                         const SizedBox(width: 4),
-                        _buildStatChip('Done', milestonesCompleted, AppColors.success),
+                        _buildStatChip(
+                          'Done',
+                          milestonesCompleted,
+                          AppColors.success,
+                        ),
                       ],
                     ),
-                    
+
                     const SizedBox(height: 8),
-                    
+
                     // Tasks Stats
                     Row(
                       children: [
@@ -174,9 +191,17 @@ class GoalListItem extends StatelessWidget {
                         const Spacer(),
                         _buildStatChip('Total', tasksTotal, AppColors.info),
                         const SizedBox(width: 4),
-                        _buildStatChip('Pending', tasksPending, AppColors.warning),
+                        _buildStatChip(
+                          'Pending',
+                          tasksPending,
+                          AppColors.warning,
+                        ),
                         const SizedBox(width: 4),
-                        _buildStatChip('Done', tasksCompleted, AppColors.success),
+                        _buildStatChip(
+                          'Done',
+                          tasksCompleted,
+                          AppColors.success,
+                        ),
                       ],
                     ),
                   ],
