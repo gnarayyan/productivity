@@ -34,10 +34,37 @@ class ProductivityMainView extends StatelessWidget {
         return Scaffold(
           backgroundColor: AppColors.background,
           drawer: const MainDrawer(),
-          body: _getBodyWidget(state.selectedModule, state.selectedPersonalTab),
+          body: SafeArea(
+            child: _getBodyWidget(
+              state.selectedModule,
+              state.selectedPersonalTab,
+            ),
+          ),
           bottomNavigationBar: _buildBottomNavigationBar(context, state),
+          floatingActionButton: _buildFloatingActionButton(context),
         );
       },
+    );
+  }
+
+  Widget _buildFloatingActionButton(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: FloatingActionButton.extended(
+        key: const ValueKey('fab'),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const CreateGoalPage(),
+              fullscreenDialog: true,
+            ),
+          );
+        },
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.onPrimary,
+        icon: const Icon(LucideIcons.plus),
+        label: const Text('Add Goal'),
+      ),
     );
   }
 

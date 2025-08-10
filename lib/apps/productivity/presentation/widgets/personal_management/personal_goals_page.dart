@@ -34,250 +34,257 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        title: Text(
-          'Goals',
-          style: AppTextStyles.headlineMedium.copyWith(
-            color: AppColors.onPrimary,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.onPrimary,
-        elevation: 0,
-        actions: [
-          PopupMenuButton<String>(
-            icon: const Icon(LucideIcons.moreVertical),
-            color: AppColors.surface,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            onSelected: (value) {
-              switch (value) {
-                case 'manage_categories':
-                  _showManageCategoriesPage();
-                  break;
-                case 'search':
-                  setState(() {
-                    _isSearchMode = !_isSearchMode;
-                    if (!_isSearchMode) {
-                      _searchController.clear();
-                      _searchQuery = '';
-                    }
-                  });
-                  break;
-                case 'sort':
-                  _showSortDialog();
-                  break;
-                case 'show_details':
-                  setState(() {
-                    _showDetails = !_showDetails;
-                  });
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 'manage_categories',
-                child: Row(
-                  children: [
-                    const Icon(LucideIcons.folder, size: 16),
-                    const SizedBox(width: 12),
-                    Text('Manage Categories', style: AppTextStyles.bodyMedium),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'search',
-                child: Row(
-                  children: [
-                    const Icon(LucideIcons.search, size: 16),
-                    const SizedBox(width: 12),
-                    Text('Search', style: AppTextStyles.bodyMedium),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'sort',
-                child: Row(
-                  children: [
-                    const Icon(LucideIcons.arrowUpDown, size: 16),
-                    const SizedBox(width: 12),
-                    Text('Sort by', style: AppTextStyles.bodyMedium),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'show_details',
-                child: Row(
-                  children: [
-                    Icon(
-                      _showDetails ? LucideIcons.eyeOff : LucideIcons.eye,
-                      size: 16,
-                    ),
-                    const SizedBox(width: 12),
-                    Text('Show Details', style: AppTextStyles.bodyMedium),
-                    const Spacer(),
-                    Switch(
-                      value: _showDetails,
-                      onChanged: null,
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          // Filter/Search Section
-          Container(
-            color: AppColors.primary,
-            child: Column(
-              children: [
-                if (_isSearchMode)
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                        hintText: 'Search goals...',
-                        prefixIcon: IconButton(
-                          icon: const Icon(LucideIcons.arrowLeft),
-                          onPressed: () {
-                            setState(() {
-                              _isSearchMode = false;
-                              _searchController.clear();
-                              _searchQuery = '';
-                            });
-                          },
-                        ),
-                        suffixIcon: _searchQuery.isNotEmpty
-                            ? IconButton(
-                                icon: const Icon(LucideIcons.x),
-                                onPressed: () {
-                                  setState(() {
-                                    _searchController.clear();
-                                    _searchQuery = '';
-                                  });
-                                },
-                              )
-                            : null,
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
-                        ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Filter/Search Section
+        Container(
+          height: 60,
+          // color: AppColors.primary,
+          child: _isSearchMode
+              ? Container(
+                  padding: const EdgeInsets.all(16),
+                  child: TextField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search goals...',
+                      prefixIcon: IconButton(
+                        icon: const Icon(LucideIcons.arrowLeft),
+                        onPressed: () {
+                          setState(() {
+                            _isSearchMode = false;
+                            _searchController.clear();
+                            _searchQuery = '';
+                          });
+                        },
                       ),
-                      onChanged: (value) {
-                        setState(() {
-                          _searchQuery = value;
-                        });
-                      },
+                      suffixIcon: _searchQuery.isNotEmpty
+                          ? IconButton(
+                              icon: const Icon(LucideIcons.x),
+                              onPressed: () {
+                                setState(() {
+                                  _searchController.clear();
+                                  _searchQuery = '';
+                                });
+                              },
+                            )
+                          : null,
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                     ),
-                  )
-                else
-                  FilterChips(
-                    categories: _categories,
-                    selectedCategory: _selectedFilter,
-                    onCategoryChanged: (category) {
+                    onChanged: (value) {
                       setState(() {
-                        _selectedFilter = category;
+                        _searchQuery = value;
                       });
                     },
                   ),
-                const SizedBox(height: 8),
-              ],
-            ),
+                )
+              : Row(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: _categories.length,
+                        padding: const EdgeInsets.all(8),
+                        itemBuilder: (context, index) {
+                          final String category = _categories[index];
+
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: GoalChip(
+                              name: category,
+                              isSelected: category == _selectedFilter,
+                              onSelect: (category) {
+                                setState(() {
+                                  _selectedFilter = category;
+                                });
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    PopupMenuButton<String>(
+                      icon: const Icon(LucideIcons.moreVertical),
+                      color: AppColors.surface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      onSelected: (value) {
+                        switch (value) {
+                          case 'manage_categories':
+                            _showManageCategoriesPage();
+                            break;
+                          case 'search':
+                            setState(() {
+                              _isSearchMode = !_isSearchMode;
+                              if (!_isSearchMode) {
+                                _searchController.clear();
+                                _searchQuery = '';
+                              }
+                            });
+                            break;
+                          case 'sort':
+                            _showSortDialog();
+                            break;
+                          case 'show_details':
+                            setState(() {
+                              _showDetails = !_showDetails;
+                            });
+                            break;
+                        }
+                      },
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          value: 'manage_categories',
+                          child: Row(
+                            children: [
+                              const Icon(LucideIcons.folder, size: 16),
+                              const SizedBox(width: 12),
+                              Text(
+                                'Manage Categories',
+                                style: AppTextStyles.bodyMedium,
+                              ),
+                            ],
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'search',
+                          child: Row(
+                            children: [
+                              const Icon(LucideIcons.search, size: 16),
+                              const SizedBox(width: 12),
+                              Text('Search', style: AppTextStyles.bodyMedium),
+                            ],
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'sort',
+                          child: Row(
+                            children: [
+                              const Icon(LucideIcons.arrowUpDown, size: 16),
+                              const SizedBox(width: 12),
+                              Text('Sort by', style: AppTextStyles.bodyMedium),
+                            ],
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'show_details',
+                          child: Row(
+                            children: [
+                              Icon(
+                                _showDetails
+                                    ? LucideIcons.eyeOff
+                                    : LucideIcons.eye,
+                                size: 16,
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                'Show Details',
+                                style: AppTextStyles.bodyMedium,
+                              ),
+                              const Spacer(),
+                              Switch(
+                                value: _showDetails,
+                                onChanged: null,
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+        ),
+
+        // Goals List
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              // Pending Section
+              _buildSection('Pending', AppColors.warning, [
+                GoalListItem(
+                  title: 'Learn Flutter Development',
+                  progress: 0.65,
+                  badge: 'overdue',
+                  badgeColor: AppColors.error,
+                  showDetails: _showDetails,
+                  milestonesTotal: 5,
+                  milestonesPending: 2,
+                  milestonesCompleted: 3,
+                  tasksTotal: 15,
+                  tasksPending: 8,
+                  tasksCompleted: 7,
+                ),
+                GoalListItem(
+                  title: 'Complete Project Portfolio',
+                  progress: 0.45,
+                  badge: '7 days left',
+                  badgeColor: AppColors.primary,
+                  showDetails: _showDetails,
+                  milestonesTotal: 3,
+                  milestonesPending: 2,
+                  milestonesCompleted: 1,
+                  tasksTotal: 12,
+                  tasksPending: 7,
+                  tasksCompleted: 5,
+                ),
+              ]),
+
+              const SizedBox(height: 24),
+
+              // Upcoming Section
+              _buildSection('Upcoming', AppColors.info, [
+                GoalListItem(
+                  title: 'Master Data Structures',
+                  progress: 0.0,
+                  badge: 'next month',
+                  badgeColor: AppColors.secondary,
+                  showDetails: _showDetails,
+                  milestonesTotal: 4,
+                  milestonesPending: 4,
+                  milestonesCompleted: 0,
+                  tasksTotal: 20,
+                  tasksPending: 20,
+                  tasksCompleted: 0,
+                ),
+              ]),
+
+              const SizedBox(height: 24),
+
+              // Completed Section
+              _buildSection('Completed', AppColors.success, [
+                GoalListItem(
+                  title: 'Learn Basic Programming',
+                  progress: 1.0,
+                  badge: '6 months ago',
+                  badgeColor: AppColors.success,
+                  showDetails: _showDetails,
+                  milestonesTotal: 3,
+                  milestonesPending: 0,
+                  milestonesCompleted: 3,
+                  tasksTotal: 10,
+                  tasksPending: 0,
+                  tasksCompleted: 10,
+                ),
+              ]),
+            ],
           ),
-
-          // Goals List
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                // Pending Section
-                _buildSection('Pending', AppColors.warning, [
-                  GoalListItem(
-                    title: 'Learn Flutter Development',
-                    progress: 0.65,
-                    badge: 'overdue',
-                    badgeColor: AppColors.error,
-                    showDetails: _showDetails,
-                    milestonesTotal: 5,
-                    milestonesPending: 2,
-                    milestonesCompleted: 3,
-                    tasksTotal: 15,
-                    tasksPending: 8,
-                    tasksCompleted: 7,
-                  ),
-                  GoalListItem(
-                    title: 'Complete Project Portfolio',
-                    progress: 0.45,
-                    badge: '7 days left',
-                    badgeColor: AppColors.primary,
-                    showDetails: _showDetails,
-                    milestonesTotal: 3,
-                    milestonesPending: 2,
-                    milestonesCompleted: 1,
-                    tasksTotal: 12,
-                    tasksPending: 7,
-                    tasksCompleted: 5,
-                  ),
-                ]),
-
-                const SizedBox(height: 24),
-
-                // Upcoming Section
-                _buildSection('Upcoming', AppColors.info, [
-                  GoalListItem(
-                    title: 'Master Data Structures',
-                    progress: 0.0,
-                    badge: 'next month',
-                    badgeColor: AppColors.secondary,
-                    showDetails: _showDetails,
-                    milestonesTotal: 4,
-                    milestonesPending: 4,
-                    milestonesCompleted: 0,
-                    tasksTotal: 20,
-                    tasksPending: 20,
-                    tasksCompleted: 0,
-                  ),
-                ]),
-
-                const SizedBox(height: 24),
-
-                // Completed Section
-                _buildSection('Completed', AppColors.success, [
-                  GoalListItem(
-                    title: 'Learn Basic Programming',
-                    progress: 1.0,
-                    badge: '6 months ago',
-                    badgeColor: AppColors.success,
-                    showDetails: _showDetails,
-                    milestonesTotal: 3,
-                    milestonesPending: 0,
-                    milestonesCompleted: 3,
-                    tasksTotal: 10,
-                    tasksPending: 0,
-                    tasksCompleted: 10,
-                  ),
-                ]),
-              ],
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: _buildFloatingActionButton(),
+        ),
+      ],
     );
   }
 
@@ -326,22 +333,6 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
               Padding(padding: const EdgeInsets.only(bottom: 12), child: child),
         ),
       ],
-    );
-  }
-
-  Widget _buildFloatingActionButton() {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      child: FloatingActionButton.extended(
-        key: const ValueKey('fab'),
-        onPressed: () {
-          _showCreateGoalPage();
-        },
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.onPrimary,
-        icon: const Icon(LucideIcons.plus),
-        label: const Text('Add Goal'),
-      ),
     );
   }
 
@@ -403,15 +394,6 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
       groupValue: 'Due date', // Default selected
       onChanged: (value) {},
       activeColor: AppColors.primary,
-    );
-  }
-
-  void _showCreateGoalPage() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const CreateGoalPage(),
-        fullscreenDialog: true,
-      ),
     );
   }
 }
