@@ -87,6 +87,22 @@ class LandingPage extends StatelessWidget {
                       onTap: () =>
                           context.pushRoute(const NestedBottomNavRoute()),
                     ),
+                    AppCard(
+                      title: 'Productivity App',
+                      subtitle: 'Goals • Tasks • Analytics',
+                      icon: LucideIcons.trendingUp,
+                      color: Color(0xFF9C27B0), // Purple color
+                      isActive: true,
+                      onTap: () {
+                        // Will be enabled after build_runner generates routes
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please run: flutter packages pub run build_runner build'),
+                            backgroundColor: AppColors.warning,
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
