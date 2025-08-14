@@ -205,9 +205,7 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
                         ),
                         PopupMenuItem(
                           value: 'advance_options',
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
+                          onTap: Scaffold.of(context).openDrawer,
                           child: Row(
                             children: [
                               Icon(LucideIcons.sliders, size: 16),
