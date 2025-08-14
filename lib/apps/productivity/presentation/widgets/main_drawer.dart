@@ -17,7 +17,7 @@ class MainDrawer extends StatelessWidget {
             children: [
               // Header
               Container(
-                height: 200,
+                height: 220,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
