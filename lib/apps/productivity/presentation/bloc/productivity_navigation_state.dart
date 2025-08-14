@@ -23,6 +23,10 @@ class ProductivityNavigationState extends Equatable {
     );
   }
 
+  bool get isGoalsPage =>
+      selectedModule == ProductivityModule.personalManagement &&
+      selectedPersonalTab == PersonalTab.goals;
+
   @override
   List<Object?> get props => [selectedModule, selectedPersonalTab];
 }
