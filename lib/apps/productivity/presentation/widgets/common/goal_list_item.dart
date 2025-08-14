@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../../themes/app_theme.dart';
+import '../personal_management/table.dart';
 
 class GoalListItem extends StatelessWidget {
   final String title;
@@ -123,110 +123,8 @@ class GoalListItem extends StatelessWidget {
             ),
 
             // Details Section (conditional)
-            if (showDetails) ...[
-              const SizedBox(height: 16),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: AppColors.background,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
-                  children: [
-                    // Milestones Stats
-                    Row(
-                      children: [
-                        Icon(
-                          LucideIcons.flag,
-                          size: 16,
-                          color: AppColors.primary,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Milestones:',
-                          style: AppTextStyles.bodySmall.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.textSecondary,
-                          ),
-                        ),
-                        const Spacer(),
-                        _buildStatChip(
-                          'Total',
-                          milestonesTotal,
-                          AppColors.info,
-                        ),
-                        const SizedBox(width: 4),
-                        _buildStatChip(
-                          'Pending',
-                          milestonesPending,
-                          AppColors.warning,
-                        ),
-                        const SizedBox(width: 4),
-                        _buildStatChip(
-                          'Done',
-                          milestonesCompleted,
-                          AppColors.success,
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 8),
-
-                    // Tasks Stats
-                    Row(
-                      children: [
-                        Icon(
-                          LucideIcons.checkSquare,
-                          size: 16,
-                          color: AppColors.secondary,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Tasks:',
-                          style: AppTextStyles.bodySmall.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.textSecondary,
-                          ),
-                        ),
-                        const Spacer(),
-                        _buildStatChip('Total', tasksTotal, AppColors.info),
-                        const SizedBox(width: 4),
-                        _buildStatChip(
-                          'Pending',
-                          tasksPending,
-                          AppColors.warning,
-                        ),
-                        const SizedBox(width: 4),
-                        _buildStatChip(
-                          'Done',
-                          tasksCompleted,
-                          AppColors.success,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            if (showDetails) StatsTable(),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStatChip(String label, int count, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-      decoration: BoxDecoration(
-        color: color.withAlpha((0.1 * 255).toInt()),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Text(
-        '$count',
-        style: AppTextStyles.bodySmall.copyWith(
-          color: color,
-          fontWeight: FontWeight.w600,
-          fontSize: 10,
         ),
       ),
     );

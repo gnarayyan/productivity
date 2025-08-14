@@ -41,7 +41,9 @@ class ProductivityMainView extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: _buildBottomNavigationBar(context, state),
-          floatingActionButton: _buildFloatingActionButton(context),
+          floatingActionButton: (state.selectedPersonalTab == PersonalTab.goals)
+              ? _buildFloatingActionButton(context)
+              : null,
         );
       },
     );
