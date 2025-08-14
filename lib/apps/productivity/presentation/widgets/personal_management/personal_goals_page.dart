@@ -203,6 +203,22 @@ class _PersonalGoalsPageState extends State<PersonalGoalsPage> {
                             ],
                           ),
                         ),
+                        PopupMenuItem(
+                          value: 'advance_options',
+                          onTap: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(LucideIcons.sliders, size: 16),
+                              const SizedBox(width: 12),
+                              Text(
+                                'Advance Options',
+                                style: AppTextStyles.bodyMedium,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ],
