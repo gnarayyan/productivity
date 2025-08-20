@@ -14,22 +14,22 @@ class MenuItemChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Row(
       children: [
         Icon(
-          icon, 
+          icon,
           size: 16,
-          color: theme.brightness == Brightness.dark 
-              ? Colors.white 
+          color: theme.brightness == Brightness.dark
+              ? Colors.white
               : Colors.black87,
         ),
         const SizedBox(width: 12),
         Text(
-          label, 
+          label,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.brightness == Brightness.dark 
-                ? Colors.white 
+            color: theme.brightness == Brightness.dark
+                ? Colors.white
                 : Colors.black87,
           ),
         ),

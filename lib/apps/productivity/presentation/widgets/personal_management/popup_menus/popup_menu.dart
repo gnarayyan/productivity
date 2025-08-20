@@ -13,16 +13,16 @@ class GoalsPopUpMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final showDetails = context.watch<GoalDetailCubit>().state;
-    
+
     return PopupMenuButton<String>(
       icon: Icon(
         LucideIcons.moreVertical,
-        color: theme.brightness == Brightness.dark 
-            ? Colors.white 
+        color: theme.brightness == Brightness.dark
+            ? Colors.white
             : Colors.black,
       ),
-      color: theme.brightness == Brightness.dark 
-          ? const Color(0xFF1E1E1E) 
+      color: theme.brightness == Brightness.dark
+          ? const Color(0xFF1E1E1E)
           : Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
 
@@ -70,11 +70,11 @@ class GoalsPopUpMenu extends StatelessWidget {
               onChanged: null,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               activeColor: theme.colorScheme.primary,
-              inactiveThumbColor: theme.brightness == Brightness.dark 
-                  ? Colors.grey.shade400 
+              inactiveThumbColor: theme.brightness == Brightness.dark
+                  ? Colors.grey.shade400
                   : Colors.grey.shade600,
-              inactiveTrackColor: theme.brightness == Brightness.dark 
-                  ? Colors.grey.shade700 
+              inactiveTrackColor: theme.brightness == Brightness.dark
+                  ? Colors.grey.shade700
                   : Colors.grey.shade300,
             ),
           ),
