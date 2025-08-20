@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:varosa_tech/apps/offline_todo/presentation/bloc/todo_bloc.dart';
 import 'package:varosa_tech/core/service_locator.dart';
 import 'package:varosa_tech/themes/app_theme.dart';
+import 'package:varosa_tech/themes/bloc/theme_bloc.dart';
+import 'package:varosa_tech/themes/bloc/theme_state.dart';
 
 import 'router/app_router.dart';
 
@@ -13,14 +15,26 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<TodoBloc>(
-      create: (_) => sl<TodoBloc>()..add(LoadTodos()),
-      child: MaterialApp.router(
-        title: 'Varosa Tech - Evaluation Apps',
-        theme: AppTheme.lightTheme,
-        routerConfig: _appRouter.config(),
-
-        debugShowCheckedModeBanner: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<TodoBloc>(
+          create: (_) => sl<TodoBloc>()..add(LoadTodos()),
+        ),
+        BlocProvider<ThemeBloc>(
+          create: (_) => sl<ThemeBloc>(),
+        ),
+      ],
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, themeState) {
+          return MaterialApp.router(
+            title: 'Varosa Tech - Evaluation Apps',
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            routerConfig: _appRouter.config(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }

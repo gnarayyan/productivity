@@ -11,6 +11,7 @@ import '../widgets/personal_management/personal_dashboard.dart';
 import '../widgets/personal_management/personal_goals_page.dart';
 import '../widgets/personal_management/personal_tasks_page.dart';
 import '../widgets/personal_management/personal_calendar_page.dart';
+import '../widgets/settings/settings_page.dart';
 
 @RoutePage()
 class ProductivityMainPage extends StatelessWidget {
@@ -88,17 +89,7 @@ class ProductivityMainView extends StatelessWidget {
           ),
         );
       case ProductivityModule.settings:
-        return const Center(
-          child: Text(
-            'Settings\nComing Soon!',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textSecondary,
-            ),
-          ),
-        );
+        return const SettingsPage();
     }
   }
 

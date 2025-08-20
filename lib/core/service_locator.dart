@@ -20,6 +20,9 @@ import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
 // Productivity app imports
 import '../apps/productivity/presentation/bloc/productivity_navigation_bloc.dart';
 
+// Theme imports
+import '../themes/bloc/theme_bloc.dart';
+
 // Mini Ecommerce DI
 import '../apps/mini_ecommerce/di/ecommerce_di.dart';
 
@@ -130,4 +133,7 @@ Future<void> _setupAuthDependencies() async {
       tokenRefreshService: sl<TokenRefreshService>(),
     ),
   );
+
+  // Theme BLoC
+  sl.registerLazySingleton<ThemeBloc>(() => ThemeBloc());
 }
