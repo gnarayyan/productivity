@@ -10,7 +10,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     on<LoadTheme>(_onLoadTheme);
     on<ToggleTheme>(_onToggleTheme);
     on<SetTheme>(_onSetTheme);
-    
+
     // Load saved theme on initialization
     add(LoadTheme());
   }
@@ -26,7 +26,10 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     }
   }
 
-  Future<void> _onToggleTheme(ToggleTheme event, Emitter<ThemeState> emit) async {
+  Future<void> _onToggleTheme(
+    ToggleTheme event,
+    Emitter<ThemeState> emit,
+  ) async {
     try {
       final newTheme = !state.isDarkMode;
       final prefs = await SharedPreferences.getInstance();
@@ -34,10 +37,12 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       emit(state.copyWith(isDarkMode: newTheme));
     } catch (e) {
       // If there's an error saving preferences, still toggle but show error
-      emit(state.copyWith(
-        isDarkMode: !state.isDarkMode,
-        error: 'Failed to save theme preference',
-      ));
+      emit(
+        state.copyWith(
+          isDarkMode: !state.isDarkMode,
+          error: 'Failed to save theme preference',
+        ),
+      );
     }
   }
 
@@ -48,10 +53,12 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       emit(state.copyWith(isDarkMode: event.isDarkMode));
     } catch (e) {
       // If there's an error saving preferences, still set theme but show error
-      emit(state.copyWith(
-        isDarkMode: event.isDarkMode,
-        error: 'Failed to save theme preference',
-      ));
+      emit(
+        state.copyWith(
+          isDarkMode: event.isDarkMode,
+          error: 'Failed to save theme preference',
+        ),
+      );
     }
   }
 }

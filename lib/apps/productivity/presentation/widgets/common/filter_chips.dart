@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../themes/app_theme.dart';
 
 class GoalChip extends StatelessWidget {
   final String name;
@@ -15,10 +14,14 @@ class GoalChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return FilterChip(
       label: Text(name),
-      labelStyle: AppTextStyles.bodyMedium.copyWith(
-        color: isSelected ? AppColors.onPrimary : AppColors.textSecondary,
+      labelStyle: theme.textTheme.bodyMedium?.copyWith(
+        color: isSelected
+            ? theme.colorScheme.onPrimary
+            : theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.7),
         fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
       ),
       selected: isSelected,
@@ -27,17 +30,18 @@ class GoalChip extends StatelessWidget {
           onSelect(name);
         }
       },
-
-      backgroundColor: AppColors.textHint.withAlpha(75),
-      selectedColor: AppColors.primary,
-
-      checkmarkColor: AppColors.onPrimary,
+      backgroundColor: theme.colorScheme.surface,
+      selectedColor: theme.colorScheme.primary,
+      checkmarkColor: theme.colorScheme.onPrimary,
       side: BorderSide(
         color: isSelected
-            ? AppColors.textHint.withAlpha(75)
-            : AppColors.textHint.withAlpha(50),
+            ? theme.colorScheme.primary
+            : theme.colorScheme.outline.withValues(alpha: 0.3),
+        width: isSelected ? 1.5 : 1,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: isSelected ? 2 : 0,
+      pressElevation: 4,
     );
   }
 }

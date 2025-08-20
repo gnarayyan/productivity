@@ -17,7 +17,7 @@ class ToggleTheme extends ThemeEvent {
 
 class SetTheme extends ThemeEvent {
   final bool isDarkMode;
-  
+
   const SetTheme({required this.isDarkMode});
 
   @override

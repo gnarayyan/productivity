@@ -33,14 +33,21 @@ class _PersonalGoalsViewState extends State<PersonalGoalsView> {
   bool _isSearchMode = false;
   String _searchQuery = '';
   String _selectedFilter = 'All';
+  String _selectedTab = 'Pending'; // Add selected tab state
   final TextEditingController _searchController = TextEditingController();
 
-  final List<String> _categories = [
+  final List<String> _lightModeCategories = [
+    'All',
+    'Today',
+    'This Week',
+    'This Month',
+  ];
+
+  final List<String> _darkModeCategories = [
     'All',
     'Personal',
     'Work',
     'Health',
-    'Learning',
   ];
 
   @override
@@ -51,93 +58,202 @@ class _PersonalGoalsViewState extends State<PersonalGoalsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Filter/Search Section
-        SizedBox(
-          height: 60,
-          // color: AppColors.primary,
-          child: _isSearchMode
-              ? Container(
-                  padding: const EdgeInsets.all(16),
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search goals...',
-                      prefixIcon: IconButton(
-                        icon: const Icon(LucideIcons.arrowLeft),
-                        onPressed: () {
-                          setState(() {
-                            _isSearchMode = false;
-                            _searchController.clear();
-                            _searchQuery = '';
-                          });
-                        },
-                      ),
-                      suffixIcon: _searchQuery.isNotEmpty
-                          ? IconButton(
-                              icon: const Icon(LucideIcons.x),
-                              onPressed: () {
-                                setState(() {
-                                  _searchController.clear();
-                                  _searchQuery = '';
-                                });
-                              },
-                            )
-                          : null,
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        _searchQuery = value;
-                      });
-                    },
-                  ),
-                )
-              : Row(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: _categories.length,
-                        padding: const EdgeInsets.all(8),
-                        itemBuilder: (context, index) {
-                          final String category = _categories[index];
+    final theme = Theme.of(context);
 
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: GoalChip(
-                              name: category,
-                              isSelected: category == _selectedFilter,
-                              onSelect: (category) {
-                                setState(() {
-                                  _selectedFilter = category;
-                                });
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-
-                    GoalsPopUpMenu(),
-                  ],
-                ),
+    return Scaffold(
+      backgroundColor: theme.brightness == Brightness.dark
+          ? const Color(0xFF121212)
+          : const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: theme.brightness == Brightness.dark
+            ? const Color(0xFF121212)
+            : const Color(0xFFF5F5F5),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Goals',
+          style: theme.textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: theme.brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
+          ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.more_vert,
+              color: theme.brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.black,
+            ),
+            onPressed: () {
+              // Handle menu action
+            },
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          // Filter/Search Section
+          Container(
+            height: 60,
+            decoration: BoxDecoration(
+              color: theme.brightness == Brightness.dark
+                  ? const Color(0xFF121212)
+                  : const Color(0xFFF5F5F5),
+            ),
+            child: _isSearchMode
+                ? Container(
+                    padding: const EdgeInsets.all(16),
+                    child: TextField(
+                      controller: _searchController,
+                      decoration: InputDecoration(
+                        hintText: 'Search goals...',
+                        hintStyle: TextStyle(
+                          color: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
+                        ),
+                        prefixIcon: IconButton(
+                          icon: Icon(
+                            LucideIcons.arrowLeft,
+                            color: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.color,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isSearchMode = false;
+                              _searchController.clear();
+                              _searchQuery = '';
+                            });
+                          },
+                        ),
+                        suffixIcon: _searchQuery.isNotEmpty
+                            ? IconButton(
+                                icon: Icon(
+                                  LucideIcons.x,
+                                  color: Theme.of(
+                                    context,
+                                  ).textTheme.bodyMedium?.color,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _searchController.clear();
+                                    _searchQuery = '';
+                                  });
+                                },
+                              )
+                            : null,
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.surface,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.outline.withValues(alpha: 0.2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          _searchQuery = value;
+                        });
+                      },
+                    ),
+                  )
+                : Row(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: theme.brightness == Brightness.dark
+                              ? _darkModeCategories.length
+                              : _lightModeCategories.length,
+                          padding: const EdgeInsets.all(8),
+                          itemBuilder: (context, index) {
+                            final categories =
+                                theme.brightness == Brightness.dark
+                                ? _darkModeCategories
+                                : _lightModeCategories;
+                            final String category = categories[index];
 
-        GoalsListView(),
-      ],
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: GoalChip(
+                                name: category,
+                                isSelected: category == _selectedFilter,
+                                onSelect: (category) {
+                                  setState(() {
+                                    _selectedFilter = category;
+                                  });
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+
+                      GoalsPopUpMenu(),
+                    ],
+                  ),
+          ),
+
+          // Tabs Section (Pending, Upcoming, Completed)
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: theme.brightness == Brightness.dark
+                  ? const Color(0xFF121212)
+                  : const Color(0xFFF5F5F5),
+              border: Border(
+                bottom: BorderSide(
+                  color: theme.brightness == Brightness.dark
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
+                  width: 1,
+                ),
+              ),
+            ),
+            child: Row(
+              children: [
+                _buildTabItem('Pending', _selectedTab == 'Pending', theme),
+                _buildTabItem('Upcoming', _selectedTab == 'Upcoming', theme),
+                _buildTabItem('Completed', _selectedTab == 'Completed', theme),
+              ],
+            ),
+          ),
+
+          GoalsListView(selectedTab: _selectedTab),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        heroTag: "goals_fab", // Add unique hero tag
+        onPressed: () {
+          // Handle add goal action
+        },
+        backgroundColor: const Color(0xFF2196F3), // Blue color from screenshots
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
@@ -192,4 +308,46 @@ class _PersonalGoalsViewState extends State<PersonalGoalsView> {
   //     activeColor: AppColors.primary,
   //   );
   // }
+
+  Widget _buildTabItem(String title, bool isSelected, ThemeData theme) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            _selectedTab = title;
+          });
+        },
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: isSelected
+                    ? (theme.brightness == Brightness.dark
+                          ? theme.colorScheme.primary
+                          : theme.colorScheme.primary)
+                    : Colors.transparent,
+                width: 2,
+              ),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              title,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                color: isSelected
+                    ? (theme.brightness == Brightness.dark
+                          ? theme.colorScheme.primary
+                          : theme.colorScheme.primary)
+                    : (theme.brightness == Brightness.dark
+                          ? Colors.grey.shade400
+                          : Colors.grey.shade600),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

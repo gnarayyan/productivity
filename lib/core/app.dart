@@ -17,12 +17,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<TodoBloc>(
-          create: (_) => sl<TodoBloc>()..add(LoadTodos()),
-        ),
-        BlocProvider<ThemeBloc>(
-          create: (_) => sl<ThemeBloc>(),
-        ),
+        BlocProvider<TodoBloc>(create: (_) => sl<TodoBloc>()..add(LoadTodos())),
+        BlocProvider<ThemeBloc>(create: (_) => sl<ThemeBloc>()),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, themeState) {
