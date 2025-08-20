@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../../../../../themes/app_theme.dart';
 import '../../../cubits/goal_detail_cubit.dart';
 import '../manage_categories_page.dart';
 import 'menu_item_child.dart';
@@ -12,10 +11,19 @@ class GoalsPopUpMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final showDetails = context.watch<GoalDetailCubit>().state;
+    
     return PopupMenuButton<String>(
-      icon: const Icon(LucideIcons.moreVertical),
-      color: AppColors.surface,
+      icon: Icon(
+        LucideIcons.moreVertical,
+        color: theme.brightness == Brightness.dark 
+            ? Colors.white 
+            : Colors.black,
+      ),
+      color: theme.brightness == Brightness.dark 
+          ? const Color(0xFF1E1E1E) 
+          : Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
 
       itemBuilder: (context) => [
@@ -61,6 +69,13 @@ class GoalsPopUpMenu extends StatelessWidget {
               value: showDetails,
               onChanged: null,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              activeColor: theme.colorScheme.primary,
+              inactiveThumbColor: theme.brightness == Brightness.dark 
+                  ? Colors.grey.shade400 
+                  : Colors.grey.shade600,
+              inactiveTrackColor: theme.brightness == Brightness.dark 
+                  ? Colors.grey.shade700 
+                  : Colors.grey.shade300,
             ),
           ),
         ),

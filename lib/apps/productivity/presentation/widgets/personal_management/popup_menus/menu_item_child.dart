@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../themes/app_theme.dart';
-
 class MenuItemChild extends StatelessWidget {
   const MenuItemChild({
     super.key,
@@ -15,11 +13,26 @@ class MenuItemChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Row(
       children: [
-        Icon(icon, size: 16),
+        Icon(
+          icon, 
+          size: 16,
+          color: theme.brightness == Brightness.dark 
+              ? Colors.white 
+              : Colors.black87,
+        ),
         const SizedBox(width: 12),
-        Text(label, style: AppTextStyles.bodyMedium),
+        Text(
+          label, 
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.brightness == Brightness.dark 
+                ? Colors.white 
+                : Colors.black87,
+          ),
+        ),
         if (child != null) ...[const Spacer(), child!],
       ],
     );

@@ -33,8 +33,12 @@ class ProductivityMainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductivityNavigationBloc, ProductivityNavigationState>(
       builder: (context, state) {
+        final theme = Theme.of(context);
+
         return Scaffold(
-          backgroundColor: AppColors.background,
+          backgroundColor: theme.brightness == Brightness.dark
+              ? const Color(0xFF121212)
+              : const Color(0xFFF5F5F5),
           drawer: const MainDrawer(),
           body: SafeArea(
             child: _getBodyWidget(
@@ -56,6 +60,7 @@ class ProductivityMainView extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       child: FloatingActionButton.extended(
         key: const ValueKey('fab'),
+        heroTag: "productivity_main_fab", // Add unique hero tag
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -64,8 +69,9 @@ class ProductivityMainView extends StatelessWidget {
             ),
           );
         },
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.onPrimary,
+        backgroundColor:
+            AppColors.primary, // Blue color consistent with goals page
+        foregroundColor: Colors.white,
         icon: const Icon(LucideIcons.plus),
         label: const Text('Add Goal'),
       ),
@@ -114,12 +120,16 @@ class ProductivityMainView extends StatelessWidget {
       return null;
     }
 
+    final theme = Theme.of(context);
+
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.brightness == Brightness.dark
+            ? const Color(0xFF1E1E1E)
+            : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: AppColors.shadow.withAlpha((0.1 * 255).toInt()),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 12,
             offset: const Offset(0, -4),
           ),
@@ -132,17 +142,23 @@ class ProductivityMainView extends StatelessWidget {
             PersonalTabChanged(PersonalTab.values[index]),
           );
         },
-        backgroundColor: AppColors.surface,
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.textHint,
+        backgroundColor: theme.brightness == Brightness.dark
+            ? const Color(0xFF1E1E1E)
+            : Colors.white,
+        selectedItemColor: theme.colorScheme.primary,
+        unselectedItemColor: theme.brightness == Brightness.dark
+            ? Colors.grey.shade400
+            : Colors.grey.shade600,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
-        selectedLabelStyle: AppTextStyles.bodySmall.copyWith(
+        selectedLabelStyle: theme.textTheme.bodySmall?.copyWith(
           fontWeight: FontWeight.w600,
-          color: AppColors.primary,
+          color: theme.colorScheme.primary,
         ),
-        unselectedLabelStyle: AppTextStyles.bodySmall.copyWith(
-          color: AppColors.textHint,
+        unselectedLabelStyle: theme.textTheme.bodySmall?.copyWith(
+          color: theme.brightness == Brightness.dark
+              ? Colors.grey.shade400
+              : Colors.grey.shade600,
         ),
         items: [
           BottomNavigationBarItem(
@@ -184,18 +200,28 @@ class ProductivityMainView extends StatelessWidget {
 
   Widget _buildNavIcon(IconData icon, int index, int selectedIndex) {
     final isSelected = index == selectedIndex;
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: isSelected
-            ? AppColors.primary.withAlpha((0.1 * 255).toInt())
-            : Colors.transparent,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Icon(
-        icon,
-        color: isSelected ? AppColors.primary : AppColors.textHint,
-      ),
+
+    return Builder(
+      builder: (context) {
+        final theme = Theme.of(context);
+        return Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? theme.colorScheme.primary.withAlpha((0.1 * 255).toInt())
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Icon(
+            icon,
+            color: isSelected
+                ? theme.colorScheme.primary
+                : (theme.brightness == Brightness.dark
+                      ? Colors.grey.shade400
+                      : Colors.grey.shade600),
+          ),
+        );
+      },
     );
   }
 }
