@@ -286,7 +286,7 @@ class CustomFAB extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       child: FloatingActionButton.extended(
         key: const ValueKey('fab'),
-        heroTag: "productivity_main_fab", // Add unique hero tag
+        heroTag: 'productivity_main_fab', // Add unique hero tag
         onPressed: () {
           if (isGoal || isTasks) {
             Navigator.of(context).push(
