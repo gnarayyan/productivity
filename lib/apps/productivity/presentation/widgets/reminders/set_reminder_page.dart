@@ -614,11 +614,7 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                 ),
                 child: const Row(
                   children: [
-                    Icon(
-                      Icons.warning,
-                      color: Color(0xFFD32F2F),
-                      size: 20,
-                    ),
+                    Icon(Icons.warning, color: Color(0xFFD32F2F), size: 20),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(
@@ -732,7 +728,7 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
   void _updateReminderDateTime() {
     final baseDate = DateTime(2024, 5, 12, 9, 41); // Example due date
 
-    int durationValue = _selectedNumber;
+    final int durationValue = _selectedNumber;
     Duration duration;
 
     switch (_selectedTimeFrame) {
