@@ -320,7 +320,7 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
   Widget _buildTodaysProgress(bool isDark) {
     final todayEvents = _getEventsForDay(DateTime.now());
     final totalTasks = todayEvents.length;
-    final completedTasks = 3; // Mock completed tasks
+    const completedTasks = 3; // Mock completed tasks
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),

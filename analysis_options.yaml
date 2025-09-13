@@ -57,7 +57,7 @@ linter:
     # --- Phase 2: Performance & Flutter Best Practices ---
     prefer_const_constructors: true                    # Use const constructors when possible. Reduces rebuilds and improves performance.
     # prefer_const_constructors_in_immutables: true      # Use const constructors in immutable classes for compile-time optimization.
-    # prefer_const_declarations: true                    # Declare local variables as const when they never change. Enables compile-time evaluation.
+    prefer_const_declarations: true                    # Declare local variables as const when they never change. Enables compile-time evaluation.
     # prefer_const_literals_to_create_immutables: true   # Use const for immutable collection literals (lists, maps, sets). Improves memory efficiency.
     # prefer_final_locals: true                          # Declare local variables as final when not reassigned. Encourages immutability.
     # avoid_unnecessary_containers: true                 # Avoid using Container when it's not needed. Reduces widget tree complexity.

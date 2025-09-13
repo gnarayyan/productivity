@@ -20,12 +20,12 @@ class LucideIconsx {
 }
 
 // Dummy data for example
-final int milestonesTotal = 15;
-final int milestonesPending = 5;
-final int milestonesCompleted = 10;
-final int tasksTotal = 25;
-final int tasksPending = 10;
-final int tasksCompleted = 15;
+const int milestonesTotal = 15;
+const int milestonesPending = 5;
+const int milestonesCompleted = 10;
+const int tasksTotal = 25;
+const int tasksPending = 10;
+const int tasksCompleted = 15;
 
 // This is the custom Stat Chip widget
 Widget _buildStatChip(String label, int value, Color color) {
