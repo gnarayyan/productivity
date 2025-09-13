@@ -112,7 +112,7 @@ class MainDrawer extends StatelessWidget {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           LucideIcons.info,
                           size: 16,
                           color: AppColors.textSecondary,
@@ -187,8 +187,8 @@ class MainDrawer extends StatelessWidget {
           ),
         ),
         trailing: isSelected
-            ? Icon(LucideIcons.check, color: AppColors.primary, size: 16)
-            : Icon(
+            ? const Icon(LucideIcons.check, color: AppColors.primary, size: 16)
+            : const Icon(
                 LucideIcons.chevronRight,
                 color: AppColors.textHint,
                 size: 16,

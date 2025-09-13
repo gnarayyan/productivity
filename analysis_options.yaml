@@ -55,7 +55,7 @@ linter:
     # prefer_final_fields: true                      # Use 'final' for fields that are never reassigned. Encourages immutability and safer code.
 
     # --- Phase 2: Performance & Flutter Best Practices ---
-    # prefer_const_constructors: true                    # Use const constructors when possible. Reduces rebuilds and improves performance.
+    prefer_const_constructors: true                    # Use const constructors when possible. Reduces rebuilds and improves performance.
     # prefer_const_constructors_in_immutables: true      # Use const constructors in immutable classes for compile-time optimization.
     # prefer_const_declarations: true                    # Declare local variables as const when they never change. Enables compile-time evaluation.
     # prefer_const_literals_to_create_immutables: true   # Use const for immutable collection literals (lists, maps, sets). Improves memory efficiency.

@@ -88,7 +88,7 @@ class _CreateGoalPageState extends State<CreateGoalPage> {
                         _buildDateField(
                           value: _startDate,
                           hintText: 'Select Date',
-                          onTap: () => _selectStartDate(),
+                          onTap: _selectStartDate,
                           theme: theme,
                         ),
                       ],
@@ -104,7 +104,7 @@ class _CreateGoalPageState extends State<CreateGoalPage> {
                         _buildDateField(
                           value: _deadline,
                           hintText: 'Select Date',
-                          onTap: () => _selectDeadline(),
+                          onTap: _selectDeadline,
                           theme: theme,
                         ),
                       ],

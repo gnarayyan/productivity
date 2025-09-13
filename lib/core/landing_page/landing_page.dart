@@ -91,7 +91,7 @@ class LandingPage extends StatelessWidget {
                       title: 'Productivity App',
                       subtitle: 'Goals • Tasks • Analytics',
                       icon: LucideIcons.trendingUp,
-                      color: Color(0xFF9C27B0), // Purple color
+                      color: const Color(0xFF9C27B0), // Purple color
                       isActive: true,
                       onTap: () =>
                           context.pushRoute(const ProductivityMainRoute()),

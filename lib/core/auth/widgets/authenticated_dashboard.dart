@@ -272,7 +272,7 @@ class AuthenticatedDashboard extends StatelessWidget {
               ),
             ),
             if (onTap != null)
-              Icon(LucideIcons.copy, color: AppColors.textHint, size: 16),
+              const Icon(LucideIcons.copy, color: AppColors.textHint, size: 16),
           ],
         ),
       ),
@@ -305,11 +305,11 @@ class AuthenticatedDashboard extends StatelessWidget {
   void _copyToClipboard(BuildContext context, String text) {
     Clipboard.setData(ClipboardData(text: text));
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Copied to clipboard'),
+      const SnackBar(
+        content: Text('Copied to clipboard'),
         backgroundColor: AppColors.success,
         behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 2),
+        duration: Duration(seconds: 2),
       ),
     );
   }

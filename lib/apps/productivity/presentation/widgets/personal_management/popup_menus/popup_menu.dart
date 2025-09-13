@@ -35,7 +35,7 @@ class GoalsPopUpMenu extends StatelessWidget {
               fullscreenDialog: true,
             ),
           ),
-          child: MenuItemChild(
+          child: const MenuItemChild(
             icon: LucideIcons.folder,
             label: 'Manage Categories',
           ),
@@ -52,10 +52,10 @@ class GoalsPopUpMenu extends StatelessWidget {
             //   }
             // });
           },
-          child: MenuItemChild(icon: LucideIcons.search, label: 'Search'),
+          child: const MenuItemChild(icon: LucideIcons.search, label: 'Search'),
         ),
 
-        PopupMenuItem(
+        const PopupMenuItem(
           // onTap: _showSortDialog,
           child: MenuItemChild(icon: LucideIcons.arrowUpDown, label: 'Sort by'),
         ),
@@ -82,7 +82,7 @@ class GoalsPopUpMenu extends StatelessWidget {
 
         PopupMenuItem(
           onTap: Scaffold.of(context).openDrawer,
-          child: MenuItemChild(
+          child: const MenuItemChild(
             icon: LucideIcons.sliders,
             label: 'Advance Options',
           ),

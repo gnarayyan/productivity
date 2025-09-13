@@ -11,7 +11,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     on<SetTheme>(_onSetTheme);
 
     // Load saved theme on initialization
-    add(LoadTheme());
+    add(const LoadTheme());
   }
   static const String _themeKey = 'theme_mode';
 

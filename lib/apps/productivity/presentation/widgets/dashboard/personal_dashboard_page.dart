@@ -336,10 +336,10 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                             ),
                           ),
                           const SizedBox(width: 8),
-                          Text(
+                          const Text(
                             '+10%',
                             style: TextStyle(
-                              color: const Color(0xFF4CAF50),
+                              color: Color(0xFF4CAF50),
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                             ),
@@ -694,10 +694,10 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                             ),
                           ),
                           const SizedBox(width: 8),
-                          Text(
+                          const Text(
                             '-5%',
                             style: TextStyle(
-                              color: const Color(0xFFFF5252),
+                              color: Color(0xFFFF5252),
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                             ),

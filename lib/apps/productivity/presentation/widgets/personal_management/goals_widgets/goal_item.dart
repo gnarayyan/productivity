@@ -115,7 +115,7 @@ class GoalItem extends StatelessWidget {
             // TODO: Replace it with similar goalview for nested goals(milestones)
             BlocBuilder<GoalDetailCubit, bool>(
               builder: (context, isVisible) {
-                return isVisible ? StatsTable() : SizedBox.shrink();
+                return isVisible ? const StatsTable() : const SizedBox.shrink();
               },
             ),
           ],

@@ -239,7 +239,7 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 Row(
                   children: [
-                    Icon(LucideIcons.info, color: AppColors.info, size: 20),
+                    const Icon(LucideIcons.info, color: AppColors.info, size: 20),
                     const SizedBox(width: 8),
                     Text(
                       'Demo Instructions',

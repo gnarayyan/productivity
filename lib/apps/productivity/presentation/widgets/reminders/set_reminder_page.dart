@@ -612,19 +612,19 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: const Color(0xFFE57373)),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.warning,
                       color: Color(0xFFD32F2F),
                       size: 20,
                     ),
-                    const SizedBox(width: 12),
+                    SizedBox(width: 12),
                     Expanded(
                       child: Text(
                         'Reminder time is expired',
                         style: TextStyle(
-                          color: const Color(0xFFD32F2F),
+                          color: Color(0xFFD32F2F),
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),

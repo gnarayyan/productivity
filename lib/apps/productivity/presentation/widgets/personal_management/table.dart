@@ -56,7 +56,7 @@ class StatsTable extends StatelessWidget {
       },
       children: [
         // Header
-        TableRow(
+        const TableRow(
           children: [
             SizedBox(),
             Cell('   Total'),
@@ -67,7 +67,7 @@ class StatsTable extends StatelessWidget {
         // TableRow for Milestones
         TableRow(
           children: [
-            Cell('Milestones'),
+            const Cell('Milestones'),
             _buildStatChip('Total', milestonesTotal, AppColorsx.info),
 
             _buildStatChip('Pending', milestonesPending, AppColorsx.warning),
@@ -79,7 +79,7 @@ class StatsTable extends StatelessWidget {
         // TableRow for Tasks
         TableRow(
           children: [
-            Cell('Tasks'),
+            const Cell('Tasks'),
 
             _buildStatChip('Total', tasksTotal, AppColorsx.info),
 

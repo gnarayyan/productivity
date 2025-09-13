@@ -15,7 +15,7 @@ class PersonalGoalsPage extends StatelessWidget {
       create: (context) => GoalDetailCubit(),
       child: Builder(
         builder: (context) {
-          return PersonalGoalsView();
+          return const PersonalGoalsView();
         },
       ),
     );
@@ -176,7 +176,7 @@ class _PersonalGoalsViewState extends State<PersonalGoalsView> {
                       ),
                     ),
 
-                    GoalsPopUpMenu(),
+                    const GoalsPopUpMenu(),
                   ],
                 ),
         ),

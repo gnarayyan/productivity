@@ -10,7 +10,7 @@ void showComingSoonDialog(BuildContext context, String appName) {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Row(
           children: [
-            Icon(LucideIcons.clock, color: AppColors.primary, size: 24),
+            const Icon(LucideIcons.clock, color: AppColors.primary, size: 24),
             const SizedBox(width: 12),
             Text(
               'Coming Soon',
@@ -27,7 +27,7 @@ void showComingSoonDialog(BuildContext context, String appName) {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(
+            child: const Text(
               'OK',
               style: TextStyle(
                 color: AppColors.primary,
