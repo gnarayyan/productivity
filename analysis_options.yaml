@@ -12,11 +12,11 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - build/**
-    - lib/apps/dynamic_form
-    - lib/apps/method_channel
-    - lib/apps/mini_ecommerce
-    - lib/apps/nested_bottom_nav
-    - lib/apps/offline_todo
+    - lib/apps/dynamic_form/**
+    - lib/apps/method_channel/**
+    - lib/apps/mini_ecommerce/**
+    - lib/apps/nested_bottom_nav/**
+    - lib/apps/offline_todo/**
     - lib/src/generated/**
     - test/mocks/**
     - android/**
@@ -51,7 +51,7 @@ linter:
     # unnecessary_this: true                         # Disallow unnecessary 'this.' usage when not required for disambiguation. Reduces clutter.
     # use_super_parameters: true                     # Prefer Dart’s `super.parameter` shorthand to reduce boilerplate in constructors.
     # prefer_is_empty: true                          # Use '.isEmpty' instead of 'length == 0' for clearer and more idiomatic code.
-    # unnecessary_lambdas: true                      # Avoid wrapping functions in unnecessary lambda expressions. Simplifies and clarifies intent.
+    unnecessary_lambdas: true                      # Avoid wrapping functions in unnecessary lambda expressions. Simplifies and clarifies intent.
     # prefer_final_fields: true                      # Use 'final' for fields that are never reassigned. Encourages immutability and safer code.
 
     # --- Phase 2: Performance & Flutter Best Practices ---

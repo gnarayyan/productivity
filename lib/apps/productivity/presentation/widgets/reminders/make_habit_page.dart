@@ -324,7 +324,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
             ),
             const SizedBox(width: 16),
             GestureDetector(
-              onTap: () => _selectEndDate(),
+              onTap: _selectEndDate,
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,

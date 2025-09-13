@@ -62,23 +62,23 @@ Future<void> initDependencies() async {
 
   // Method Channel App Dependencies
   // Services
-  sl.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
+  sl.registerLazySingleton<DeviceInfoService>(DeviceInfoService.new);
 
   // Bloc
   sl.registerFactory(() => DeviceInfoBloc(sl()));
 
   // Dynamic Form App Dependencies
   // Data sources
-  sl.registerLazySingleton<FormDataSource>(() => FormDataSource());
+  sl.registerLazySingleton<FormDataSource>(FormDataSource.new);
 
   // Bloc
   sl.registerFactory(() => DynamicFormBloc(sl()));
 
   // Nested Bottom Nav App Dependencies
-  sl.registerFactory(() => NavigationBloc());
+  sl.registerFactory(NavigationBloc.new);
 
   // Productivity App Dependencies
-  sl.registerFactory(() => ProductivityNavigationBloc());
+  sl.registerFactory(ProductivityNavigationBloc.new);
 
   // Mini Ecommerce App Dependencies
   EcommerceDI.register(sl);
@@ -96,9 +96,7 @@ Future<void> _setupAuthDependencies() async {
   // sl.registerSingleton<Dio>(dio);
 
   // Data sources
-  sl.registerLazySingleton<AuthLocalDataSource>(
-    () => AuthLocalDataSourceImpl(),
-  );
+  sl.registerLazySingleton<AuthLocalDataSource>(AuthLocalDataSourceImpl.new);
 
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(dio: sl<Dio>()),
@@ -129,5 +127,5 @@ Future<void> _setupAuthDependencies() async {
   );
 
   // Theme BLoC
-  sl.registerLazySingleton<ThemeBloc>(() => ThemeBloc());
+  sl.registerLazySingleton<ThemeBloc>(ThemeBloc.new);
 }
