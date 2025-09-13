@@ -60,200 +60,154 @@ class _PersonalGoalsViewState extends State<PersonalGoalsView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      backgroundColor: theme.brightness == Brightness.dark
-          ? const Color(0xFF121212)
-          : const Color(0xFFF5F5F5),
-      appBar: AppBar(
-        backgroundColor: theme.brightness == Brightness.dark
-            ? const Color(0xFF121212)
-            : const Color(0xFFF5F5F5),
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Goals',
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w600,
+    return Column(
+      children: [
+        // Filter/Search Section
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
             color: theme.brightness == Brightness.dark
-                ? Colors.white
-                : Colors.black,
+                ? const Color(0xFF121212)
+                : const Color(0xFFF5F5F5),
           ),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: theme.brightness == Brightness.dark
-                  ? Colors.white
-                  : Colors.black,
-            ),
-            onPressed: () {
-              // Handle menu action
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          // Filter/Search Section
-          Container(
-            height: 60,
-            decoration: BoxDecoration(
-              color: theme.brightness == Brightness.dark
-                  ? const Color(0xFF121212)
-                  : const Color(0xFFF5F5F5),
-            ),
-            child: _isSearchMode
-                ? Container(
-                    padding: const EdgeInsets.all(16),
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                        hintText: 'Search goals...',
-                        hintStyle: TextStyle(
+          child: _isSearchMode
+              ? Container(
+                  padding: const EdgeInsets.all(16),
+                  child: TextField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search goals...',
+                      hintStyle: TextStyle(
+                        color: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
+                      ),
+                      prefixIcon: IconButton(
+                        icon: Icon(
+                          LucideIcons.arrowLeft,
+                          color: Theme.of(context).textTheme.bodyMedium?.color,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isSearchMode = false;
+                            _searchController.clear();
+                            _searchQuery = '';
+                          });
+                        },
+                      ),
+                      suffixIcon: _searchQuery.isNotEmpty
+                          ? IconButton(
+                              icon: Icon(
+                                LucideIcons.x,
+                                color: Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.color,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _searchController.clear();
+                                  _searchQuery = '';
+                                });
+                              },
+                            )
+                          : null,
+                      filled: true,
+                      fillColor: Theme.of(context).colorScheme.surface,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
                           color: Theme.of(
                             context,
-                          ).textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: Icon(
-                            LucideIcons.arrowLeft,
-                            color: Theme.of(
-                              context,
-                            ).textTheme.bodyMedium?.color,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _isSearchMode = false;
-                              _searchController.clear();
-                              _searchQuery = '';
-                            });
-                          },
-                        ),
-                        suffixIcon: _searchQuery.isNotEmpty
-                            ? IconButton(
-                                icon: Icon(
-                                  LucideIcons.x,
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodyMedium?.color,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _searchController.clear();
-                                    _searchQuery = '';
-                                  });
-                                },
-                              )
-                            : null,
-                        filled: true,
-                        fillColor: Theme.of(context).colorScheme.surface,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.outline.withValues(alpha: 0.2),
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 2,
-                          ),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
+                          ).colorScheme.outline.withValues(alpha: 0.2),
                         ),
                       ),
-                      onChanged: (value) {
-                        setState(() {
-                          _searchQuery = value;
-                        });
-                      },
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 2,
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                     ),
-                  )
-                : Row(
-                    children: [
-                      Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemCount: theme.brightness == Brightness.dark
-                              ? _darkModeCategories.length
-                              : _lightModeCategories.length,
-                          padding: const EdgeInsets.all(8),
-                          itemBuilder: (context, index) {
-                            final categories =
-                                theme.brightness == Brightness.dark
-                                ? _darkModeCategories
-                                : _lightModeCategories;
-                            final String category = categories[index];
-
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
-                              child: GoalChip(
-                                name: category,
-                                isSelected: category == _selectedFilter,
-                                onSelect: (category) {
-                                  setState(() {
-                                    _selectedFilter = category;
-                                  });
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-
-                      GoalsPopUpMenu(),
-                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        _searchQuery = value;
+                      });
+                    },
                   ),
-          ),
+                )
+              : Row(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: theme.brightness == Brightness.dark
+                            ? _darkModeCategories.length
+                            : _lightModeCategories.length,
+                        padding: const EdgeInsets.all(8),
+                        itemBuilder: (context, index) {
+                          final categories = theme.brightness == Brightness.dark
+                              ? _darkModeCategories
+                              : _lightModeCategories;
+                          final String category = categories[index];
 
-          // Tabs Section (Pending, Upcoming, Completed)
-          Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: theme.brightness == Brightness.dark
-                  ? const Color(0xFF121212)
-                  : const Color(0xFFF5F5F5),
-              border: Border(
-                bottom: BorderSide(
-                  color: theme.brightness == Brightness.dark
-                      ? Colors.grey.shade800
-                      : Colors.grey.shade300,
-                  width: 1,
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: GoalChip(
+                              name: category,
+                              isSelected: category == _selectedFilter,
+                              onSelect: (category) {
+                                setState(() {
+                                  _selectedFilter = category;
+                                });
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    GoalsPopUpMenu(),
+                  ],
                 ),
+        ),
+
+        // Tabs Section (Pending, Upcoming, Completed)
+        Container(
+          height: 50,
+          decoration: BoxDecoration(
+            color: theme.brightness == Brightness.dark
+                ? const Color(0xFF121212)
+                : const Color(0xFFF5F5F5),
+            border: Border(
+              bottom: BorderSide(
+                color: theme.brightness == Brightness.dark
+                    ? Colors.grey.shade800
+                    : Colors.grey.shade300,
+                width: 1,
               ),
             ),
-            child: Row(
-              children: [
-                _buildTabItem('Pending', _selectedTab == 'Pending', theme),
-                _buildTabItem('Upcoming', _selectedTab == 'Upcoming', theme),
-                _buildTabItem('Completed', _selectedTab == 'Completed', theme),
-              ],
-            ),
           ),
+          child: Row(
+            children: [
+              _buildTabItem('Pending', _selectedTab == 'Pending', theme),
+              _buildTabItem('Upcoming', _selectedTab == 'Upcoming', theme),
+              _buildTabItem('Completed', _selectedTab == 'Completed', theme),
+            ],
+          ),
+        ),
 
-          GoalsListView(selectedTab: _selectedTab),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: "goals_fab", // Add unique hero tag
-        onPressed: () {
-          // Handle add goal action
-        },
-        backgroundColor: const Color(0xFF2196F3), // Blue color from screenshots
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.add),
-      ),
+        GoalsListView(selectedTab: _selectedTab),
+      ],
     );
   }
 
