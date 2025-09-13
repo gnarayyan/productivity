@@ -18,7 +18,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
   TaskPriority _selectedPriority = TaskPriority.medium;
   DateTime? _dueDate;
   String? _selectedGoal;
-  Set<String> _selectedReminders = {'15 min before'};
+  final Set<String> _selectedReminders = {'15 min before'};
 
   final List<String> _goals = [
     'Learn to code',

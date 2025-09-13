@@ -470,10 +470,14 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                               '$number',
                               style: TextStyle(
                                 fontSize: isSelected ? 20 : 16,
-                                color: isSelected 
+                                color: isSelected
                                     ? (isDark ? Colors.white : Colors.black)
-                                    : (isDark ? Colors.grey.shade500 : Colors.grey.shade400),
-                                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                                    : (isDark
+                                          ? Colors.grey.shade500
+                                          : Colors.grey.shade400),
+                                fontWeight: isSelected
+                                    ? FontWeight.w600
+                                    : FontWeight.w400,
                               ),
                             ),
                           );
@@ -502,10 +506,14 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                               timeFrame,
                               style: TextStyle(
                                 fontSize: isSelected ? 20 : 16,
-                                color: isSelected 
+                                color: isSelected
                                     ? (isDark ? Colors.white : Colors.black)
-                                    : (isDark ? Colors.grey.shade500 : Colors.grey.shade400),
-                                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                                    : (isDark
+                                          ? Colors.grey.shade500
+                                          : Colors.grey.shade400),
+                                fontWeight: isSelected
+                                    ? FontWeight.w600
+                                    : FontWeight.w400,
                               ),
                             ),
                           );
@@ -534,10 +542,14 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                               option,
                               style: TextStyle(
                                 fontSize: isSelected ? 20 : 16,
-                                color: isSelected 
+                                color: isSelected
                                     ? (isDark ? Colors.white : Colors.black)
-                                    : (isDark ? Colors.grey.shade500 : Colors.grey.shade400),
-                                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                                    : (isDark
+                                          ? Colors.grey.shade500
+                                          : Colors.grey.shade400),
+                                fontWeight: isSelected
+                                    ? FontWeight.w600
+                                    : FontWeight.w400,
                               ),
                             ),
                           );
@@ -576,7 +588,7 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    _reminderDateTime != null 
+                    _reminderDateTime != null
                         ? '${_reminderDateTime!.month.toString().padLeft(2, '0')}/${_reminderDateTime!.day.toString().padLeft(2, '0')}/${_reminderDateTime!.year}, ${_reminderDateTime!.hour.toString().padLeft(2, '0')}:${_reminderDateTime!.minute.toString().padLeft(2, '0')}'
                         : 'May 12, 2024, 09:41',
                     style: TextStyle(
@@ -687,12 +699,14 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
                 const SizedBox(width: 16),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: _isReminderExpired() ? null : () {
-                      Navigator.of(context).pop();
-                    },
+                    onPressed: _isReminderExpired()
+                        ? null
+                        : () {
+                            Navigator.of(context).pop();
+                          },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: _isReminderExpired() 
+                      backgroundColor: _isReminderExpired()
                           ? Colors.grey.shade400
                           : const Color(0xFF2196F3),
                       foregroundColor: Colors.white,
@@ -717,10 +731,10 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
 
   void _updateReminderDateTime() {
     final baseDate = DateTime(2024, 5, 12, 9, 41); // Example due date
-    
+
     int durationValue = _selectedNumber;
     Duration duration;
-    
+
     switch (_selectedTimeFrame) {
       case 'Minutes':
         duration = Duration(minutes: durationValue);
@@ -743,7 +757,7 @@ class _CustomReminderBottomSheetState extends State<CustomReminderBottomSheet> {
       default:
         duration = Duration(minutes: durationValue);
     }
-    
+
     setState(() {
       if (_selectedBeforeAfter == 'Before') {
         _reminderDateTime = baseDate.subtract(duration);

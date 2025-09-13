@@ -11,7 +11,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
   bool _isRecurrenceEnabled = true;
   String _selectedFrequency = 'Hourly';
   String _selectedRepeatEvery = '1 Hour';
-  Set<String> _selectedDays = {'M', 'W', 'F'};
+  final Set<String> _selectedDays = {'M', 'W', 'F'};
   String _selectedRepeatEnds = 'Never';
   int _occurrences = 5;
   DateTime? _endDate;
@@ -25,7 +25,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
     '12 Hours',
     '1 Day',
     '1 Week',
-    '1 Month'
+    '1 Month',
   ];
   final List<String> _dayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -40,10 +40,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
         backgroundColor: isDark ? const Color(0xFF121212) : Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(
-            Icons.close,
-            color: isDark ? Colors.white : Colors.black,
-          ),
+          icon: Icon(Icons.close, color: isDark ? Colors.white : Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
@@ -138,7 +135,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
 
   Widget _buildFrequencyChips(ThemeData theme) {
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return Wrap(
       spacing: 12,
       children: _frequencies.map((frequency) {
@@ -154,7 +151,9 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
             decoration: BoxDecoration(
               color: isSelected
                   ? const Color(0xFF2196F3)
-                  : (isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F5)),
+                  : (isDark
+                        ? const Color(0xFF2A2A2A)
+                        : const Color(0xFFF5F5F5)),
               borderRadius: BorderRadius.circular(24),
             ),
             child: Text(
@@ -179,7 +178,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
     required ThemeData theme,
   }) {
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
@@ -191,18 +190,13 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
           value: value,
           isExpanded: true,
           dropdownColor: isDark ? const Color(0xFF2A2A2A) : Colors.white,
-          style: TextStyle(
-            color: isDark ? Colors.white : Colors.black,
-          ),
+          style: TextStyle(color: isDark ? Colors.white : Colors.black),
           icon: Icon(
             Icons.keyboard_arrow_down,
             color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
           ),
           items: options.map((String option) {
-            return DropdownMenuItem<String>(
-              value: option,
-              child: Text(option),
-            );
+            return DropdownMenuItem<String>(value: option, child: Text(option));
           }).toList(),
           onChanged: onChanged,
         ),
@@ -212,7 +206,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
 
   Widget _buildDaySelector(ThemeData theme) {
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: _dayLabels.map((day) {
@@ -233,7 +227,9 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
             decoration: BoxDecoration(
               color: isSelected
                   ? const Color(0xFF2196F3)
-                  : (isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F5)),
+                  : (isDark
+                        ? const Color(0xFF2A2A2A)
+                        : const Color(0xFFF5F5F5)),
               shape: BoxShape.circle,
             ),
             child: Center(
@@ -255,7 +251,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
 
   Widget _buildRepeatEndsOptions(ThemeData theme) {
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return Column(
       children: [
         // Never option
@@ -265,9 +261,9 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
           () => setState(() => _selectedRepeatEnds = 'Never'),
           theme,
         ),
-        
+
         const SizedBox(height: 16),
-        
+
         // After option
         Row(
           children: [
@@ -283,15 +279,15 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
               width: 60,
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F5),
+                color: isDark
+                    ? const Color(0xFF2A2A2A)
+                    : const Color(0xFFF5F5F5),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: TextField(
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
-                style: TextStyle(
-                  color: isDark ? Colors.white : Colors.black,
-                ),
+                style: TextStyle(color: isDark ? Colors.white : Colors.black),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: '$_occurrences',
@@ -309,15 +305,13 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
             const SizedBox(width: 8),
             Text(
               'occurrences',
-              style: TextStyle(
-                color: isDark ? Colors.white : Colors.black,
-              ),
+              style: TextStyle(color: isDark ? Colors.white : Colors.black),
             ),
           ],
         ),
-        
+
         const SizedBox(height: 16),
-        
+
         // On option
         Row(
           children: [
@@ -332,9 +326,14 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
             GestureDetector(
               onTap: () => _selectEndDate(),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
-                  color: isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F5),
+                  color: isDark
+                      ? const Color(0xFF2A2A2A)
+                      : const Color(0xFFF5F5F5),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -352,7 +351,9 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
                     Icon(
                       Icons.calendar_today,
                       size: 16,
-                      color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                      color: isDark
+                          ? Colors.grey.shade400
+                          : Colors.grey.shade600,
                     ),
                   ],
                 ),
@@ -372,7 +373,7 @@ class _MakeHabitPageState extends State<MakeHabitPage> {
     bool showRadio = false,
   }) {
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return GestureDetector(
       onTap: onTap,
       child: Row(

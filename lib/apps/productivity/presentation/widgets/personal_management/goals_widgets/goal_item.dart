@@ -5,7 +5,6 @@ import 'package:varosa_tech/apps/productivity/data/models/goal_model.dart';
 
 import '../../../cubits/goal_detail_cubit.dart';
 import '../../../utils/get_goal_badge.dart';
-import '../../common/custom_badge.dart';
 import '../table.dart';
 
 // TODO: Convert it to expansion tile
