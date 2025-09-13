@@ -165,7 +165,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withAlpha(13),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),
@@ -287,7 +287,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withAlpha(13),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),
@@ -432,7 +432,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withAlpha(13),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),
@@ -536,7 +536,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF2A3441) : const Color(0xFFF8F9FA),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withAlpha(51), width: 1),
       ),
       child: Column(
         children: [
@@ -645,7 +645,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withAlpha(13),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),
@@ -770,7 +770,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                         isStrokeCapRound: true,
                         belowBarData: BarAreaData(
                           show: true,
-                          color: const Color(0xFF2196F3).withOpacity(0.1),
+                          color: const Color(0xFF2196F3).withAlpha(26),
                         ),
                         dotData: FlDotData(
                           show: true,
@@ -806,7 +806,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withAlpha(13),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),

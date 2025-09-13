@@ -160,7 +160,7 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withAlpha(13),
                       blurRadius: 10,
                       offset: const Offset(0, 2),
                     ),
@@ -205,8 +205,8 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
                     ),
                     todayDecoration: BoxDecoration(
                       color: isDark
-                          ? const Color(0xFF2196F3).withOpacity(0.3)
-                          : const Color(0xFF2196F3).withOpacity(0.2),
+                          ? const Color(0xFF2196F3).withAlpha(77)
+                          : const Color(0xFF2196F3).withAlpha(51),
                       shape: BoxShape.circle,
                     ),
                     todayTextStyle: TextStyle(
@@ -330,7 +330,7 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha(13),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -382,7 +382,7 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha(13),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
