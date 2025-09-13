@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class PersonalCalendarPage extends StatefulWidget {
   const PersonalCalendarPage({super.key});
@@ -313,55 +313,6 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
         },
         backgroundColor: const Color(0xFF2196F3),
         child: const Icon(Icons.add, color: Colors.white),
-      ),
-    );
-  }
-
-  Widget _buildCalendarHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            icon: Icon(
-              Icons.chevron_left,
-              color: isDark ? Colors.white : Colors.black,
-            ),
-            onPressed: () {
-              setState(() {
-                _focusedDay = DateTime(
-                  _focusedDay.year,
-                  _focusedDay.month - 1,
-                  _focusedDay.day,
-                );
-              });
-            },
-          ),
-          Text(
-            '${_getMonthName(_focusedDay.month)} ${_focusedDay.year}',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: isDark ? Colors.white : Colors.black,
-            ),
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.chevron_right,
-              color: isDark ? Colors.white : Colors.black,
-            ),
-            onPressed: () {
-              setState(() {
-                _focusedDay = DateTime(
-                  _focusedDay.year,
-                  _focusedDay.month + 1,
-                  _focusedDay.day,
-                );
-              });
-            },
-          ),
-        ],
       ),
     );
   }
