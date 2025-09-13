@@ -7,7 +7,8 @@ import '../../../../core/service_locator.dart';
 import '../../../../themes/app_theme.dart';
 import '../bloc/productivity_navigation_bloc.dart';
 import '../widgets/main_drawer.dart';
-import '../widgets/personal_management/personal_dashboard.dart';
+import '../widgets/personal_management/create_task_page.dart';
+import '../widgets/dashboard/personal_dashboard_page.dart';
 import '../widgets/personal_management/personal_goals_page.dart';
 import '../widgets/personal_management/personal_tasks_page.dart';
 import '../widgets/personal_management/personal_calendar_page.dart';
@@ -35,11 +36,35 @@ class ProductivityMainView extends StatelessWidget {
       builder: (context, state) {
         final theme = Theme.of(context);
 
+        final String? appbarText = _getAppBarWidget(
+          state.selectedModule,
+          state.selectedPersonalTab,
+        );
+
         return Scaffold(
           backgroundColor: theme.brightness == Brightness.dark
               ? const Color(0xFF121212)
               : const Color(0xFFF5F5F5),
           drawer: const MainDrawer(),
+          appBar: appbarText == null
+              ? null
+              : AppBar(
+                  backgroundColor: theme.brightness == Brightness.dark
+                      ? const Color(0xFF121212)
+                      : const Color(0xFFF5F5F5),
+                  elevation: 0,
+                  // automaticallyImplyLeading: false,
+                  title: Text(
+                    appbarText,
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: theme.brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
+                ),
+
           body: SafeArea(
             child: _getBodyWidget(
               state.selectedModule,
@@ -47,35 +72,57 @@ class ProductivityMainView extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: _buildBottomNavigationBar(context, state),
-          floatingActionButton: state.isGoalsPage
-              ? _buildFloatingActionButton(context)
+          floatingActionButton:
+              state.selectedModule == ProductivityModule.personalManagement
+              ? CustomFAB(tab: state.selectedPersonalTab)
               : null,
         );
       },
     );
   }
 
-  Widget _buildFloatingActionButton(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      child: FloatingActionButton.extended(
-        key: const ValueKey('fab'),
-        heroTag: "productivity_main_fab", // Add unique hero tag
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const CreateGoalPage(),
-              fullscreenDialog: true,
-            ),
-          );
-        },
-        backgroundColor:
-            AppColors.primary, // Blue color consistent with goals page
-        foregroundColor: Colors.white,
-        icon: const Icon(LucideIcons.plus),
-        label: const Text('Add Goal'),
-      ),
-    );
+  // Widget _buildFloatingActionButton(BuildContext context) {
+  //   return AnimatedSwitcher(
+  //     duration: const Duration(milliseconds: 300),
+  //     child: FloatingActionButton.extended(
+  //       key: const ValueKey('fab'),
+  //       heroTag: "productivity_main_fab", // Add unique hero tag
+  //       onPressed: () {
+  //         Navigator.of(context).push(
+  //           MaterialPageRoute(
+  //             builder: (context) => const CreateGoalPage(),
+  //             fullscreenDialog: true,
+  //           ),
+  //         );
+  //       },
+  //       backgroundColor:
+  //           AppColors.primary, // Blue color consistent with goals page
+  //       foregroundColor: Colors.white,
+  //       icon: const Icon(LucideIcons.plus),
+  //       label: const Text('Add Goal'),
+  //     ),
+  //   );
+  // }
+
+  String? _getAppBarWidget(ProductivityModule module, PersonalTab personalTab) {
+    switch (module) {
+      case ProductivityModule.personalManagement:
+        switch (personalTab) {
+          case PersonalTab.goals:
+            return 'Goals';
+
+          case PersonalTab.tasks:
+            return 'Tasks';
+
+          default:
+            return null;
+        }
+
+      case ProductivityModule.financialManagement:
+        return null;
+      case ProductivityModule.settings:
+        return null;
+    }
   }
 
   Widget _getBodyWidget(ProductivityModule module, PersonalTab personalTab) {
@@ -102,7 +149,7 @@ class ProductivityMainView extends StatelessWidget {
   Widget _getPersonalManagementWidget(PersonalTab tab) {
     switch (tab) {
       case PersonalTab.dashboard:
-        return const PersonalDashboard();
+        return const PersonalDashboardPage();
       case PersonalTab.tasks:
         return const PersonalTasksPage();
       case PersonalTab.goals:
@@ -222,6 +269,46 @@ class ProductivityMainView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class CustomFAB extends StatelessWidget {
+  const CustomFAB({super.key, required this.tab});
+  final PersonalTab tab;
+
+  @override
+  Widget build(BuildContext context) {
+    final isGoal = tab == PersonalTab.goals;
+    final isTasks = tab == PersonalTab.tasks;
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: FloatingActionButton.extended(
+        key: const ValueKey('fab'),
+        heroTag: "productivity_main_fab", // Add unique hero tag
+        onPressed: () {
+          if (isGoal || isTasks) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) =>
+                    isGoal ? const CreateGoalPage() : const CreateTaskPage(),
+                fullscreenDialog: true,
+              ),
+            );
+          }
+
+          // Navigator.of(context).push(
+          //         MaterialPageRoute(
+          //           builder: (context) => const CreateTaskPage(),
+          //         ),
+          //       );
+        },
+        backgroundColor:
+            AppColors.primary, // Blue color consistent with goals page
+        foregroundColor: Colors.white,
+        icon: const Icon(LucideIcons.plus),
+        label: Text('Add ${isGoal ? "Goal" : "Task"}'),
+      ),
     );
   }
 }
