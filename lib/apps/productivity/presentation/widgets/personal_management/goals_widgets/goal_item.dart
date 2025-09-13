@@ -9,9 +9,9 @@ import '../table.dart';
 
 // TODO: Convert it to expansion tile
 class GoalItem extends StatelessWidget {
-  final Goal goal;
 
   const GoalItem(this.goal, {super.key});
+  final Goal goal;
 
   @override
   Widget build(BuildContext context) {

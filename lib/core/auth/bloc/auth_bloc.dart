@@ -10,8 +10,6 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository _authRepository;
-  final TokenRefreshService _tokenRefreshService;
 
   AuthBloc({
     required AuthRepository authRepository,
@@ -35,6 +33,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       add(const AuthRefreshFailed());
     };
   }
+  final AuthRepository _authRepository;
+  final TokenRefreshService _tokenRefreshService;
 
   Future<void> _onAuthCheckRequested(
     AuthCheckRequested event,

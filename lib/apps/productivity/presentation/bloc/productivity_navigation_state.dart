@@ -5,13 +5,13 @@ enum ProductivityModule { personalManagement, financialManagement, settings }
 enum PersonalTab { dashboard, tasks, goals, calendar }
 
 class ProductivityNavigationState extends Equatable {
-  final ProductivityModule selectedModule;
-  final PersonalTab selectedPersonalTab;
 
   const ProductivityNavigationState({
     required this.selectedModule,
     required this.selectedPersonalTab,
   });
+  final ProductivityModule selectedModule;
+  final PersonalTab selectedPersonalTab;
 
   ProductivityNavigationState copyWith({
     ProductivityModule? selectedModule,

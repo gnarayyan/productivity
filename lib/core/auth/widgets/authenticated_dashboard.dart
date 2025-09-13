@@ -8,14 +8,14 @@ import '../models/auth_tokens.dart';
 import '../models/user.dart';
 
 class AuthenticatedDashboard extends StatelessWidget {
-  final User user;
-  final AuthTokens tokens;
 
   const AuthenticatedDashboard({
     super.key,
     required this.user,
     required this.tokens,
   });
+  final User user;
+  final AuthTokens tokens;
 
   @override
   Widget build(BuildContext context) {

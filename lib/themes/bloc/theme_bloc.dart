@@ -4,7 +4,6 @@ import 'theme_event.dart';
 import 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  static const String _themeKey = 'theme_mode';
 
   ThemeBloc() : super(const ThemeState()) {
     on<LoadTheme>(_onLoadTheme);
@@ -14,6 +13,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     // Load saved theme on initialization
     add(LoadTheme());
   }
+  static const String _themeKey = 'theme_mode';
 
   Future<void> _onLoadTheme(LoadTheme event, Emitter<ThemeState> emit) async {
     try {

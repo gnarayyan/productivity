@@ -4,9 +4,9 @@ import 'package:varosa_tech/apps/productivity/data/models/goal_model.dart';
 import 'package:varosa_tech/apps/productivity/presentation/widgets/personal_management/goals_widgets/goal_section.dart';
 
 class GoalsListView extends StatelessWidget {
-  final String selectedTab;
 
   const GoalsListView({super.key, required this.selectedTab});
+  final String selectedTab;
 
   @override
   Widget build(BuildContext context) {

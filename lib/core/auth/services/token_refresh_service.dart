@@ -6,6 +6,16 @@ import '../models/auth_tokens.dart';
 /// Service responsible for automatically handling token refresh
 /// This service acts as an interceptor and automatic token manager
 class TokenRefreshService {
+
+  TokenRefreshService({
+    required AuthRepository authRepository,
+    required Dio dio,
+    this.onTokensRefreshed,
+    this.onRefreshFailed,
+  }) : _authRepository = authRepository,
+       _dio = dio {
+    _setupDioInterceptor();
+  }
   final AuthRepository _authRepository;
   final Dio _dio;
 
@@ -20,16 +30,6 @@ class TokenRefreshService {
 
   // Callback for when refresh fails (logout scenario)
   void Function()? onRefreshFailed;
-
-  TokenRefreshService({
-    required AuthRepository authRepository,
-    required Dio dio,
-    this.onTokensRefreshed,
-    this.onRefreshFailed,
-  }) : _authRepository = authRepository,
-       _dio = dio {
-    _setupDioInterceptor();
-  }
 
   /// Set up Dio interceptor to automatically handle 401 responses
   void _setupDioInterceptor() {

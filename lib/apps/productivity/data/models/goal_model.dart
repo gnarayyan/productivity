@@ -14,13 +14,6 @@ extension GoalListExtensions on List<Goal> {
 enum GoalStatus { pending, upcoming, completed }
 
 class Goal {
-  final String title;
-  final double progress;
-  final DateTime startOn;
-  final DateTime deadline;
-  final DateTime? completedOn;
-
-  final List<Goal> milestones;
 
   Goal( {
     required this.title,
@@ -30,6 +23,13 @@ class Goal {
     this.completedOn,
     this.milestones = const [],
   });
+  final String title;
+  final double progress;
+  final DateTime startOn;
+  final DateTime deadline;
+  final DateTime? completedOn;
+
+  final List<Goal> milestones;
 
   GoalStatus get status {
     if (progress >= 1.0) {

@@ -12,10 +12,10 @@ class AuthCheckRequested extends AuthEvent {
 }
 
 class AuthLoginRequested extends AuthEvent {
-  final String email;
-  final String password;
 
   const AuthLoginRequested({required this.email, required this.password});
+  final String email;
+  final String password;
 
   @override
   List<Object?> get props => [email, password];
@@ -30,9 +30,9 @@ class AuthTokenRefreshRequested extends AuthEvent {
 }
 
 class AuthTokensUpdated extends AuthEvent {
-  final AuthTokens tokens;
 
   const AuthTokensUpdated(this.tokens);
+  final AuthTokens tokens;
 
   @override
   List<Object?> get props => [tokens];

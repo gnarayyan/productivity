@@ -1,17 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class AuthTokens extends Equatable {
-  final String accessToken;
-  final String refreshToken;
-  final DateTime expiresAt;
-  final String tokenType;
-
-  const AuthTokens({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.expiresAt,
-    this.tokenType = 'Bearer',
-  });
 
   factory AuthTokens.fromJson(Map<String, dynamic> json) {
     return AuthTokens(
@@ -23,6 +12,17 @@ class AuthTokens extends Equatable {
       tokenType: json['token_type'] as String? ?? 'Bearer',
     );
   }
+
+  const AuthTokens({
+    required this.accessToken,
+    required this.refreshToken,
+    required this.expiresAt,
+    this.tokenType = 'Bearer',
+  });
+  final String accessToken;
+  final String refreshToken;
+  final DateTime expiresAt;
+  final String tokenType;
 
   Map<String, dynamic> toJson() {
     return {

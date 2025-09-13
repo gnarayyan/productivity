@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:varosa_tech/themes/app_theme.dart';
 
 class AppCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final Color color;
-  final bool isActive;
-  final VoidCallback onTap;
   const AppCard({
     super.key,
     required this.title,
@@ -17,6 +11,12 @@ class AppCard extends StatelessWidget {
     required this.isActive,
     required this.onTap,
   });
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final Color color;
+  final bool isActive;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

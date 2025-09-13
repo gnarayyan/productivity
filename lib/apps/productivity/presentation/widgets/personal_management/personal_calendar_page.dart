@@ -526,11 +526,11 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
 }
 
 class TaskEvent {
+
+  TaskEvent(this.title, this.time, this.color);
   final String title;
   final String time;
   final Color color;
-
-  TaskEvent(this.title, this.time, this.color);
 
   @override
   String toString() => title;

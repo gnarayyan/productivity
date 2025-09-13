@@ -8,18 +8,18 @@ abstract class ProductivityNavigationEvent extends Equatable {
 }
 
 class ModuleChanged extends ProductivityNavigationEvent {
-  final ProductivityModule module;
 
   const ModuleChanged(this.module);
+  final ProductivityModule module;
 
   @override
   List<Object?> get props => [module];
 }
 
 class PersonalTabChanged extends ProductivityNavigationEvent {
-  final PersonalTab tab;
 
   const PersonalTabChanged(this.tab);
+  final PersonalTab tab;
 
   @override
   List<Object?> get props => [tab];

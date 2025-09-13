@@ -1,12 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
-  final String id;
-  final String email;
-  final String name;
-  final String? profileImageUrl;
-  final DateTime createdAt;
-  final DateTime updatedAt;
 
   const User({
     required this.id,
@@ -27,6 +21,12 @@ class User extends Equatable {
       updatedAt: DateTime.parse(json['updated_at'] as String),
     );
   }
+  final String id;
+  final String email;
+  final String name;
+  final String? profileImageUrl;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   Map<String, dynamic> toJson() {
     return {

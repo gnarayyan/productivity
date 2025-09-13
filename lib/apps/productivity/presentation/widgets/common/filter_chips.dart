@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 class GoalChip extends StatelessWidget {
-  final String name;
-  final void Function(String) onSelect;
-  final bool isSelected;
 
   const GoalChip({
     super.key,
@@ -11,6 +8,9 @@ class GoalChip extends StatelessWidget {
     required this.isSelected,
     required this.onSelect,
   });
+  final String name;
+  final void Function(String) onSelect;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {

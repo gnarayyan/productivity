@@ -238,12 +238,6 @@ class _PersonalTasksPageState extends State<PersonalTasksPage> {
 
 // Task Model
 class Task {
-  final String id;
-  final String title;
-  final String description;
-  final DateTime dueDate;
-  final TaskPriority priority;
-  bool isCompleted;
 
   Task({
     required this.id,
@@ -253,6 +247,12 @@ class Task {
     required this.priority,
     required this.isCompleted,
   });
+  final String id;
+  final String title;
+  final String description;
+  final DateTime dueDate;
+  final TaskPriority priority;
+  bool isCompleted;
 }
 
 enum TaskPriority { high, medium, low }

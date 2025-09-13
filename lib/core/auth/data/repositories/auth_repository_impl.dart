@@ -5,13 +5,13 @@ import '../datasources/auth_local_data_source.dart';
 import '../datasources/auth_remote_data_source.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  final AuthRemoteDataSource remoteDataSource;
-  final AuthLocalDataSource localDataSource;
 
   AuthRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
   });
+  final AuthRemoteDataSource remoteDataSource;
+  final AuthLocalDataSource localDataSource;
 
   @override
   Future<AuthTokens> login(String email, String password) async {

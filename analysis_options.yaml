@@ -47,7 +47,7 @@ linter:
     prefer_single_quotes: true                     # Use single quotes for strings unless interpolation or escaping is required. Ensures style consistency.
     # require_trailing_commas: true                  # Require trailing commas on multi-line lists/maps/params. Improves diffs and formatting.
     # sort_child_properties_last: true               # In Flutter widgets, place 'child' or 'children' last for readability and consistency.
-    # sort_constructors_first: true                  # Require constructors to appear before other class members. Makes class definitions easier to scan.
+    sort_constructors_first: true                  # Require constructors to appear before other class members. Makes class definitions easier to scan.
     # unnecessary_this: true                         # Disallow unnecessary 'this.' usage when not required for disambiguation. Reduces clutter.
     # use_super_parameters: true                     # Prefer Dart’s `super.parameter` shorthand to reduce boilerplate in constructors.
     # prefer_is_empty: true                          # Use '.isEmpty' instead of 'length == 0' for clearer and more idiomatic code.

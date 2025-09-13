@@ -12,9 +12,9 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final Dio dio;
 
   AuthRemoteDataSourceImpl({required this.dio});
+  final Dio dio;
 
   @override
   Future<AuthTokens> login(String email, String password) async {
