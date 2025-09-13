@@ -29,19 +29,12 @@ final int tasksCompleted = 15;
 
 // This is the custom Stat Chip widget
 Widget _buildStatChip(String label, int value, Color color) {
-  return Container(
-    // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-    // decoration: BoxDecoration(
-    //   color: color.withOpacity(0.1),
-    //   borderRadius: BorderRadius.circular(16),
-    // ),
-    child: Text(
-      '$value',
-      textAlign: TextAlign.center,
-      style: AppTextStylesx.bodySmall.copyWith(
-        color: color,
-        fontWeight: FontWeight.w600,
-      ),
+  return Text(
+    '$value',
+    textAlign: TextAlign.center,
+    style: AppTextStylesx.bodySmall.copyWith(
+      color: color,
+      fontWeight: FontWeight.w600,
     ),
   );
 }

@@ -33,8 +33,6 @@ class AppTheme {
         onError: _onErrorColor,
         surface: _lightSurfaceColor,
         onSurface: _lightOnSurfaceColor,
-        background: _lightBackgroundColor,
-        onBackground: _lightOnBackgroundColor,
       ),
       textTheme: GoogleFonts.poppinsTextTheme().copyWith(
         displayLarge: GoogleFonts.poppins(
@@ -190,8 +188,6 @@ class AppTheme {
         onError: _onErrorColor,
         surface: _darkSurfaceColor,
         onSurface: _darkOnSurfaceColor,
-        background: _darkBackgroundColor,
-        onBackground: _darkOnBackgroundColor,
       ),
       textTheme: GoogleFonts.poppinsTextTheme().copyWith(
         displayLarge: GoogleFonts.poppins(

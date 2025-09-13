@@ -155,7 +155,7 @@ class TokenRefreshService {
       // Refresh failed
       onRefreshFailed?.call();
       _refreshCompleter!.completeError(e);
-      throw e;
+      rethrow;
     } finally {
       _refreshCompleter = null;
     }
