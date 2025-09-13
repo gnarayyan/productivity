@@ -72,6 +72,7 @@ dependencies:
   fl_chart: ^0.69.2
   
   # Calendar
+  table_calendar: ^3.1.2
   nepali_date_picker: ^5.1.0
 
 dev_dependencies:
