@@ -1,8 +1,9 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../domain/repositories/auth_repository.dart';
 import '../models/auth_tokens.dart';
 import '../models/user.dart';
-import '../domain/repositories/auth_repository.dart';
 import '../services/token_refresh_service.dart';
 
 part 'auth_event.dart';

@@ -1,38 +1,32 @@
-import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
+// Dynamic Form imports
+import '../apps/dynamic_form/models/form_data_source.dart';
 import '../apps/method_channel/bloc/device_info_bloc.dart';
 import '../apps/method_channel/services/device_info_service.dart';
+// Mini Ecommerce DI
+import '../apps/mini_ecommerce/di/ecommerce_di.dart';
+// Nested Bottom Nav imports
+import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
 import '../apps/offline_todo/data/datasources/local_datasource.dart';
 import '../apps/offline_todo/data/repositories/todo_repository_impl.dart';
 import '../apps/offline_todo/domain/repositories/todo_repository.dart';
 import '../apps/offline_todo/domain/usecases/todo_usecases.dart';
 import '../apps/offline_todo/presentation/bloc/todo_bloc.dart';
-
-// Dynamic Form imports
-import '../apps/dynamic_form/models/form_data_source.dart';
-import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
-
-// Nested Bottom Nav imports
-import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
-
 // Productivity app imports
 import '../apps/productivity/presentation/bloc/productivity_navigation_bloc.dart';
-
 // Theme imports
 import '../themes/bloc/theme_bloc.dart';
-
-// Mini Ecommerce DI
-import '../apps/mini_ecommerce/di/ecommerce_di.dart';
-
+import 'auth/bloc/auth_bloc.dart';
 // Auth imports
 import 'auth/data/datasources/auth_local_data_source.dart';
 import 'auth/data/datasources/auth_remote_data_source.dart';
 import 'auth/data/repositories/auth_repository_impl.dart';
 import 'auth/domain/repositories/auth_repository.dart';
 import 'auth/services/token_refresh_service.dart';
-import 'auth/bloc/auth_bloc.dart';
 
 final sl = GetIt.instance;
 

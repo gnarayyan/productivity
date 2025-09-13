@@ -9,6 +9,20 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  exclude:
+    - build/**
+    - lib/apps/dynamic_form
+    - lib/apps/method_channel
+    - lib/apps/mini_ecommerce
+    - lib/apps/nested_bottom_nav
+    - lib/apps/offline_todo
+    - lib/src/generated/**
+    - test/mocks/**
+    - android/**
+    - ios/**
+    - .dart_tool/**
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -20,9 +34,57 @@ linter:
   # or a specific dart file by using the `// ignore: name_of_lint` and
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
+  
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    ## Phase 1: Style, Consistency, and Readability (Low-effort, high-impact wins)
+    # always_declare_return_types: true              # Require explicit return types for functions/methods. Improves readability and type safety.
+    # always_use_package_imports: true               # Use 'package:' imports inside lib/ for consistency and IDE tooling support.
+    # avoid_relative_lib_imports: true               # Prevent relative imports that cross into lib/. Avoids ambiguity and makes refactoring easier.
+    directives_ordering: true                      # Enforce consistent ordering for import/export directives. Improves readability and avoids merge conflicts.
+    # no_leading_underscores_for_local_identifiers: true  # Avoid leading underscores for local variables—they don’t affect scope and may confuse meaning.
+
+    # prefer_final_in_for_each: true                 # Use 'final' in for-each loops when the variable is not reassigned. Encourages immutability.
+    # prefer_single_quotes: true                     # Use single quotes for strings unless interpolation or escaping is required. Ensures style consistency.
+    # require_trailing_commas: true                  # Require trailing commas on multi-line lists/maps/params. Improves diffs and formatting.
+    # sort_child_properties_last: true               # In Flutter widgets, place 'child' or 'children' last for readability and consistency.
+    # sort_constructors_first: true                  # Require constructors to appear before other class members. Makes class definitions easier to scan.
+    # unnecessary_this: true                         # Disallow unnecessary 'this.' usage when not required for disambiguation. Reduces clutter.
+    # use_super_parameters: true                     # Prefer Dart’s `super.parameter` shorthand to reduce boilerplate in constructors.
+    # prefer_is_empty: true                          # Use '.isEmpty' instead of 'length == 0' for clearer and more idiomatic code.
+    # unnecessary_lambdas: true                      # Avoid wrapping functions in unnecessary lambda expressions. Simplifies and clarifies intent.
+    # prefer_final_fields: true                      # Use 'final' for fields that are never reassigned. Encourages immutability and safer code.
+
+    # --- Phase 2: Performance & Flutter Best Practices ---
+    # prefer_const_constructors: true                    # Use const constructors when possible. Reduces rebuilds and improves performance.
+    # prefer_const_constructors_in_immutables: true      # Use const constructors in immutable classes for compile-time optimization.
+    # prefer_const_declarations: true                    # Declare local variables as const when they never change. Enables compile-time evaluation.
+    # prefer_const_literals_to_create_immutables: true   # Use const for immutable collection literals (lists, maps, sets). Improves memory efficiency.
+    # prefer_final_locals: true                          # Declare local variables as final when not reassigned. Encourages immutability.
+    # avoid_unnecessary_containers: true                 # Avoid using Container when it's not needed. Reduces widget tree complexity.
+    # sized_box_for_whitespace: true                     # Use SizedBox instead of Container for spacing purposes. Semantically clearer and more performant.
+    # avoid_redundant_argument_values: true              # Don't explicitly pass arguments that match default values. Simplifies code.
+    # use_key_in_widget_constructors: true               # Always pass a Key to widgets that may rebuild. Crucial for preserving widget identity and state.
+    # unnecessary_getters_and_setters: true              # Avoid writing trivial getters/setters that add no value. Keeps classes concise.
+    # use_setters_to_change_properties: true             # Use property setters instead of custom methods for modifying fields. Matches Dart conventions.
+
+    # --- Phase 3: Potential Errors & Code Smells ---
+    # avoid_print: true                          # Avoid using 'print' in production code. Use proper logging or debugging tools instead.
+    # avoid_empty_else: true                     # Empty else blocks are usually unnecessary or a sign of forgotten logic.
+    # await_only_futures: true                   # Only await actual Future-returning expressions. Prevents runtime type errors.
+    # empty_catches: true                        # Avoid silent error swallowing. Always handle or log caught exceptions.
+    # no_duplicate_case_values: true             # Prevent duplicate values in switch case statements. Avoids unreachable code.
+    # use_build_context_synchronously: true      # 🚨 Avoid using BuildContext after an async gap. Critical for widget safety in async code.
+    # unnecessary_parenthesis: true              # Remove parentheses that serve no functional purpose. Keeps expressions clean.
+    # unnecessary_statements: true               # Remove statements that don’t affect program behavior. Reduces noise and potential confusion.
+    # depend_on_referenced_packages: true # Keeps pubspec clean.
+    # null_check_on_nullable_type_parameter: true # Catches subtle null errors.
+    # unreachable_from_main: true # Helps find and remove dead code.
+
+
+    # --- Phase 4: Stricter Rules & Documentation (For after the main cleanup) ---
+    # public_member_api_docs: true # Enforces documentation on all public APIs.
+    # avoid_positional_boolean_parameters: true # Improves call-site readability.
+    # diagnostic_describe_all_properties: true # Improves Flutter DevTools output.
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
