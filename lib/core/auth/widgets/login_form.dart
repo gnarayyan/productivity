@@ -231,7 +231,6 @@ class _LoginFormState extends State<LoginForm> {
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: AppColors.info.withAlpha((0.3 * 255).toInt()),
-                width: 1,
               ),
             ),
             child: Column(

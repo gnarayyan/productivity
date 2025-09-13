@@ -193,7 +193,6 @@ class _PersonalGoalsViewState extends State<PersonalGoalsView> {
                 color: theme.brightness == Brightness.dark
                     ? Colors.grey.shade800
                     : Colors.grey.shade300,
-                width: 1,
               ),
             ),
           ),

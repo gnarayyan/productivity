@@ -61,7 +61,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       throw DioException(
         requestOptions: RequestOptions(path: '/auth/login'),
-        type: DioExceptionType.unknown,
         error: e,
       );
     }
@@ -113,7 +112,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       throw DioException(
         requestOptions: RequestOptions(path: '/auth/refresh'),
-        type: DioExceptionType.unknown,
         error: e,
       );
     }
@@ -156,7 +154,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       throw DioException(
         requestOptions: RequestOptions(path: '/auth/me'),
-        type: DioExceptionType.unknown,
         error: e,
       );
     }
@@ -173,7 +170,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       throw DioException(
         requestOptions: RequestOptions(path: '/auth/logout'),
-        type: DioExceptionType.unknown,
         error: e,
       );
     }

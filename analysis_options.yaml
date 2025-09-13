@@ -62,9 +62,8 @@ linter:
     prefer_final_locals: true                          # Declare local variables as final when not reassigned. Encourages immutability.
     # avoid_unnecessary_containers: true                 # Avoid using Container when it's not needed. Reduces widget tree complexity.
     # sized_box_for_whitespace: true                     # Use SizedBox instead of Container for spacing purposes. Semantically clearer and more performant.
-    # avoid_redundant_argument_values: true              # Don't explicitly pass arguments that match default values. Simplifies code.
-    # use_key_in_widget_constructors: true               # Always pass a Key to widgets that may rebuild. Crucial for preserving widget identity and state.
-    # unnecessary_getters_and_setters: true              # Avoid writing trivial getters/setters that add no value. Keeps classes concise.
+    avoid_redundant_argument_values: true              # Don't explicitly pass arguments that match default values. Simplifies code.
+    # use_key_in_widget_constructors: true               # Avoid writing trivial getters/setters that add no value. Keeps classes concise.
     # use_setters_to_change_properties: true             # Use property setters instead of custom methods for modifying fields. Matches Dart conventions.
 
     # --- Phase 3: Potential Errors & Code Smells ---

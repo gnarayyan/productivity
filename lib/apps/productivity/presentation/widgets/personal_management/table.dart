@@ -50,9 +50,9 @@ class StatsTable extends StatelessWidget {
 
       columnWidths: const {
         0: IntrinsicColumnWidth(), // For the icon and label column
-        1: FlexColumnWidth(1), // For the stats chips
-        2: FlexColumnWidth(1), // For the stats chips
-        3: FlexColumnWidth(1), // For the stats chips
+        1: FlexColumnWidth(), // For the stats chips
+        2: FlexColumnWidth(), // For the stats chips
+        3: FlexColumnWidth(), // For the stats chips
       },
       children: [
         // Header

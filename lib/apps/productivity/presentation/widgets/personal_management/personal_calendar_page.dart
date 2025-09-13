@@ -167,12 +167,11 @@ class _PersonalCalendarPageState extends State<PersonalCalendarPage>
                   ],
                 ),
                 child: TableCalendar<TaskEvent>(
-                  firstDay: DateTime.utc(2020, 1, 1),
+                  firstDay: DateTime.utc(2020),
                   lastDay: DateTime.utc(2030, 12, 31),
                   focusedDay: _focusedDay,
                   calendarFormat: _calendarFormat,
                   eventLoader: _getEventsForDay,
-                  startingDayOfWeek: StartingDayOfWeek.sunday,
                   selectedDayPredicate: (day) {
                     return isSameDay(_selectedDay, day);
                   },

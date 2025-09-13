@@ -362,7 +362,6 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                     maxY: 100,
                     barTouchData: BarTouchData(enabled: false),
                     titlesData: FlTitlesData(
-                      show: true,
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
                           showTitles: true,
@@ -385,13 +384,13 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                         ),
                       ),
                       leftTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
+                        
                       ),
                       topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
+                        
                       ),
                       rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
+                        
                       ),
                     ),
                     borderData: FlBorderData(show: false),
@@ -536,7 +535,7 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF2A3441) : const Color(0xFFF8F9FA),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withAlpha(51), width: 1),
+        border: Border.all(color: color.withAlpha(51)),
       ),
       child: Column(
         children: [
@@ -718,7 +717,6 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                   LineChartData(
                     gridData: const FlGridData(show: false),
                     titlesData: FlTitlesData(
-                      show: true,
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
                           showTitles: true,
@@ -742,13 +740,13 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                         ),
                       ),
                       leftTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
+                        
                       ),
                       topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
+                        
                       ),
                       rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
+                        
                       ),
                     ),
                     borderData: FlBorderData(show: false),
@@ -773,7 +771,6 @@ class _PersonalDashboardPageState extends State<PersonalDashboardPage>
                           color: const Color(0xFF2196F3).withAlpha(26),
                         ),
                         dotData: FlDotData(
-                          show: true,
                           getDotPainter: (spot, percent, barData, index) {
                             return FlDotCirclePainter(
                               radius: 4,

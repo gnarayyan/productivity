@@ -34,7 +34,7 @@ class GoalItem extends StatelessWidget {
                 ),
               ],
         border: theme.brightness == Brightness.dark
-            ? Border.all(color: Colors.grey.shade800, width: 1)
+            ? Border.all(color: Colors.grey.shade800)
             : null,
       ),
       child: Padding(
