@@ -10,7 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:varosa_tech/apps/productivity/presentation/pages/productivity_main_page.dart'
+import 'package:varosa_tech/presentation/pages/productivity_main_page.dart'
     as _i2;
 import 'package:varosa_tech/core/auth/pages/auth_demo_page.dart' as _i1;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:varosa_tech/apps/productivity/data/models/badge_model.dart';
-import 'package:varosa_tech/apps/productivity/data/models/goal_model.dart';
+import 'package:varosa_tech/data/models/badge_model.dart';
+import 'package:varosa_tech/data/models/goal_model.dart';
 
 import '../../../cubits/goal_detail_cubit.dart';
 import '../../../utils/get_goal_badge.dart';

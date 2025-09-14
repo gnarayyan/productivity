@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:varosa_tech/apps/productivity/presentation/cubits/goal_detail_cubit.dart';
-import 'package:varosa_tech/apps/productivity/presentation/widgets/personal_management/goals_widgets/goals_list_view.dart';
+import 'package:varosa_tech/presentation/cubits/goal_detail_cubit.dart';
+import 'package:varosa_tech/presentation/widgets/personal_management/goals_widgets/goals_list_view.dart';
 import '../common/filter_chips.dart';
 import 'popup_menus/popup_menu.dart';
 

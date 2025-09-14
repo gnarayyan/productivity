@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:varosa_tech/apps/productivity/data/datasource/sample_data_source.dart';
-import 'package:varosa_tech/apps/productivity/data/models/goal_model.dart';
-import 'package:varosa_tech/apps/productivity/presentation/widgets/personal_management/goals_widgets/goal_section.dart';
+import 'package:varosa_tech/data/datasource/sample_data_source.dart';
+import 'package:varosa_tech/data/models/goal_model.dart';
+import 'package:varosa_tech/presentation/widgets/personal_management/goals_widgets/goal_section.dart';
 
 class GoalsListView extends StatelessWidget {
 

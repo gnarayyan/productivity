@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 // Productivity app imports
-import '../apps/productivity/presentation/bloc/productivity_navigation_bloc.dart';
+import '../presentation/bloc/productivity_navigation_bloc.dart';
 // Theme imports
 import '../themes/bloc/theme_bloc.dart';
 import 'auth/bloc/auth_bloc.dart';
