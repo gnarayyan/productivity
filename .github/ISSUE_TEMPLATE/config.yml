@@ -1,0 +1,108 @@
+# GitHub Issue Template Configuration
+# This file configures the issue template chooser that users see when creating new issues
+# Documentation: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
+
+# Disable blank issues to encourage users to use structured templates
+blank_issues_enabled: false
+
+# Contact links that appear in the issue template chooser
+# These provide alternative ways for users to get help or provide feedback
+contact_links:
+  # Documentation and project information
+  - name: 📚 Documentation & Wiki
+    url: https://github.com/gnarayyan/productivity/wiki
+    about: Browse comprehensive project documentation, architecture guides, API references, and setup instructions
+
+  - name: 📖 README & Getting Started
+    url: https://github.com/gnarayyan/productivity#readme
+    about: Quick overview of the project, features, and getting started guide
+
+  # Direct issue reporting (bypasses template chooser for quick access)
+  - name: 🐛 Quick Bug Report
+    url: https://github.com/gnarayyan/productivity/issues/new?template=bug_report.md
+    about: Report a bug directly using the bug report template
+
+  - name: 💡 Quick Feature Request
+    url: https://github.com/gnarayyan/productivity/issues/new?template=feature_request.md
+    about: Suggest a new feature directly using the feature request template
+
+  # Community and support resources
+  - name: 🔍 Search Existing Issues
+    url: https://github.com/gnarayyan/productivity/issues
+    about: Check if your issue has already been reported or resolved
+
+  - name: 📋 Project Roadmap
+    url: https://github.com/gnarayyan/productivity/projects
+    about: View the development roadmap and planned features
+
+  # Release and download information
+  - name: 📱 Download Latest Release
+    url: https://github.com/gnarayyan/productivity/releases/latest
+    about: Download the latest stable version of the productivity app
+
+  - name: 🚀 Release Notes
+    url: https://github.com/gnarayyan/productivity/releases
+    about: View all releases, changelogs, and version history
+
+  # Development and contribution resources
+  - name: 🤝 Contributing Guidelines
+    url: https://github.com/gnarayyan/productivity/blob/main/CONTRIBUTING.md
+    about: Learn how to contribute to the project (if contribution guidelines exist)
+
+  - name: 👤 Developer Profile
+    url: https://github.com/gnarayyan
+    about: View the developer's profile and other projects
+
+  # Repository navigation
+  - name: 💻 Source Code
+    url: https://github.com/gnarayyan/productivity
+    about: Browse the source code, view commits, and explore the project structure
+
+  - name: 🔧 Development Setup
+    url: https://github.com/gnarayyan/productivity/blob/main/frontend-readme.md
+    about: Flutter development setup, build instructions, and technical documentation
+
+  # Support and feedback (when discussions are enabled)
+  # Uncomment these when GitHub Discussions are enabled for the repository:
+  
+  # - name: 💬 Community Discussions
+  #   url: https://github.com/gnarayyan/productivity/discussions
+  #   about: Ask questions, share ideas, and discuss with the community
+  
+  # - name: 💡 Feature Ideas & Feedback
+  #   url: https://github.com/gnarayyan/productivity/discussions/categories/ideas
+  #   about: Share your ideas and feedback about the app in our discussions
+  
+  # - name: ❓ Q&A and Help
+  #   url: https://github.com/gnarayyan/productivity/discussions/categories/q-a
+  #   about: Get help from the community and ask questions
+  
+  # - name: 📢 Announcements
+  #   url: https://github.com/gnarayyan/productivity/discussions/categories/announcements
+  #   about: Stay updated with project announcements and news
+
+  # Security reporting (when security features are enabled)
+  # Uncomment when private vulnerability reporting is set up:
+  
+  # - name: 🔒 Private Security Report
+  #   url: https://github.com/gnarayyan/productivity/security/advisories/new
+  #   about: Report security vulnerabilities privately (recommended for critical issues)
+
+# Additional notes for maintainers:
+# 
+# To enable GitHub Discussions:
+# 1. Go to repository Settings
+# 2. Scroll to Features section
+# 3. Check "Discussions"
+# 4. Uncomment the discussion-related contact links above
+#
+# To enable Security Advisories:
+# 1. Go to repository Settings
+# 2. Scroll to Security section
+# 3. Enable "Private vulnerability reporting"
+# 4. Uncomment the security reporting contact link above
+#
+# Contact link requirements:
+# - URLs must start with https:// or http://
+# - Maximum of 10 contact links allowed
+# - Each link needs: name, url, and about fields
