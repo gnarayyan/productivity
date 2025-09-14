@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:varosa_tech/apps/offline_todo/presentation/bloc/todo_bloc.dart';
 import 'package:varosa_tech/core/service_locator.dart';
 import 'package:varosa_tech/themes/app_theme.dart';
 import 'package:varosa_tech/themes/bloc/theme_bloc.dart';
@@ -17,7 +16,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<TodoBloc>(create: (_) => sl<TodoBloc>()..add(LoadTodos())),
         BlocProvider<ThemeBloc>(create: (_) => sl<ThemeBloc>()),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(

@@ -2,20 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../apps/dynamic_form/bloc/dynamic_form_bloc.dart';
-// Dynamic Form imports
-import '../apps/dynamic_form/models/form_data_source.dart';
-import '../apps/method_channel/bloc/device_info_bloc.dart';
-import '../apps/method_channel/services/device_info_service.dart';
-// Mini Ecommerce DI
-import '../apps/mini_ecommerce/di/ecommerce_di.dart';
-// Nested Bottom Nav imports
-import '../apps/nested_bottom_nav/bloc/navigation_bloc.dart';
-import '../apps/offline_todo/data/datasources/local_datasource.dart';
-import '../apps/offline_todo/data/repositories/todo_repository_impl.dart';
-import '../apps/offline_todo/domain/repositories/todo_repository.dart';
-import '../apps/offline_todo/domain/usecases/todo_usecases.dart';
-import '../apps/offline_todo/presentation/bloc/todo_bloc.dart';
+
 // Productivity app imports
 import '../apps/productivity/presentation/bloc/productivity_navigation_bloc.dart';
 // Theme imports
@@ -32,56 +19,13 @@ final sl = GetIt.instance;
 
 Future<void> initDependencies() async {
   // Core
-  sl.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper.instance);
+  // sl.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper.instance);
 
-  // Todo App Dependencies
-  // Repository - Register the interface, not the implementation
-  sl.registerLazySingleton<TodoRepository>(() => TodoRepositoryImpl(sl()));
-
-  // Use cases
-  sl.registerLazySingleton<GetAllTodos>(() => GetAllTodos(sl()));
-  sl.registerLazySingleton<AddTodo>(() => AddTodo(sl()));
-  sl.registerLazySingleton<UpdateTodo>(() => UpdateTodo(sl()));
-  sl.registerLazySingleton<DeleteTodo>(() => DeleteTodo(sl()));
-  sl.registerLazySingleton<ToggleTodoStatus>(() => ToggleTodoStatus(sl()));
-  sl.registerLazySingleton<SearchTodos>(() => SearchTodos(sl()));
-  sl.registerLazySingleton<GetTodosByStatus>(() => GetTodosByStatus(sl()));
-
-  // Todo Bloc
-  sl.registerFactory(
-    () => TodoBloc(
-      getAllTodos: sl(),
-      addTodo: sl(),
-      updateTodo: sl(),
-      deleteTodo: sl(),
-      toggleTodoStatus: sl(),
-      searchTodos: sl(),
-      getTodosByStatus: sl(),
-    ),
-  );
-
-  // Method Channel App Dependencies
-  // Services
-  sl.registerLazySingleton<DeviceInfoService>(DeviceInfoService.new);
-
-  // Bloc
-  sl.registerFactory(() => DeviceInfoBloc(sl()));
-
-  // Dynamic Form App Dependencies
-  // Data sources
-  sl.registerLazySingleton<FormDataSource>(FormDataSource.new);
-
-  // Bloc
-  sl.registerFactory(() => DynamicFormBloc(sl()));
-
-  // Nested Bottom Nav App Dependencies
-  sl.registerFactory(NavigationBloc.new);
 
   // Productivity App Dependencies
   sl.registerFactory(ProductivityNavigationBloc.new);
 
-  // Mini Ecommerce App Dependencies
-  EcommerceDI.register(sl);
+
 
   // Auth App Dependencies
   await _setupAuthDependencies();
