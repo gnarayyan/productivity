@@ -12,10 +12,11 @@ assignees: ""
 A clear and concise description of what the bug is.
 
 **When did this happen?**
+
 - [ ] During app startup
 - [ ] While using a specific feature
 - [ ] After updating the app
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🔄 Steps to Reproduce
 
@@ -38,11 +39,13 @@ What actually happened instead?
 ### 📱 Environment
 
 **Device Information:**
+
 - Device: [e.g. iPhone 12, Pixel 6, Samsung Galaxy S21]
 - OS Version: [e.g. iOS 16.1, Android 13]
 - App Version: [e.g. 1.2.3 - found in Settings > About]
 
 **Flutter Information (for developers):**
+
 - Flutter Version: [if known]
 - Dart Version: [if known]
 
@@ -55,24 +58,27 @@ If applicable, add screenshots or screen recordings to help explain your problem
 ### 🔍 Additional Context
 
 **Error Messages:**
+
 ```
 Paste any error messages here
 ```
 
 **Frequency:**
+
 - [ ] Happens every time
 - [ ] Happens sometimes
 - [ ] Happened only once
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 **Workaround:**
 Is there any way to work around this issue?
 
 **Impact:**
+
 - [ ] Blocks me from using the app
 - [ ] Reduces functionality
 - [ ] Minor inconvenience
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🏷️ Labels Needed
 

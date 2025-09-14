@@ -9,6 +9,7 @@ assignees: ""
 ### ❓ Question Type
 
 **What type of question is this?**
+
 - [ ] How to use a feature
 - [ ] App behavior clarification
 - [ ] Feature availability
@@ -17,7 +18,7 @@ assignees: ""
 - [ ] Troubleshooting help
 - [ ] Compatibility question
 - [ ] Development/contribution question
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🎯 Your Question
 
@@ -30,16 +31,18 @@ Ask your question clearly and specifically.
 Describe your goal or what you're working on.
 
 **What have you already tried?**
+
 - [ ] Checked the app's help/FAQ section
 - [ ] Searched existing issues
 - [ ] Looked through documentation
 - [ ] Tried different approaches
 - [ ] Asked in community forums
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 📱 Environment (if relevant)
 
 **App & Device Info:**
+
 - App Version: [if relevant]
 - Device: [if relevant]
 - OS: [if relevant]
@@ -47,6 +50,7 @@ Describe your goal or what you're working on.
 ### 💡 What you've tried
 
 **Steps you've already taken:**
+
 1. ...
 2. ...
 3. ...
@@ -62,12 +66,14 @@ Describe what success would look like for your question.
 ### 📚 Additional Context
 
 **Relevant Information:**
+
 - Links to related documentation
 - Screenshots (if helpful)
 - Error messages (if any)
 - Similar questions you've found
 
 **Background:**
+
 - Your experience level with the app
 - How long you've been using it
 - Similar apps you've used
@@ -75,6 +81,7 @@ Describe what success would look like for your question.
 ### 🏷️ Topic Areas
 
 **Which area does your question relate to?**
+
 - [ ] Getting started
 - [ ] Task management
 - [ ] Calendar/scheduling
@@ -88,11 +95,12 @@ Describe what success would look like for your question.
 - [ ] Privacy/security
 - [ ] Troubleshooting
 - [ ] Development/technical
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🤝 Community Help
 
 **Would you like help from:**
+
 - [ ] App maintainers
 - [ ] Community members
 - [ ] Documentation improvement
@@ -102,6 +110,7 @@ Describe what success would look like for your question.
 ### 📝 Follow-up
 
 **After getting an answer:**
+
 - [ ] I'd be willing to help improve documentation
 - [ ] I'd like to contribute to a FAQ
 - [ ] I might have follow-up questions

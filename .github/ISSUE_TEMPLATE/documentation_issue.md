@@ -9,6 +9,7 @@ assignees: ""
 ### 📖 Documentation Issue Type
 
 **What type of documentation issue is this?**
+
 - [ ] Incorrect information
 - [ ] Missing information
 - [ ] Unclear/confusing explanation
@@ -17,11 +18,12 @@ assignees: ""
 - [ ] Typos/grammar
 - [ ] Missing examples
 - [ ] Needs better organization
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 📍 Location
 
 **Where is the documentation issue?**
+
 - File: (e.g., README.md, API docs, in-app help)
 - Section: (e.g., Installation, Getting Started)
 - Line number: (if applicable)
@@ -33,6 +35,7 @@ assignees: ""
 Describe the specific issue with the current documentation.
 
 **Quote the problematic text (if applicable):**
+
 ```
 Paste the current text here
 ```
@@ -43,6 +46,7 @@ Paste the current text here
 Provide your suggested improvement or the missing information.
 
 **Proposed text:**
+
 ```
 Your suggested replacement or addition
 ```
@@ -50,6 +54,7 @@ Your suggested replacement or addition
 ### 👥 Target Audience
 
 **Who would this improvement help?**
+
 - [ ] New users/beginners
 - [ ] Experienced users
 - [ ] Developers
@@ -64,6 +69,7 @@ Describe what you were trying to do when you encountered this documentation issu
 ### 💡 Additional Suggestions
 
 **Any other improvements for this section?**
+
 - Related topics that should be cross-referenced
 - Examples that would be helpful
 - Visual aids (diagrams, screenshots) that would help
@@ -71,6 +77,7 @@ Describe what you were trying to do when you encountered this documentation issu
 ### 🔗 References
 
 **Helpful resources:**
+
 - Links to related documentation that does this well
 - External resources that could be referenced
 - Similar apps or projects with good documentation
@@ -78,6 +85,7 @@ Describe what you were trying to do when you encountered this documentation issu
 ### 🎯 Priority
 
 **How important is fixing this?**
+
 - [ ] Critical - Prevents users from getting started
 - [ ] High - Causes confusion for many users
 - [ ] Medium - Minor improvement

@@ -9,6 +9,7 @@ assignees: ""
 ### 🎨 UI/UX Issue Type
 
 **What type of UI/UX issue is this?**
+
 - [ ] Visual design problem
 - [ ] Layout/positioning issue
 - [ ] Inconsistent design
@@ -21,11 +22,12 @@ assignees: ""
 - [ ] Typography problem
 - [ ] Icon/imagery issue
 - [ ] Animation/transition issue
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 📍 Where is the issue?
 
 **Location in app:**
+
 - Screen: [e.g., Home, Settings, Task List]
 - Component: [e.g., Button, Form, Navigation]
 - Specific area: [e.g., Top bar, Bottom sheet, Modal]
@@ -36,6 +38,7 @@ assignees: ""
 Describe the specific UI/UX issue you're experiencing.
 
 **User Impact:**
+
 - [ ] Confusing - users don't understand what to do
 - [ ] Inefficient - takes too many steps
 - [ ] Error-prone - users make mistakes
@@ -46,6 +49,7 @@ Describe the specific UI/UX issue you're experiencing.
 ### 📱 Device Context
 
 **Where does this appear?**
+
 - [ ] Phone (small screen)
 - [ ] Tablet (large screen)
 - [ ] Both platforms
@@ -58,6 +62,7 @@ Describe the specific UI/UX issue you're experiencing.
 Describe your expected user experience.
 
 **Reference Examples:**
+
 - Similar feature in other apps
 - Design patterns that work well
 - Existing screens in this app that work better
@@ -65,6 +70,7 @@ Describe your expected user experience.
 ### 🔄 User Journey Impact
 
 **How does this affect the user's workflow?**
+
 1. User wants to...
 2. Current flow: User has to...
 3. Problem: This is difficult because...
@@ -73,6 +79,7 @@ Describe your expected user experience.
 ### ♿ Accessibility Considerations
 
 **Accessibility issues (if applicable):**
+
 - [ ] Poor color contrast
 - [ ] No screen reader support
 - [ ] Small touch targets
@@ -82,6 +89,7 @@ Describe your expected user experience.
 - [ ] Poor text scaling support
 
 **WCAG Guidelines affected:**
+
 - [ ] Perceivable
 - [ ] Operable
 - [ ] Understandable
@@ -90,6 +98,7 @@ Describe your expected user experience.
 ### 🎨 Visual Design Issues
 
 **Specific design problems:**
+
 - [ ] Colors don't match brand/theme
 - [ ] Inconsistent spacing/padding
 - [ ] Wrong font sizes/weights
@@ -101,6 +110,7 @@ Describe your expected user experience.
 ### 📐 Layout Problems
 
 **Layout issues:**
+
 - [ ] Elements overlap
 - [ ] Poor use of whitespace
 - [ ] Text truncation/overflow
@@ -111,6 +121,7 @@ Describe your expected user experience.
 ### 🔄 Interaction Problems
 
 **Interaction issues:**
+
 - [ ] Unclear clickable areas
 - [ ] Missing hover states
 - [ ] No loading indicators
@@ -121,26 +132,30 @@ Describe your expected user experience.
 ### 📊 Priority & Severity
 
 **How important is this issue?**
+
 - [ ] Critical - Blocks core functionality
 - [ ] High - Significantly impacts user experience
 - [ ] Medium - Noticeable but manageable
 - [ ] Low - Minor polish issue
 
 **User Groups Affected:**
+
 - [ ] All users
 - [ ] New users
 - [ ] Power users
 - [ ] Users with disabilities
-- [ ] Specific demographic: ___________
+- [ ] Specific demographic: ****\_\_\_****
 
 ### 💡 Suggested Solutions
 
 **Proposed improvements:**
-1. **Short-term fix:** ___________
-2. **Long-term solution:** ___________
-3. **Alternative approaches:** ___________
+
+1. **Short-term fix:** ****\_\_\_****
+2. **Long-term solution:** ****\_\_\_****
+3. **Alternative approaches:** ****\_\_\_****
 
 **Design considerations:**
+
 - Should follow existing design system
 - Should maintain consistency with rest of app
 - Should improve accessibility
@@ -149,29 +164,34 @@ Describe your expected user experience.
 ### 📸 Visual Evidence
 
 **Screenshots/Mockups:**
+
 <!-- Attach current screenshots and/or mockups of proposed solutions -->
 
 **Before/After:**
+
 - Current state: [screenshot]
 - Proposed state: [mockup/description]
 
 ### 🔗 Related Design Work
 
 **Connected to:**
-- Design system component: ___________
-- Other UI issues: #___________
-- Design specifications: ___________
-- User research findings: ___________
+
+- Design system component: ****\_\_\_****
+- Other UI issues: #****\_\_\_****
+- Design specifications: ****\_\_\_****
+- User research findings: ****\_\_\_****
 
 ### 📝 Additional Context
 
 **Design constraints:**
+
 - Platform guidelines (Material Design, Human Interface Guidelines)
 - Brand guidelines
 - Technical limitations
 - Performance considerations
 
 **Research/Data:**
+
 - User feedback
 - Analytics data
 - Usability testing results

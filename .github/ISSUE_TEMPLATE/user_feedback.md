@@ -9,6 +9,7 @@ assignees: ""
 ### 📝 Feedback Type
 
 **What kind of feedback are you sharing?**
+
 - [ ] General app experience
 - [ ] Feature suggestion
 - [ ] Usability feedback
@@ -18,12 +19,13 @@ assignees: ""
 - [ ] Comparison with other apps
 - [ ] Success story
 - [ ] Pain point/frustration
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 👤 User Background
 
 **Tell us about your usage:**
-- How long have you been using the app? ___________
+
+- How long have you been using the app? ****\_\_\_****
 - How often do you use it? [Daily/Weekly/Monthly/Occasionally]
 - Primary use case: [Personal productivity/Work/School/Other]
 - Device(s): [Phone/Tablet/Multiple devices]
@@ -31,6 +33,7 @@ assignees: ""
 ### 🌟 What's Working Well
 
 **What do you love about the app?**
+
 - Features you use most
 - Things that save you time
 - Aspects that exceed expectations
@@ -39,6 +42,7 @@ assignees: ""
 ### 😔 Pain Points
 
 **What frustrates you or could be better?**
+
 - Features that are confusing
 - Workflows that feel clunky
 - Missing functionality
@@ -47,6 +51,7 @@ assignees: ""
 ### 💡 Suggestions & Ideas
 
 **How could we improve your experience?**
+
 - New features you'd like to see
 - Existing features that need improvement
 - Workflow optimizations
@@ -55,6 +60,7 @@ assignees: ""
 ### 🔄 Workflow Context
 
 **How does this app fit into your productivity workflow?**
+
 - What you do before using the app
 - How you use the app
 - What you do after using the app
@@ -63,6 +69,7 @@ assignees: ""
 ### 📊 Productivity Impact
 
 **How has this app affected your productivity?**
+
 - [ ] Significantly improved
 - [ ] Somewhat improved
 - [ ] No change
@@ -70,29 +77,33 @@ assignees: ""
 - [ ] Not sure yet
 
 **Specific improvements:**
-- Time saved: ___________
-- Better organization: ___________
-- Reduced stress: ___________
-- Other benefits: ___________
+
+- Time saved: ****\_\_\_****
+- Better organization: ****\_\_\_****
+- Reduced stress: ****\_\_\_****
+- Other benefits: ****\_\_\_****
 
 ### 🎯 Feature Priority
 
 **If you could only improve 3 things, what would they be?**
-1. ___________
-2. ___________
-3. ___________
+
+1. ***
+2. ***
+3. ***
 
 ### 📱 Platform Experience
 
 **Device-specific feedback:**
 
 **Mobile Experience:**
+
 - [ ] Great on phone
 - [ ] Good on phone
 - [ ] Needs improvement on phone
 - [ ] Don't use on phone
 
 **Tablet Experience:**
+
 - [ ] Great on tablet
 - [ ] Good on tablet
 - [ ] Needs improvement on tablet
@@ -101,14 +112,16 @@ assignees: ""
 ### 🔄 Comparison
 
 **How does this compare to other productivity apps you've used?**
-- Previous apps: ___________
-- What made you switch: ___________
-- What's better here: ___________
-- What's better elsewhere: ___________
+
+- Previous apps: ****\_\_\_****
+- What made you switch: ****\_\_\_****
+- What's better here: ****\_\_\_****
+- What's better elsewhere: ****\_\_\_****
 
 ### 👥 Sharing & Recommendations
 
 **Would you recommend this app to others?**
+
 - [ ] Definitely yes
 - [ ] Probably yes
 - [ ] Not sure
@@ -116,9 +129,10 @@ assignees: ""
 - [ ] Definitely no
 
 **Who would you recommend it to?**
+
 - [ ] Anyone looking for productivity tools
-- [ ] People with specific needs: ___________
-- [ ] Professionals in certain fields: ___________
+- [ ] People with specific needs: ****\_\_\_****
+- [ ] Professionals in certain fields: ****\_\_\_****
 - [ ] Students
 - [ ] Personal use only
 - [ ] Would not recommend yet
@@ -126,6 +140,7 @@ assignees: ""
 ### 🎨 Design & User Experience
 
 **Overall design feedback:**
+
 - [ ] Love the design
 - [ ] Design is good
 - [ ] Design is okay
@@ -133,14 +148,16 @@ assignees: ""
 - [ ] Design is poor
 
 **Specific design thoughts:**
-- Colors and themes: ___________
-- Layout and organization: ___________
-- Navigation: ___________
-- Accessibility: ___________
+
+- Colors and themes: ****\_\_\_****
+- Layout and organization: ****\_\_\_****
+- Navigation: ****\_\_\_****
+- Accessibility: ****\_\_\_****
 
 ### 📈 Future Vision
 
 **Where would you like to see this app in 6 months?**
+
 - New platforms/integrations
 - Major feature additions
 - Performance improvements
@@ -149,6 +166,7 @@ assignees: ""
 ### 💬 Open Feedback
 
 **Anything else you'd like to share?**
+
 - Success stories
 - Specific examples
 - Detailed suggestions
@@ -157,6 +175,7 @@ assignees: ""
 ### 🏷️ Feedback Categories
 
 **This feedback relates to:**
+
 - [ ] Core productivity features
 - [ ] User interface/experience
 - [ ] Performance and reliability
@@ -174,6 +193,7 @@ assignees: ""
 ⭐⭐⭐⭐⭐ (Rate 1-5 stars)
 
 **Most important aspect:**
+
 - [ ] Reliability
 - [ ] Features
 - [ ] Ease of use

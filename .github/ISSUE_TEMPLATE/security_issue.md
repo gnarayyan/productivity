@@ -14,6 +14,7 @@ Please consider reporting this privately first by emailing the maintainers or us
 ### 🔒 Security Issue Type
 
 **What type of security issue is this?**
+
 - [ ] Data privacy concern
 - [ ] Authentication/authorization issue
 - [ ] Data exposure/leakage
@@ -24,11 +25,12 @@ Please consider reporting this privately first by emailing the maintainers or us
 - [ ] Cryptographic weakness
 - [ ] Dependency vulnerability
 - [ ] Information disclosure
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 📱 Affected Areas
 
 **Which parts of the app are affected?**
+
 - [ ] User authentication
 - [ ] Data storage (local database)
 - [ ] Network communications
@@ -38,17 +40,19 @@ Please consider reporting this privately first by emailing the maintainers or us
 - [ ] Background services
 - [ ] Data export/import
 - [ ] User settings/preferences
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🎯 Impact Assessment
 
 **Severity Level:**
+
 - [ ] Critical - Immediate risk to user data/privacy
 - [ ] High - Significant security weakness
 - [ ] Medium - Moderate risk
 - [ ] Low - Minor security improvement
 
 **Data at Risk:**
+
 - [ ] Personal information (names, emails)
 - [ ] Task/productivity data
 - [ ] Authentication credentials
@@ -56,7 +60,7 @@ Please consider reporting this privately first by emailing the maintainers or us
 - [ ] Usage analytics
 - [ ] File attachments
 - [ ] Settings/preferences
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🔍 Issue Description
 
@@ -64,6 +68,7 @@ Please consider reporting this privately first by emailing the maintainers or us
 Provide a clear description of the security issue, avoiding specific exploit details in public issues.
 
 **Potential Impact:**
+
 - What could an attacker accomplish?
 - What data could be compromised?
 - How many users could be affected?
@@ -71,11 +76,13 @@ Provide a clear description of the security issue, avoiding specific exploit det
 ### 🔄 Steps to Reproduce
 
 **General steps (avoid detailed exploits in public):**
+
 1. Access area of app...
 2. Observe behavior...
 3. Notice security concern...
 
 **Prerequisites:**
+
 - Specific app permissions
 - Network conditions
 - Device setup
@@ -84,6 +91,7 @@ Provide a clear description of the security issue, avoiding specific exploit det
 ### 💡 Recommendations
 
 **Suggested Fixes:**
+
 - [ ] Implement proper encryption
 - [ ] Add input validation
 - [ ] Update authentication method
@@ -91,9 +99,10 @@ Provide a clear description of the security issue, avoiding specific exploit det
 - [ ] Update dependencies
 - [ ] Add security headers
 - [ ] Implement access controls
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 **Best Practices:**
+
 - Follow OWASP Mobile Security guidelines
 - Implement defense in depth
 - Regular security audits
@@ -102,11 +111,13 @@ Provide a clear description of the security issue, avoiding specific exploit det
 ### 📱 Platform Considerations
 
 **Affected Platforms:**
+
 - [ ] Android
 - [ ] iOS
 - [ ] Both
 
 **Platform-Specific Issues:**
+
 - Android permissions model
 - iOS keychain/secure storage
 - Platform security features
@@ -115,6 +126,7 @@ Provide a clear description of the security issue, avoiding specific exploit det
 ### 🔐 Current Security Measures
 
 **What security measures are currently in place?**
+
 - [ ] Data encryption at rest
 - [ ] Secure network communications (HTTPS/TLS)
 - [ ] Input validation
@@ -128,17 +140,19 @@ Provide a clear description of the security issue, avoiding specific exploit det
 ### 📊 Risk Assessment
 
 **Likelihood:**
+
 - [ ] High - Easy to exploit
 - [ ] Medium - Requires some effort
 - [ ] Low - Difficult to exploit
 
 **Attack Vector:**
+
 - [ ] Local device access
 - [ ] Network interception
 - [ ] Social engineering
 - [ ] Malicious input
 - [ ] Third-party compromise
-- [ ] Other: ___________
+- [ ] Other: ****\_\_\_****
 
 ### 🛡️ Mitigation
 
@@ -151,6 +165,7 @@ What should be implemented to fix this properly?
 ### 📚 References
 
 **Security Standards:**
+
 - OWASP Mobile Top 10
 - Platform security guidelines
 - Industry best practices
@@ -159,7 +174,8 @@ What should be implemented to fix this properly?
 ### 🔗 Related Issues
 
 **Connected Security Work:**
-- Issue #___________
+
+- Issue #****\_\_\_****
 - Security audit findings
 - Dependency vulnerabilities
 - Previous security fixes
@@ -167,12 +183,14 @@ What should be implemented to fix this properly?
 ### 📝 Additional Information
 
 **Environment Details:**
+
 - App version where issue was found
 - Device and OS version
 - Network environment
 - Any special configurations
 
 **Research/Analysis:**
+
 - Tools used for discovery
 - Additional investigation needed
 - Impact analysis
