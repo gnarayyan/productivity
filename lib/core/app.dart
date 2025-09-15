@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:varosa_tech/core/service_locator.dart';
-import 'package:varosa_tech/themes/app_theme.dart';
-import 'package:varosa_tech/themes/bloc/theme_bloc.dart';
-import 'package:varosa_tech/themes/bloc/theme_state.dart';
+import 'package:varosa_tech/core/themes/app_theme.dart';
+import 'package:varosa_tech/core/themes/bloc/theme_bloc.dart';
+import 'package:varosa_tech/core/themes/bloc/theme_state.dart';
 
 import 'router/app_router.dart';
 

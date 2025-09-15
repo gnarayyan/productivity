@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:varosa_tech/themes/app_theme.dart';
+import 'package:varosa_tech/core/themes/app_theme.dart';
 
 class ManageCategoriesPage extends StatelessWidget {
   const ManageCategoriesPage({super.key});

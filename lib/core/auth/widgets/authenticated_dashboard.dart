@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import '../../../themes/app_theme.dart';
+import '../../themes/app_theme.dart';
 import '../bloc/auth_bloc.dart';
 import '../models/auth_tokens.dart';
 import '../models/user.dart';

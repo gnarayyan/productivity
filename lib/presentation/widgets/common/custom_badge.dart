@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:varosa_tech/data/models/badge_model.dart';
-import '../../../themes/app_theme.dart';
+import '../../../core/themes/app_theme.dart';
 
 class CustomBadge extends StatelessWidget {
   const CustomBadge(this.badge, {super.key});

@@ -5,7 +5,7 @@ import 'package:lucide_icons/lucide_icons.dart';
 import 'package:varosa_tech/presentation/widgets/personal_management/create_goal_page.dart';
 
 import '../../core/service_locator.dart';
-import '../../themes/app_theme.dart';
+import '../../core/themes/app_theme.dart';
 import '../bloc/productivity_navigation_bloc.dart';
 import '../widgets/dashboard/personal_dashboard_page.dart';
 import '../widgets/main_drawer.dart';

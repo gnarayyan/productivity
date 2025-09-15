@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import '../../../themes/app_theme.dart';
+import '../../../core/themes/app_theme.dart';
 
 class PersonalDashboard extends StatelessWidget {
   const PersonalDashboard({super.key});

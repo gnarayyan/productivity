@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:varosa_tech/themes/app_theme.dart';
+import 'package:varosa_tech/core/themes/app_theme.dart';
 import '../../data/models/badge_model.dart';
 import '../../data/models/goal_model.dart';
 import 'format_relative_date.dart';

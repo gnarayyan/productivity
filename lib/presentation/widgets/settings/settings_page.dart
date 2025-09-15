@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:varosa_tech/themes/bloc/theme_bloc.dart';
-import 'package:varosa_tech/themes/bloc/theme_event.dart';
-import 'package:varosa_tech/themes/bloc/theme_state.dart';
+import 'package:varosa_tech/core/themes/bloc/theme_bloc.dart';
+import 'package:varosa_tech/core/themes/bloc/theme_event.dart';
+import 'package:varosa_tech/core/themes/bloc/theme_state.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

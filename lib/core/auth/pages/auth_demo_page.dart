@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/service_locator.dart';
-import '../../../themes/app_theme.dart';
+import '../../themes/app_theme.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/authenticated_dashboard.dart';
 import '../widgets/login_form.dart';

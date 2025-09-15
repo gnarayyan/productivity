@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // Productivity app imports
 import '../presentation/bloc/productivity_navigation_bloc.dart';
 // Theme imports
-import '../themes/bloc/theme_bloc.dart';
+import 'themes/bloc/theme_bloc.dart';
 import 'auth/bloc/auth_bloc.dart';
 // Auth imports
 import 'auth/data/datasources/auth_local_data_source.dart';
