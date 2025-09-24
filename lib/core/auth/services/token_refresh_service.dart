@@ -1,12 +1,13 @@
 import 'dart:async';
+
 import 'package:dio/dio.dart';
+
+import '../../../features/auth/domain/entities/auth_tokens_entity.dart';
 import '../domain/repositories/auth_repository.dart';
-import '../models/auth_tokens.dart';
 
 /// Service responsible for automatically handling token refresh
 /// This service acts as an interceptor and automatic token manager
 class TokenRefreshService {
-
   TokenRefreshService({
     required AuthRepository authRepository,
     required Dio dio,

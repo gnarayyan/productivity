@@ -74,6 +74,9 @@ dependencies:
   # Calendar
   table_calendar: ^3.1.2
   nepali_date_picker: ^5.1.0
+  fpdart: ^1.1.1
+  injectable: ^2.5.1
+  isar: ^3.1.0+1
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +94,7 @@ dev_dependencies:
   # Code Generation
   freezed: ^2.5.7
   json_serializable: ^6.8.0
+  injectable_generator: ^2.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

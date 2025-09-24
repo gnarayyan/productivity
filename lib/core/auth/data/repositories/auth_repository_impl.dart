@@ -1,6 +1,6 @@
 import '../../domain/repositories/auth_repository.dart';
-import '../../models/auth_tokens.dart';
-import '../../models/user.dart';
+import '../../../../features/auth/domain/entities/auth_tokens_entity.dart';
+import '../../../../features/auth/domain/entities/user_entity.dart';
 import '../datasources/auth_local_data_source.dart';
 import '../datasources/auth_remote_data_source.dart';
 
@@ -23,7 +23,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       // Get and store user data
       final user = await remoteDataSource.getCurrentUser(tokens.accessToken);
-      await localDataSource.saveUser(user);
+      // await localDataSource.saveUser(user);
 
       return tokens;
     } catch (e) {
@@ -63,7 +63,7 @@ class AuthRepositoryImpl implements AuthRepository {
       }
 
       final user = await remoteDataSource.getCurrentUser(tokens.accessToken);
-      await localDataSource.saveUser(user);
+      // await localDataSource.saveUser(user);
 
       return user;
     } catch (e) {

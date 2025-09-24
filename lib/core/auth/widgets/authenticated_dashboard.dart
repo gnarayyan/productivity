@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+
 import '../../themes/app_theme.dart';
 import '../bloc/auth_bloc.dart';
-import '../models/auth_tokens.dart';
-import '../models/user.dart';
+import '../../../features/auth/domain/entities/auth_tokens_entity.dart';
+import '../../../features/auth/domain/entities/user_entity.dart';
 
 class AuthenticatedDashboard extends StatelessWidget {
-
   const AuthenticatedDashboard({
     super.key,
     required this.user,
@@ -52,26 +52,24 @@ class AuthenticatedDashboard extends StatelessWidget {
                   backgroundColor: AppColors.onPrimary.withAlpha(
                     (0.2 * 255).toInt(),
                   ),
-                  child: user.profileImageUrl != null
-                      ? ClipOval(
-                          child: Image.network(
-                            user.profileImageUrl!,
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) =>
-                                const Icon(
-                                  LucideIcons.user,
-                                  size: 40,
-                                  color: AppColors.onPrimary,
-                                ),
-                          ),
-                        )
-                      : const Icon(
-                          LucideIcons.user,
-                          size: 40,
-                          color: AppColors.onPrimary,
-                        ),
+                  child: ClipOval(
+                    child: Image.network(
+                      'https://nec.edu.np/upload/photo/photo_2025-05-31_42829.jpeg',
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => const Icon(
+                        LucideIcons.user,
+                        size: 40,
+                        color: AppColors.onPrimary,
+                      ),
+                    ),
+                  ),
+                  // : const Icon(
+                  //     LucideIcons.user,
+                  //     size: 40,
+                  //     color: AppColors.onPrimary,
+                  //   ),
                 ),
                 const SizedBox(height: 16),
                 Text(

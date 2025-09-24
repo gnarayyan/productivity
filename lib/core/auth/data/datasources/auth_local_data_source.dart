@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../models/auth_tokens.dart';
-import '../../models/user.dart';
+import 'package:varosa_tech/features/auth/data/models/user_model.dart';
+import '../../../../features/auth/domain/entities/auth_tokens_entity.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> saveTokens(AuthTokens tokens);
   Future<AuthTokens?> getTokens();
   Future<void> clearTokens();
-  Future<void> saveUser(User user);
-  Future<User?> getUser();
+  Future<void> saveUser(UserModel user);
+  Future<UserModel?> getUser();
   Future<void> clearUser();
   Future<void> clearAll();
 }
@@ -49,14 +49,14 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   }
 
   @override
-  Future<void> saveUser(User user) async {
+  Future<void> saveUser(UserModel user) async {
     final prefs = await SharedPreferences.getInstance();
     final userJson = jsonEncode(user.toJson());
     await prefs.setString(_userKey, userJson);
   }
 
   @override
-  Future<User?> getUser() async {
+  Future<UserModel?> getUser() async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final userJson = prefs.getString(_userKey);
@@ -64,7 +64,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       if (userJson == null) return null;
 
       final userMap = jsonDecode(userJson) as Map<String, dynamic>;
-      return User.fromJson(userMap);
+      return UserModel.fromJson(userMap);
     } catch (e) {
       // If there's any error parsing user, clear it
       await clearUser();

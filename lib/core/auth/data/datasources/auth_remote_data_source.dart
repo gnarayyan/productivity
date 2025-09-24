@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:dio/dio.dart';
-import '../../models/auth_tokens.dart';
-import '../../models/user.dart';
+import 'package:varosa_tech/features/auth/data/models/user_model.dart';
+import '../../../../features/auth/domain/entities/auth_tokens_entity.dart';
+import '../../../../features/auth/domain/entities/user_entity.dart';
 
 abstract class AuthRemoteDataSource {
   Future<AuthTokens> login(String email, String password);
@@ -148,7 +149,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         'updated_at': DateTime.now().toIso8601String(),
       };
 
-      return User.fromJson(mockResponse);
+      return UserModel.fromJson(mockResponse);
     } on DioException {
       rethrow;
     } catch (e) {

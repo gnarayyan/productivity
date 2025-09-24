@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'theme_event.dart';
 import 'theme_state.dart';
 
+@injectable
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
   ThemeBloc() : super(const ThemeState()) {
